@@ -2,11 +2,13 @@
   <div>
     <!-- Comece aqui o código -->
       <Banners />
+
+      
   </div>
 </template>
 
 <script setup>
-// Se necessário, adicionar scripts aqui.
+
 </script>
 
 <style scoped>

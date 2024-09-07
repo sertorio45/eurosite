@@ -28,6 +28,7 @@ export default defineNuxtConfig({
     }
   },
 
+
   // Arquivos CSS globais
   css: [
     'animate.css/animate.min.css',
@@ -46,6 +47,8 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  
 
   compatibilityDate: '2024-09-06',
   modules: ['@nuxt/image'],

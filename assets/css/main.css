@@ -1,7 +1,12 @@
-body {
-    font-size: 16px;
+:root {
+
+    --bs-shadow-color: rgba(0, 0, 0, 0.107);
 }
 
+
+body {
+    font-size: 1.04vw;
+}
 
 .btn-primary {
     padding: .5rem 1rem .5rem 1rem;
@@ -9,3 +14,26 @@ body {
     border: 0;
     font-size: 1em;
 }
+
+/* Cards */
+.card {
+    border-color: transparent;
+    -webkit-box-shadow: 10px 10px 21px 2px var(--bs-shadow-color);
+    -moz-box-shadow: 10px 10px 21px 2px var(--bs-shadow-color);
+    box-shadow: 0 4px 21px 2px var(--bs-shadow-color);
+    margin: 10px;
+}
+
+.card-body {
+    padding: 70px 10px 70px 10px;
+    border: 1px solid transparent; /* Corrigido para ter uma borda visível, se necessário */
+}
+
+.card-body:hover {
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
+    border-radius: 5px; /* Garantir que o arredondamento seja aplicado no hover */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Suavizar a transição */
+}
+
+  

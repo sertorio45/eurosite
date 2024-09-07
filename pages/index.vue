@@ -2,12 +2,13 @@
   <div>
     <!-- Comece aqui o código -->
       <Banners />
-
-      
-  </div>
+    <!-- Nossos cursos -->
+      <Cursos />
+          
+      </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 
 </script>
 

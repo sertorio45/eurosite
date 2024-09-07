@@ -1,0 +1,11 @@
+body {
+    font-size: 16px;
+}
+
+
+.btn-primary {
+    padding: .5rem 1rem .5rem 1rem;
+    border-radius: 5px;
+    border: 0;
+    font-size: 1em;
+}

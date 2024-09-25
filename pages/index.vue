@@ -4,6 +4,10 @@
       <Banners />
     <!-- Nossos cursos -->
       <Cursos />
+    <!-- Nossos cursos -->
+      <Wins />
+      <!-- Nossos cursos -->
+      <Motivos />
           
       </div>
 </template>

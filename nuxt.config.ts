@@ -28,6 +28,10 @@ export default defineNuxtConfig({
     }
   },
 
+  googleFonts: {
+    families: { 'Josefin': true, 'Poppins': true, },
+    download: false,
+  },
 
   // Arquivos CSS globais
   css: [
@@ -51,5 +55,5 @@ export default defineNuxtConfig({
   
 
   compatibilityDate: '2024-09-06',
-  modules: ['@nuxt/image'],
+  modules: ['@nuxt/image', '@nuxtjs/google-fonts'],
 });

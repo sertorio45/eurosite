@@ -1,12 +1,19 @@
 :root {
-
+    --font-family: "Josefin Sans", sans-serif;
     --bs-shadow-color: rgba(0, 0, 0, 0.107);
 }
 
-
-body {
+html, body {
     font-size: 1.04vw;
+    font-family: "Poppins", sans-serif;
 }
+
+h1,h2,h3,h3,h5,h6 {
+    font-family: var(--font-family);
+    font-weight: bold;
+    text-transform: uppercase;
+}   
+
 
 .btn-primary {
     padding: .5rem 1rem .5rem 1rem;
@@ -27,13 +34,14 @@ body {
 .card-body {
     padding: 70px 10px 70px 10px;
     border: 1px solid transparent; /* Corrigido para ter uma borda visível, se necessário */
+    transition: ease-in-out;
+    transition-duration: 0.2s;
 }
 
 .card-body:hover {
     background-color: var(--bs-primary);
     color: var(--bs-white);
     border-radius: 5px; /* Garantir que o arredondamento seja aplicado no hover */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Suavizar a transição */
+    transition: ease-in-out;
+    transition-duration: 0.2s;
 }
-
-  

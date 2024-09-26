@@ -41,6 +41,10 @@ export default defineNuxtConfig({
     'boxicons/css/boxicons.min.css',
   ],
 
+  image: {
+    domains: [ 's3.gsstudio.com.br', 'placeholder.com' ]
+  },
+
   // Configurações do Vite
   vite: {
     css: {

@@ -1,17 +1,17 @@
 <template>
   <div>
-    <section class="my-5 py-5 justify-content-center align-content-center">
-        <div class="container my-5 py-5 g-0">
+    <section class="my-5 py-5">
+        <div class="container">
           <div class="row">
-            <div class="col-3">
+            <div class="col-md-3 col-sm-12">
                 <h2>MOTIVOS PARA ESCOLHER A EURO ANGLO</h2>
-                <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, 
-                  e vem sendo utilizado desde o século XVI, quando um impressor </p>
-                  <button class="btn btn-primary">Atendimento rápido</button>
-                  <img src="@/assets/img/girl.webp" alt="" class="girl-img">
+                  <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, 
+                    e vem sendo utilizado desde o século XVI, quando um impressor
+                  </p>
+                    <NuxtImg src="/img/girl.webp" alt="" class="girl-img" width="650px"/>
             </div>
 
-            <div class="col-6" style="margin-left: 300px;">
+            <div class="col-md-6 col-sm-12 container-motivos">
                  <div class="row text-center g-0">
                   <div class="col-6">
                     <div class="card">
@@ -62,9 +62,28 @@
 
 <style>
 .girl-img {
-    width: 600px;
     position: relative;
-    bottom: 200px;
-    left: 60px;
+    margin-top: -300px;
+    margin-left: 30px;
 }
+
+.container-motivos {
+  margin-left: 300px;
+}
+
+@media (max-width: 576px) { 
+  .girl-img {
+    position: sticky;
+    margin: 30px 0px 30px 0px;
+    justify-content: center;
+    width: 100%;
+}
+
+.container-motivos {
+  margin-left: 0;
+  
+}
+
+ }
+
 </style>

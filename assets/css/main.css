@@ -4,7 +4,7 @@
 }
 
 html, body {
-    font-size: 1.04vw;
+    font-size: 16.5px;
     font-family: "Poppins", sans-serif;
 }
 
@@ -44,4 +44,8 @@ h1,h2,h3,h3,h5,h6 {
     border-radius: 5px; /* Garantir que o arredondamento seja aplicado no hover */
     transition: ease-in-out;
     transition-duration: 0.2s;
+}
+
+.bg-primary-degrade {
+    background: linear-gradient(to bottom, var(--bs-primary), var(--bs-secondary));
 }

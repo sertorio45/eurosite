@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NuxtImg src="logotipo.svg" width="180px" height="auto"/>
+    <NuxtImg src="/img/logotipo.svg" sizes="250px"/>
   </div>
 </template>
 

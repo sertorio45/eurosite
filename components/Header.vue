@@ -49,10 +49,10 @@
                   </a>
                   <ul class="dropdown-menu px-4" aria-labelledby="navbarDropdown">
                     <li>
-                      <NuxtLink class="dropdown-item nav-link" to="/servicos/residenciais">Serviços residenciais</NuxtLink>
+                      <NuxtLink class="dropdown-item nav-link" to="/">Serviços residenciais</NuxtLink>
                     </li>
                     <li>
-                      <NuxtLink class="dropdown-item nav-link" to="/servicos/comerciais">Serviços comerciais</NuxtLink>
+                      <NuxtLink class="dropdown-item nav-link" to="/">Serviços comerciais</NuxtLink>
                     </li>
                   </ul>
                 </li>
@@ -97,12 +97,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.logo {
-  max-width: 150px;
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease-in-out;
-}
 
 .custom-header {
   position: fixed;

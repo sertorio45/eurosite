@@ -4,10 +4,12 @@
       <Banners />
     <!-- Nossos cursos -->
       <Cursos />
-    <!-- Nossos cursos -->
+    <!-- Wins -->
       <Wins />
-      <!-- Nossos cursos -->
+    <!-- Motivos -->
       <Motivos />
+    <!-- Depoimentos -->
+      <Depoimentos />
           
       </div>
 </template>

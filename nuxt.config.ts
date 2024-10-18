@@ -1,10 +1,12 @@
-// nuxt.config.ts
 export default defineNuxtConfig({
-
-  modules: ['@nuxt/image', '@nuxtjs/google-fonts'],
-  // Configurações do aplicativo
+  modules: [
+    '@nuxt/image', 
+    '@nuxtjs/google-fonts', 
+    'nuxt-mail'
+  ],
+  
   app: {
-    baseURL: '/euro', // Defina o base URL corretamente dentro de app
+    baseURL: '/euro',
     head: {
       meta: [
         { charset: 'utf-8' },
@@ -15,7 +17,7 @@ export default defineNuxtConfig({
         { name: 'robots', content: 'index,follow' },
         { name: 'author', content: 'GS Studio' },
         { property: 'og:title', content: 'GS Studio - Agência Especializada em Design, Marketing e Tecnologia' },
-        { property: 'og:description', content: 'GS Studio é uma agência focada em design, marketing e tecnologia, oferecendo soluções completas para empresas.' },
+        { property: 'og:description', content: 'GS Studio é uma agência focada em design, marketing e tecnologia.' },
         { property: 'og:image', content: '/og-image.png' },
         { property: 'og:url', content: 'https://www.gsstudio.com.br' },
         { property: 'og:type', content: 'website' },
@@ -30,12 +32,29 @@ export default defineNuxtConfig({
     }
   },
 
+  mail: {
+    message: {
+      from: 'Lead Site <naoresponda@euroanglocursos.com.br>',
+      to: 'giovannistr@gmail.com',
+    },
+    smtp: {
+      host: 'mail.euroanglocursos.com.br',
+      port: 587,
+      auth: {
+        user: 'naoresponda@euroanglocursos.com.br',
+        pass: 'jcki6*L0$!ET',
+      },
+    },
+  },
+
   googleFonts: {
-    families: { 'Josefin': true, 'Poppins': true, },
+    families: {
+      'Josefin': [400, 700],
+      'Poppins': [400, 700],
+    },
     download: false,
   },
 
-  // Arquivos CSS globais
   css: [
     'animate.css/animate.min.css',
     '@/assets/scss/custom.scss',
@@ -44,23 +63,25 @@ export default defineNuxtConfig({
   ],
 
   image: {
-    domains: [ 's3.gsstudio.com.br', 'placeholder.com' ],
+    domains: [
+      's3.gsstudio.com.br', 
+      'placeholder.com', 
+      'gsstudio.com.br'
+    ],
     quality: 75,
-    format: ['webp'],
+    format: ['webp', 'avif'], // Melhorando a compatibilidade de imagens
     dir: 'assets/img',
   },
 
-  // Configurações do Vite
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          quietDeps: true, // Silencia avisos de depreciação em dependências
+          quietDeps: true, 
         },
       },
     },
   },
 
   compatibilityDate: '2024-09-06',
-  
 });

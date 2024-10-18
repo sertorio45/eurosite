@@ -26,7 +26,7 @@
           <div class="card-body">
             <img src="https://placeholder.com/150x150" class="rounded-circle  my-3" alt="">
             <h3>Nome do Curso</h3>
-            <p class="card-text">ver mais informações</p>
+            <a class="card-text">ver mais informações</a>
           </div>
         </div>
       </div>

@@ -63,7 +63,7 @@
                   <NuxtLink to="/" class="nav-link">Blog</NuxtLink>
                 </li>
                 <li class="nav-item">
-                  <NuxtLink to="/" class="nav-link">Contato</NuxtLink>
+                  <NuxtLink to="/contato" class="nav-link">Contato</NuxtLink>
                 </li>
               </ul>
               <!-- Botão WhatsApp -->

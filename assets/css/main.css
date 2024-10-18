@@ -46,6 +46,12 @@ h1,h2,h3,h3,h5,h6 {
     transition-duration: 0.2s;
 }
 
+.card-body:hover a,
+.card-body:hover i {
+    color: var(--bs-white); /* Faz os links e ícones ficarem brancos ao passar o mouse */
+}
+
+
 .bg-primary-degrade {
     background: linear-gradient(to bottom, var(--bs-primary), var(--bs-secondary));
 }

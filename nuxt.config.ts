@@ -1,5 +1,7 @@
 // nuxt.config.ts
 export default defineNuxtConfig({
+
+  modules: ['@nuxt/image', '@nuxtjs/google-fonts'],
   // Configurações do aplicativo
   app: {
     baseURL: '/euro', // Defina o base URL corretamente dentro de app
@@ -42,7 +44,10 @@ export default defineNuxtConfig({
   ],
 
   image: {
-    domains: [ 's3.gsstudio.com.br', 'placeholder.com' ]
+    domains: [ 's3.gsstudio.com.br', 'placeholder.com' ],
+    quality: 75,
+    format: ['webp'],
+    dir: 'assets/img',
   },
 
   // Configurações do Vite
@@ -56,8 +61,6 @@ export default defineNuxtConfig({
     },
   },
 
-  
-
   compatibilityDate: '2024-09-06',
-  modules: ['@nuxt/image', '@nuxtjs/google-fonts'],
+  
 });

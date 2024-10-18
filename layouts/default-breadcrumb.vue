@@ -1,6 +1,9 @@
 <template>
   <div>
-    <NuxtImg src="logotipo.svg" width="185px"/>
+    <Header />
+      <Breadcrumb />
+       <slot />
+    <Footer />
   </div>
 </template>
 

@@ -1,9 +1,11 @@
 <template>
   <div class="contact-area section-padding">
-    <div class="container">
+    <div class="container min-vh-100">
       <div class="row align-items-center justify-items-center py-5">
-        <div class="col-md-6 mb-3">
-          <NuxtImg src="woman-contact.webp" width="500px" class="img-fluid m-0" />
+        <div class="col-md-6 mb-3 text-center">
+          <div><NuxtImg src="woman-contact.webp" width="500px" class="img-fluid m-0" /></div>
+          <div class="mt-3"><a href="#">Veja onde está nossas unidades</a></div>
+          <a href="#unidades"><Icon icon="bx bx-chevrons-down" color="var(--bs-primary)" fontSize="3em" /></a>
         </div>
         <div class="col-md-6 mb-3">
           <FormsFormContato />
@@ -12,9 +14,9 @@
     </div>
   </div>
 
-  <section class="location-cards section-padding">
-    <div class="container">
-      <h2 class="text-center mb-5">Encontre a unidade mais próxima</h2>
+  <section class="location-cards section-padding bg-primary" id="unidades">
+    <div class="container my-5">
+      <h2 class="text-center mb-5 text-light">Encontre a unidade mais próxima</h2>
       <div class="row">
         <div class="col-md-4 mb-4">
           <div class="card text-center">

@@ -1,15 +1,15 @@
 <template>
-  <div class="breadcrumbs-title parallax overlay dark-5 blank-space bg-primary">
+  <div class="breadcrumbs-title parallax overlay dark-5 blank-space bg-primary text-center">
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
           <div class="breadcrumbs-menu ptb-150">
             <!-- Título do topo dinâmico -->
-            <h1 class="l-height">{{ pageTitle }}</h1>
+            <h1 class="l-height text-center">{{ pageTitle }}</h1>
             
             <!-- Breadcrumbs -->
             <nav aria-label="breadcrumb">
-              <ul class="clearfix">
+              <ul class="clearfix justify-content-center">
                 <li v-for="(crumb, index) in breadcrumbs" :key="index" class="breadcrumb-item mx-1">
                   <NuxtLink to="/">Início</NuxtLink>
                   <i v-if="index < breadcrumbs.length - 1" class="zmdi zmdi-chevron-right"></i>
@@ -65,6 +65,7 @@ const breadcrumbs = computed(() => {
   font-size: 36px;
   line-height: 1.2;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .breadcrumbs-menu ul {
@@ -72,6 +73,7 @@ const breadcrumbs = computed(() => {
   list-style: none;
   padding: 0;
   margin: 0;
+  justify-content: center;
 }
 
 .breadcrumbs-menu li {
@@ -87,6 +89,7 @@ const breadcrumbs = computed(() => {
 
 .breadcrumbs-menu li span {
   color: #ccc;
+  text-align: center;
 }
 
 .zmdi-chevron-right {
@@ -94,4 +97,3 @@ const breadcrumbs = computed(() => {
   margin: 0 10px;
 }
 </style>
-

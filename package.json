@@ -17,6 +17,7 @@
     "bootstrap": "^5.3.3",
     "boxicons": "^2.1.4",
     "imask": "^7.6.1",
+    "mysql2": "^3.11.3",
     "nuxt": "^3.13.0",
     "nuxt-mail": "^5.1.1",
     "sass-loader": "^16.0.1",

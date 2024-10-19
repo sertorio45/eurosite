@@ -4,9 +4,19 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts', 
     'nuxt-mail'
   ],
+
+  runtimeConfig: {
+    DB_SERVERNAME: process.env.DB_SERVERNAME,
+    DB_DATABASE: process.env.DB_DATABASE,
+    DB_USERNAME: process.env.DB_USERNAME,
+    DB_PASSWORD: process.env.DB_PASSWORD,
+    public: {
+      apiBase: '/api'
+    }
+  },
   
   app: {
-    baseURL: '/euro',
+    baseURL: '/',
     head: {
       meta: [
         { charset: 'utf-8' },

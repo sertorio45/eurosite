@@ -1,12 +1,19 @@
-<!-- components/Header.vue -->
 <template>
-  <div class="container">
+  <div class="container py-2">
     <div class="row">
-      <div class="col-12 d-flex justify-content-center align-items-center">
+      <div class="col-6 d-flex justify-content-start">
+        <p>Alinhado ao início</p>
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <p>Seja Franqueado | Ouvidoria | Trabalhe Conosco</p>
+      </div>
+    </div>
+    <div class="row g-0"> <!-- Adicionado g-0 para remover margem -->
+      <div class="col-12">
         <nav class="navbar navbar-expand-lg navbar-light w-100">
-          <div class="container-fluid">
+          <div class="container-fluid p-0">
             <!-- Logo -->
-            <NuxtLink to="/" class="navbar-brand d-flex">
+            <NuxtLink to="/" class="navbar-brand ">
               <Logo />
             </NuxtLink>
 
@@ -25,16 +32,16 @@
             </button>
 
             <!-- Menu Colapsável -->
-            <div class="collapse navbar-collapse p-2" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                   <NuxtLink to="/" class="nav-link">Página inicial</NuxtLink>
                 </li>
                 <li class="nav-item">
-                  <NuxtLink to="/" class="nav-link">Quem somos</NuxtLink>
+                  <NuxtLink to="/" class="nav-link">Sobre nós</NuxtLink>
                 </li>
                 <li class="nav-item">
-                  <NuxtLink to="/" class="nav-link">Nossas unidades</NuxtLink>
+                  <NuxtLink to="/" class="nav-link">Unidades</NuxtLink>
                 </li>
                 <li class="nav-item dropdown">
                   <a 
@@ -57,10 +64,10 @@
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <NuxtLink to="/" class="nav-link">Hall dos contratados</NuxtLink>
+                  <NuxtLink to="/" class="nav-link">Alunos contratados</NuxtLink>
                 </li>
                 <li class="nav-item">
-                  <NuxtLink to="/" class="nav-link">Blog</NuxtLink>
+                  <NuxtLink to="/blog" class="nav-link">Blog</NuxtLink>
                 </li>
                 <li class="nav-item">
                   <NuxtLink to="/contato" class="nav-link">Contato</NuxtLink>
@@ -68,7 +75,7 @@
               </ul>
               <!-- Botão WhatsApp -->
              
-              <a href="https://wa.me/5516992842170?text=Ol%C3%A1,%20vim%20pelo%20site,%20gostaria%20de%20ser%20atendido(a)." class="btn btn-primary" target="_blank">Atendimento rápido</a>
+              <div class="align-content-end"><a href="https://wa.me/5516992842170?text=Ol%C3%A1,%20vim%20pelo%20site,%20gostaria%20de%20ser%20atendido(a)." class="btn btn-primary" target="_blank">Atendimento rápido</a></div>
             </div>
 
           </div>
@@ -77,6 +84,7 @@
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';

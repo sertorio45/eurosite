@@ -8,6 +8,8 @@
       <Wins />
     <!-- Motivos -->
       <Motivos />
+      <!-- Blog Fixo -->
+      <BlogFixed />
     <!-- Depoimentos -->
       <Depoimentos />
           

@@ -4,7 +4,7 @@
 }
 
 html, body {
-    font-size: 16.5px;
+    font-size: 14.5px;
     font-family: "Poppins", sans-serif;
 }
 
@@ -46,9 +46,17 @@ h1,h2,h3,h3,h5,h6 {
     transition-duration: 0.2s;
 }
 
-.card-body:hover a,
-.card-body:hover i {
+.card-body:hover a {
     color: var(--bs-white); /* Faz os links e ícones ficarem brancos ao passar o mouse */
+}
+
+.card-body:hover small {
+    color: var(--bs-white) !important; /* Faz os links e ícones ficarem brancos ao passar o mouse */
+}
+
+.card-body:hover .btn-primary {
+    background-color: var(--bs-white) !important; /* Faz os links e ícones ficarem brancos ao passar o mouse */
+    color: var(--bs-primary);
 }
 
 

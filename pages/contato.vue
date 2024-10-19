@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts" setup>
-definePageMeta ({
+definePageMeta({
   layout: 'default-breadcrumb' // Usa o layout sem breadcrumbs
 });
 </script>

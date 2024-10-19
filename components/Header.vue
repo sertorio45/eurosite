@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-2">
+  <div class="container my-3">
     <div class="row">
       <div class="col-6 d-flex justify-content-start">
         <p>Alinhado ao início</p>
@@ -8,12 +8,14 @@
         <p>Seja Franqueado | Ouvidoria | Trabalhe Conosco</p>
       </div>
     </div>
-    <div class="row g-0"> <!-- Adicionado g-0 para remover margem -->
+  </div>
+  <div :class="['container-fluid', 'py-2', {'position-fixed top-0 start-0 w-100 fixed-navbar': isScrolled}]">
+    <div class="row g-0">
       <div class="col-12">
         <nav class="navbar navbar-expand-lg navbar-light w-100">
-          <div class="container-fluid p-0">
+          <div class="container p-0">
             <!-- Logo -->
-            <NuxtLink to="/" class="navbar-brand ">
+            <NuxtLink to="/" class="navbar-brand">
               <Logo />
             </NuxtLink>
 
@@ -74,10 +76,10 @@
                 </li>
               </ul>
               <!-- Botão WhatsApp -->
-             
-              <div class="align-content-end"><a href="https://wa.me/5516992842170?text=Ol%C3%A1,%20vim%20pelo%20site,%20gostaria%20de%20ser%20atendido(a)." class="btn btn-primary" target="_blank">Atendimento rápido</a></div>
+              <div class="align-content-end">
+                <a href="https://wa.me/5516992842170?text=Ol%C3%A1,%20vim%20pelo%20site,%20gostaria%20de%20ser%20atendido(a)." class="btn btn-primary" target="_blank">Atendimento rápido</a>
+              </div>
             </div>
-
           </div>
         </nav>
       </div>
@@ -85,14 +87,13 @@
   </div>
 </template>
 
-
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 const isScrolled = ref(false);
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50;
+  isScrolled.value = window.scrollY > 50; // Ativa a classe fixa ao rolar mais de 50 pixels
 };
 
 onMounted(() => {
@@ -105,23 +106,11 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-
-.custom-header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  padding: 5px 0;
-  z-index: 1000;
-  transition: background-color 0.3s, backdrop-filter 0.3s, padding 0.3s ease-in-out;
-  background-color: transparent;
-  backdrop-filter: none;
-}
-
-.custom-header.scrolled {
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(25px);
-  padding: 10px 0;
+.fixed-navbar {
+  z-index: 1030; /* Valor alto para garantir que a barra fique sobre outros elementos */
+  background-color: rgba(255, 255, 255, 0.7); /* Fundo branco com leve transparência */
+  backdrop-filter: blur(10px); /* Efeito de blur */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve para destacar o menu */
 }
 
 .nav-link {
@@ -193,7 +182,7 @@ onBeforeUnmount(() => {
 }
 
 .dropdown-menu {
-  background-color: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.8) !important;
   backdrop-filter: blur(25px) !important;
 }
 

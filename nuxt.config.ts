@@ -14,7 +14,7 @@ export default defineNuxtConfig({
       apiBase: '/api'
     }
   },
-  
+
   app: {
     baseURL: '/',
     head: {
@@ -94,4 +94,8 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-09-06',
+
+  devtools: {
+    enabled: true,
+  },
 });

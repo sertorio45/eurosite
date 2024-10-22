@@ -82,6 +82,7 @@
         <!-- Campo de Anexo -->
         <div class="col-12">
           <input
+            ref="fileInput"
             type="file"
             class="form-control"
             id="contact_curriculo"
@@ -118,11 +119,12 @@ const contactEmail = ref<string>('');
 const contactCell = ref<string>('');
 const contactCidade = ref<string>('');
 const contactMessage = ref<string>('');
-const curriculo = ref<File | null>(null); // Variável para o anexo
+const curriculo = ref<File | null>(null) as Ref<File | null>;
 const isSubmitting = ref<boolean>(false);
 const errorMessage = ref<string>('');
 const successMessage = ref<string>('');
 const showSuggestions = ref<boolean>(false); // Para controlar exibição das sugestões
+const fileInput = ref<HTMLInputElement | null>(null); // Para resetar o input de arquivo
 
 // Lista de domínios de e-mail
 const emailDomains = ref<string[]>([
@@ -169,20 +171,26 @@ watch(contactEmail, (newValue) => {
 
 // Função para validar o formulário
 const isFormValid = () => {
+  const isCellValid = contactCell.value.replace(/\D/g, '').length === 11; // 2 dígitos do DDD + 9 dígitos do número
+  if (!isCellValid) {
+    errorMessage.value = 'Por favor, insira um número de celular válido com DDD.';
+    return false;
+  }
   return (
     contactName.value.trim() !== '' &&
     contactEmail.value.trim() !== '' &&
     contactCell.value.trim() !== '' &&
     contactCidade.value.trim() !== '' &&
     contactMessage.value.trim() !== '' &&
-    contactEmail.value.includes('@')
+    contactEmail.value.includes('@') &&
+    isCellValid
   );
 };
 
 // Função para enviar o formulário
 const handleSubmit = async () => {
   if (!isFormValid()) {
-    errorMessage.value = 'Por favor, preencha todos os campos obrigatórios.';
+    errorMessage.value = 'Por favor, preencha todos os campos obrigatórios corretamente.';
     setTimeout(() => {
       errorMessage.value = '';
     }, 3000);
@@ -201,28 +209,29 @@ const handleSubmit = async () => {
     // Inicializar array de attachments com tipo explícito
     let attachments: { filename: string; content: string; encoding: string; contentType?: string }[] = [];
 
-    if (curriculo.value) {
+    // Verificar se curriculo.value existe e é um File válido
+    if (curriculo.value && curriculo.value instanceof File) {
   const reader = new FileReader();
   await new Promise<void>((resolve, reject) => {
     reader.onload = () => {
       const base64Data = reader.result?.toString().split(',')[1]; // Pegar apenas a parte base64
       if (base64Data) {
         attachments.push({
-          filename: curriculo.value?.name || 'anexo',
+          filename: (curriculo.value as File).name,  // Type assertion para garantir que curriculo.value é um File
           content: base64Data,
           encoding: 'base64',
-          contentType: curriculo.value?.type,
+          contentType: (curriculo.value as File).type,  // Type assertion para garantir que curriculo.value é um File
         });
       }
       resolve();
     };
     reader.onerror = reject;
 
-    // Certificar que curriculo.value é um arquivo Blob válido
-    if (curriculo.value instanceof Blob) {
-      reader.readAsDataURL(curriculo.value); // Ler o arquivo como URL em base64
-    }
+    // Ler o arquivo como base64
+    reader.readAsDataURL(curriculo.value as File); // Type assertion aqui também
   });
+} else {
+  console.error("O valor de curriculo não é um arquivo válido (File).");
 }
 
 
@@ -268,7 +277,9 @@ const handleSubmit = async () => {
 const applyPhoneMask = () => {
   let phone = contactCell.value.replace(/\D/g, '').slice(0, 11);
 
-  contactCell.value = phone.length > 10 ? `(${phone.slice(0, 2)}) ${phone.slice(2, 7)}-${phone.slice(7)}` : `(${phone.slice(0, 2)}) ${phone.slice(2, 6)}-${phone.slice(6)}`;
+  contactCell.value = phone.length > 10 
+    ? `(${phone.slice(0, 2)}) ${phone.slice(2, 7)}-${phone.slice(7)}` 
+    : `(${phone.slice(0, 2)}) ${phone.slice(2, 6)}-${phone.slice(6)}`;
 };
 
 // Função para resetar o formulário
@@ -279,5 +290,8 @@ const resetForm = () => {
   contactCidade.value = '';
   contactMessage.value = '';
   curriculo.value = null; // Reseta o anexo
+  if (fileInput.value) {
+    fileInput.value.value = ''; // Resetar o input de arquivo
+  }
 };
 </script>

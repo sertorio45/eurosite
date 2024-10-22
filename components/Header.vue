@@ -165,22 +165,6 @@ onBeforeUnmount(() => {
   font-size: 35px;
 }
 
-::v-deep .navbar-toggler:not(.collapsed) .menu-icon {
-  opacity: 0;
-}
-
-::v-deep .navbar-toggler:not(.collapsed) .close-icon {
-  opacity: 1;
-}
-
-::v-deep .navbar-toggler.collapsed .menu-icon {
-  opacity: 1;
-}
-
-::v-deep .navbar-toggler.collapsed .close-icon {
-  opacity: 0;
-}
-
 .dropdown-menu {
   background-color: rgba(255, 255, 255, 0.8) !important;
   backdrop-filter: blur(25px) !important;

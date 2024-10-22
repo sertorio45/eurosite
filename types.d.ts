@@ -39,5 +39,18 @@ declare module '@nuxt/schema' {
   }
 }
 
+declare module '#app' {
+  interface NuxtApp {
+    $mail: {
+      send: (options: { 
+        subject: string, 
+        to: string, 
+        html: string,
+        attachments?: any[] 
+      }) => Promise<void>;
+    };
+  }
+}
+
 
   

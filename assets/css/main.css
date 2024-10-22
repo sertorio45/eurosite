@@ -14,6 +14,9 @@ h1,h2,h3,h3,h5,h6 {
     text-transform: uppercase;
 }   
 
+.container {
+    padding: 0;
+}
 
 .btn-primary {
     padding: .5rem 1rem .5rem 1rem;

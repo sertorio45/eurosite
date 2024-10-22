@@ -37,7 +37,10 @@ const route = useRoute()
 // Função para gerar o título da página com base na rota atual
 const pageTitle = computed(() => {
   const lastSegment = route.path.split('/').filter(Boolean).pop() || 'Home'
-  return lastSegment.charAt(0).toUpperCase() + lastSegment.slice(1)
+  return lastSegment
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
 })
 
 // Função para gerar os breadcrumbs
@@ -45,9 +48,13 @@ const breadcrumbs = computed(() => {
   const paths = route.path.split('/').filter(Boolean) // Remove partes vazias da URL
   return paths.map((segment, index) => {
     const path = `/${paths.slice(0, index + 1).join('/')}`
+    const name = segment
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
     return {
-      name: segment.charAt(0).toUpperCase() + segment.slice(1), // Capitaliza a primeira letra
-      path: index === paths.length - 1 ? null : path,           // Desabilita o link no último item
+      name, // Capitaliza a primeira letra de cada palavra
+      path: index === paths.length - 1 ? null : path, // Desabilita o link no último item
     }
   })
 })

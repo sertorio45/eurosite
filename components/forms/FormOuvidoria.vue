@@ -11,7 +11,8 @@
     <!-- Formulário de Ouvidoria -->
     <form class="custom-input" id="ouvidoria_form" autocomplete="off" novalidate @submit.prevent="handleSubmit">
       <div class="row gy-2 g-2">
-        <div class="col-md-6">
+        <!-- Nome, Email e Celular na mesma linha -->
+        <div class="col-md-4">
           <input
             v-model="formName"
             type="text"
@@ -24,7 +25,7 @@
             aria-label="Nome"
           />
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <input
             v-model="formEmail"
             type="email"
@@ -36,11 +37,50 @@
             aria-required="true"
             aria-label="Email"
             @input="validateEmail"
+            @focus="showSuggestions = formEmail.includes('@')"
+            list="email_suggestions"
+          />
+          <datalist id="email_suggestions" v-if="showSuggestions">
+            <option v-for="domain in emailDomains" :key="domain" :value="getSuggestedEmail(domain)"></option>
+          </datalist>
+        </div>
+        <div class="col-md-4">
+          <input
+            v-model="formPhone"
+            type="tel"
+            class="form-control"
+            name="celular"
+            id="form_phone"
+            placeholder="Celular"
+            required
+            aria-required="true"
+            aria-label="Celular"
+            maxlength="15"
+            @input="applyPhoneMask"
           />
         </div>
       </div>
 
-      <div class="row gy-2 g-2 mt-2">
+      <div class="row gy-0 g-2 mt-0">
+        <!-- Assunto e Cidade na mesma linha -->
+        <div class="col-md-6">
+          <select
+            v-model="formAssunto"
+            class="form-select"
+            name="assunto"
+            id="form_assunto"
+            required
+            aria-required="true"
+            aria-label="Assunto"
+          >
+            <option disabled value="">Selecione o assunto:</option>
+            <option value="Informacao">Informação</option>
+            <option value="Reclamacao">Reclamação</option>
+            <option value="Critica">Crítica</option>
+            <option value="Sugestao">Sugestão</option>
+            <option value="Solicitacao">Solicitação</option>
+          </select>
+        </div>
         <div class="col-md-6">
           <select
             v-model="formCidade"
@@ -57,26 +97,10 @@
             <option value="SaoJoseDosCampos">São José dos Campos</option>
           </select>
         </div>
-        <div class="col-md-6">
-          <select
-            v-model="formArea"
-            class="form-select"
-            name="area"
-            id="form_area"
-            required
-            aria-required="true"
-            aria-label="Área de Interesse"
-          >
-            <option disabled value="">Selecione a área de interesse:</option>
-            <option value="Administrativo">Administrativo</option>
-            <option value="Comercial">Comercial</option>
-            <option value="Tecnologia">Tecnologia</option>
-            <option value="Marketing">Marketing</option>
-          </select>
-        </div>
       </div>
 
-      <div class="row gy-2 mt-2">
+      <!-- Mensagem abaixo -->
+      <div class="row gy-2 mt-0">
         <div class="col-12">
           <textarea
             v-model="formMessage"
@@ -90,6 +114,9 @@
             aria-label="Mensagem"
           ></textarea>
         </div>
+      </div>
+
+      <div class="row gy-2 mt-2">
         <div class="col-12">
           <button class="btn btn-primary w-100" type="submit" name="submit" id="enviar" :disabled="isSubmitting">
             <span v-if="isSubmitting">
@@ -99,44 +126,61 @@
             <span v-else>Enviar</span>
           </button>
         </div>
+        <span style="font-size: 0.8em!important;" class="my-4">
+          Ao enviar o formulário você está de acordo com nossa
+          <a href="/politica-privacidade">Política de Privacidade</a>
+        </span>
       </div>
     </form>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useNuxtApp } from '#app'; 
 
 // Referências dos campos do formulário
 const formName = ref('');
 const formEmail = ref('');
+const formPhone = ref('');
 const formCidade = ref('');
-const formArea = ref('');
+const formAssunto = ref('');
 const formMessage = ref('');
 const isSubmitting = ref(false);
 const errorMessage = ref(''); 
 const successMessage = ref(''); 
+const showSuggestions = ref(false); 
+const emailDomains = ref(['gmail.com', 'hotmail.com', 'yahoo.com', 'outlook.com', 'icloud.com', 'empresa.com.br', 'empresa.com']);
 
 const nuxtApp = useNuxtApp(); 
+
+const getSuggestedEmail = (domain: string) => `${formEmail.value.split('@')[0]}@${domain}`;
 
 // Função para validar o email
 const validateEmail = () => {
   const email = formEmail.value;
   if (!email.includes('@')) {
     errorMessage.value = 'Por favor, insira um email válido contendo @.';
+    showSuggestions.value = false;
   } else {
     errorMessage.value = '';
+    showSuggestions.value = email.endsWith('@');
   }
 };
+
+// Watcher para ocultar as sugestões se o email mudar sem @
+watch(formEmail, (newValue) => {
+  showSuggestions.value = newValue.endsWith('@');
+});
 
 // Função para validar o formulário
 const isFormValid = () => {
   return (
     formName.value.trim() !== '' &&
     formEmail.value.trim() !== '' &&
+    formPhone.value.trim() !== '' &&
     formCidade.value.trim() !== '' &&
-    formArea.value.trim() !== '' &&
+    formAssunto.value.trim() !== '' &&
     formMessage.value.trim() !== '' &&
     formEmail.value.includes('@')
   );
@@ -155,47 +199,54 @@ const handleSubmit = async () => {
   successMessage.value = '';
 
   try {
-    const formData = new FormData();
-    formData.append('nome', formName.value);
-    formData.append('email', formEmail.value);
-    formData.append('cidade', formCidade.value);
-    formData.append('area', formArea.value);
-    formData.append('mensagem', formMessage.value);
-
-    // Enviar os dados para o servidor que lida com o envio do e-mail
-    const response = await fetch('/api/ouvidoria', {
-      method: 'POST',
-      body: formData,
+    await (nuxtApp.$mail as any).send({
+      subject: `Ouvidoria - Novo Contato`,
+      html: `
+        <html>
+          <body style='font-family: "Montserrat", sans-serif;'>
+            <div style='background-color: #000; text-align: center; padding: 20px 0;'>
+              <img src='https://s3.gsstudio.com.br/images-email-marketing/logotipogssstudio.png' alt='Logo da Empresa' style='max-width: 200px;'>
+            </div>
+            <div style='background-color: #fff; padding: 40px;'>
+              <p><strong>Nome:</strong> ${formName.value}</p>
+              <p><strong>Email:</strong> ${formEmail.value}</p>
+              <p><strong>Celular:</strong> ${formPhone.value}</p>
+              <p><strong>Cidade:</strong> ${formCidade.value}</p>
+              <p><strong>Assunto:</strong> ${formAssunto.value}</p>
+              <p><strong>Mensagem:</strong> ${formMessage.value}</p>
+            </div>
+          </body>
+        </html>
+      `,
     });
 
-    // Verifica o status da resposta e trata de forma apropriada
-    if (response.status === 404) {
-      throw new Error('Rota não encontrada. Verifique o backend.');
-    }
-
-    if (response.ok) {
-      successMessage.value = 'Mensagem enviada com sucesso!';
-      resetForm();
-      setTimeout(() => { successMessage.value = ''; }, 3000);
-    } else {
-      const errorData = await response.json();
-      throw new Error(errorData.message || 'Erro ao enviar o formulário.');
-    }
-  } catch (error: any) {
-    // Tratamento do erro desconhecido
-    errorMessage.value = error instanceof Error ? error.message : String(error);
+    successMessage.value = 'Mensagem enviada com sucesso!';
+    resetForm(); 
+    setTimeout(() => { successMessage.value = ''; }, 3000);
+  } catch (error) {
+    errorMessage.value = 'Houve um problema ao enviar o e-mail. Tente novamente mais tarde.';
     setTimeout(() => { errorMessage.value = ''; }, 3000);
   } finally {
     isSubmitting.value = false;
   }
 };
 
+// Função para aplicar máscara no campo de celular
+const applyPhoneMask = () => {
+  let phone = formPhone.value.replace(/\D/g, '').slice(0, 11);
+
+  formPhone.value = phone.length > 10
+    ? `(${phone.slice(0, 2)}) ${phone.slice(2, 7)}-${phone.slice(7)}`
+    : `(${phone.slice(0, 2)}) ${phone.slice(2, 6)}-${phone.slice(6)}`;
+};
+
 // Função para resetar o formulário
 const resetForm = () => {
   formName.value = '';
   formEmail.value = '';
+  formPhone.value = '';
   formCidade.value = '';
-  formArea.value = '';
+  formAssunto.value = '';
   formMessage.value = '';
 };
 </script>

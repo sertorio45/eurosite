@@ -5,7 +5,11 @@
         <p>Alinhado ao início</p>
       </div>
       <div class="col-6 d-flex justify-content-end">
-        <p>Seja Franqueado | Ouvidoria | Trabalhe Conosco</p>
+        <span>
+          <NuxtLink to="#">Seja Franquiado</NuxtLink> | 
+          <NuxtLink to="/ouvidoria">Ouvidoria</NuxtLink> | 
+          <NuxtLink to="/trabalhe-conosco">Trabalhe Conosco</NuxtLink>
+        </span>
       </div>
     </div>
   </div>

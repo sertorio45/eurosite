@@ -10,7 +10,7 @@
 
     <!-- Formulário de Contato -->
     <form class="custom-input" id="contact_form" autocomplete="off" novalidate @submit.prevent="handleSubmit">
-      <div class="row gx-1 gy-1">
+      <div class="row gx-2 gy-2 m-0">
         <div class="col-md-6">
           <input
             v-model="contactName"
@@ -45,15 +45,15 @@
         </div>
         <div class="col-md-6">
           <input
-            v-model="contactNumber"
+            v-model="contactCell"
             type="tel"
             class="form-control"
-            name="telefone"
+            name="celular"
             id="contact_number"
-            placeholder="Telefone"
+            placeholder="Celular"
             required
             aria-required="true"
-            aria-label="Telefone"
+            aria-label="Celular"
             maxlength="15"
             @input="applyPhoneMask"
           />
@@ -85,9 +85,10 @@
             type="file"
             class="form-control"
             id="contact_curriculo"
-            accept=".pdf,.doc,.docx"
+            accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
             @change="handleFileUpload"
           />
+          <small class="form-text text-muted">Apenas arquivos .pdf, .doc, .docx, .jpg, .jpeg, .png são permitidos.</small>
         </div>
         <div class="col-12">
           <button class="btn btn-primary w-100" type="submit" name="submit" id="enviar" :disabled="isSubmitting">
@@ -112,17 +113,27 @@ import { ref, watch } from 'vue';
 import { useNuxtApp } from '#app';
 
 // Referências dos campos do formulário
-const contactName = ref('');
-const contactEmail = ref('');
-const contactNumber = ref('');
-const contactCidade = ref('');
-const contactMessage = ref('');
+const contactName = ref<string>('');
+const contactEmail = ref<string>('');
+const contactCell = ref<string>('');
+const contactCidade = ref<string>('');
+const contactMessage = ref<string>('');
 const curriculo = ref<File | null>(null); // Variável para o anexo
-const isSubmitting = ref(false);
-const errorMessage = ref('');
-const successMessage = ref('');
-const showSuggestions = ref(false);
-const emailDomains = ref(['gmail.com', 'hotmail.com', 'yahoo.com', 'outlook.com', 'icloud.com', 'empresa.com.br', 'empresa.com']);
+const isSubmitting = ref<boolean>(false);
+const errorMessage = ref<string>('');
+const successMessage = ref<string>('');
+const showSuggestions = ref<boolean>(false); // Para controlar exibição das sugestões
+
+// Lista de domínios de e-mail
+const emailDomains = ref<string[]>([
+  'gmail.com', 
+  'hotmail.com', 
+  'yahoo.com', 
+  'outlook.com', 
+  'icloud.com', 
+  'empresa.com.br', 
+  'empresa.com'
+]);
 
 const nuxtApp = useNuxtApp();
 
@@ -134,9 +145,12 @@ const handleFileUpload = (event: Event) => {
   }
 };
 
-const getSuggestedEmail = (domain: string) => `${contactEmail.value.split('@')[0]}@${domain}`;
+// Função para obter sugestões de e-mails
+const getSuggestedEmail = (domain: string) => {
+  return `${contactEmail.value.split('@')[0]}@${domain}`;
+};
 
-// Função para validar o email
+// Função para validar o e-mail
 const validateEmail = () => {
   const email = contactEmail.value;
   if (!email.includes('@')) {
@@ -148,7 +162,7 @@ const validateEmail = () => {
   }
 };
 
-// Watcher para ocultar as sugestões se o email mudar sem @
+// Watcher para ocultar as sugestões se o e-mail mudar sem @
 watch(contactEmail, (newValue) => {
   showSuggestions.value = newValue.endsWith('@');
 });
@@ -158,7 +172,7 @@ const isFormValid = () => {
   return (
     contactName.value.trim() !== '' &&
     contactEmail.value.trim() !== '' &&
-    contactNumber.value.trim() !== '' &&
+    contactCell.value.trim() !== '' &&
     contactCidade.value.trim() !== '' &&
     contactMessage.value.trim() !== '' &&
     contactEmail.value.includes('@')
@@ -175,27 +189,47 @@ const handleSubmit = async () => {
     return;
   }
 
+  if (isSubmitting.value) {
+    return; // Evita múltiplos envios
+  }
+
   isSubmitting.value = true;
   errorMessage.value = '';
   successMessage.value = '';
 
   try {
-    const formData = new FormData();
-    formData.append('nome', contactName.value);
-    formData.append('email', contactEmail.value);
-    formData.append('telefone', contactNumber.value);
-    formData.append('cidade', contactCidade.value);
-    formData.append('mensagem', contactMessage.value);
+    // Inicializar array de attachments com tipo explícito
+    let attachments: { filename: string; content: string; encoding: string; contentType?: string }[] = [];
 
-    // Anexa o arquivo diretamente no FormData
     if (curriculo.value) {
-      formData.append('curriculo', curriculo.value, curriculo.value.name);
-    }
+  const reader = new FileReader();
+  await new Promise<void>((resolve, reject) => {
+    reader.onload = () => {
+      const base64Data = reader.result?.toString().split(',')[1]; // Pegar apenas a parte base64
+      if (base64Data) {
+        attachments.push({
+          filename: curriculo.value?.name || 'anexo',
+          content: base64Data,
+          encoding: 'base64',
+          contentType: curriculo.value?.type,
+        });
+      }
+      resolve();
+    };
+    reader.onerror = reject;
 
-    // Enviar o e-mail via fetch ou nuxt-mail
+    // Certificar que curriculo.value é um arquivo Blob válido
+    if (curriculo.value instanceof Blob) {
+      reader.readAsDataURL(curriculo.value); // Ler o arquivo como URL em base64
+    }
+  });
+}
+
+
+    // Enviar o e-mail usando Nuxt Mail
     await nuxtApp.$mail.send({
       to: 'giovannistr@gmail.com',
-      subject: `Trabalhe Conosco - Euro Anglo Cursos`,
+      subject: 'Trabalhe Conosco - Euro Anglo Cursos',
       html: `
         <html>
           <body style='font-family: "Montserrat", sans-serif;'>
@@ -205,21 +239,14 @@ const handleSubmit = async () => {
             <div style='background-color: #fff; padding: 40px;'>
               <p><strong>Nome:</strong> ${contactName.value}</p>
               <p><strong>Email:</strong> ${contactEmail.value}</p>
-              <p><strong>Telefone:</strong> ${contactNumber.value}</p>
+              <p><strong>Celular:</strong> ${contactCell.value}</p>
               <p><strong>Cidade:</strong> ${contactCidade.value}</p>
               <p><strong>Mensagem:</strong> ${contactMessage.value}</p>
             </div>
           </body>
         </html>
       `,
-      attachments: curriculo.value
-        ? [
-            {
-              filename: curriculo.value.name,
-              content: await curriculo.value.text(), // Converte para texto ou ArrayBuffer
-            },
-          ]
-        : [],
+      attachments,
     });
 
     successMessage.value = 'Currículo enviado com sucesso!';
@@ -237,18 +264,18 @@ const handleSubmit = async () => {
   }
 };
 
-// Função para aplicar máscara no campo de telefone
+// Função para aplicar máscara no campo de celular
 const applyPhoneMask = () => {
-  let phone = contactNumber.value.replace(/\D/g, '').slice(0, 11);
+  let phone = contactCell.value.replace(/\D/g, '').slice(0, 11);
 
-  contactNumber.value = phone.length > 10 ? `(${phone.slice(0, 2)}) ${phone.slice(2, 7)}-${phone.slice(7)}` : `(${phone.slice(0, 2)}) ${phone.slice(2, 6)}-${phone.slice(6)}`;
+  contactCell.value = phone.length > 10 ? `(${phone.slice(0, 2)}) ${phone.slice(2, 7)}-${phone.slice(7)}` : `(${phone.slice(0, 2)}) ${phone.slice(2, 6)}-${phone.slice(6)}`;
 };
 
 // Função para resetar o formulário
 const resetForm = () => {
   contactName.value = '';
   contactEmail.value = '';
-  contactNumber.value = '';
+  contactCell.value = '';
   contactCidade.value = '';
   contactMessage.value = '';
   curriculo.value = null; // Reseta o anexo

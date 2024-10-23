@@ -66,3 +66,4 @@ h1,h2,h3,h3,h5,h6 {
 .bg-primary-degrade {
     background: linear-gradient(to bottom, var(--bs-primary), var(--bs-secondary));
 }
+

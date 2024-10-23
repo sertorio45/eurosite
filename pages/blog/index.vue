@@ -11,7 +11,7 @@
               <small class="text-muted">{{ post.date }}</small>
               <!-- Título com a primeira letra maiúscula -->
               <h5 class="card-title mt-2">{{ capitalizeTitle(post.title) }}</h5>
-              <button class="btn btn-primary">Ver artigo</button>
+              <NuxtLink class="btn btn-primary" :to="`/blog/${post.slug}`">Ver artigo</NuxtLink>
             </div>
           </div>
         </div>

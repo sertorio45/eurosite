@@ -44,7 +44,7 @@
                   <NuxtLink to="/" class="nav-link">Página inicial</NuxtLink>
                 </li>
                 <li class="nav-item">
-                  <NuxtLink to="/" class="nav-link">Sobre nós</NuxtLink>
+                  <NuxtLink to="/sobre" class="nav-link">Sobre nós</NuxtLink>
                 </li>
                 <li class="nav-item">
                   <NuxtLink to="/" class="nav-link">Unidades</NuxtLink>

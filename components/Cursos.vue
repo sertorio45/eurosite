@@ -1,50 +1,119 @@
 <template>
   <section class="py-5">
-  <div class="container my-5 py-5 min-vh-100 justify-content-center">
-    <div class="row justify-content-center align-items-center g-3 text-center">
-      <h1>Nossos cursos</h1>
-      <p>
-        Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
-        quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Ipsum sobreviveu não
-        só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década
-        de 60, quando a Letraset lançou decalques contendo passagens.
-      </p>
-    </div>
+    <div class="container my-5 py-5 min-vh-100 justify-content-center">
+      <div class="row justify-content-center align-items-center g-3 text-center">
+        <h1>Nossos cursos</h1>
+        <p>
+          Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
+          quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Ipsum sobreviveu não
+          só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década
+          de 60, quando a Letraset lançou decalques contendo passagens.
+        </p>
+      </div>
 
-    <div class="row text-center justify-content-center align-items-center g-1 my-4">
-      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <img src="https://placeholder.com/150x150" class="rounded-circle my-3" alt="">
-            <h3>Nome do Curso</h3>
-            <p class="card-text">ver mais informações</p>
+      <div v-if="lastThreePosts.length > 0" class="row text-center justify-content-center align-items-center g-1 my-4">
+        <div v-for="(postsCursos, index) in lastThreePosts" :key="postsCursos.id" class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card cursos-card h-100 d-flex flex-column">
+            <div class="img-container">
+              <img :src="postsCursos.image" class="card-img-top img-fluid" :alt="postsCursos.title || 'Imagem do curso'" />
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h3>{{ postsCursos.title }}</h3>
+              <a class="card-text mt-auto">Ver mais informações</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <img src="https://placeholder.com/150x150" class="rounded-circle  my-3" alt="">
-            <h3>Nome do Curso</h3>
-            <a class="card-text">ver mais informações</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <img src="https://placeholder.com/150x150" class="rounded-circle my-3" alt="">
-            <h3>Nome do Curso</h3>
-            <p class="card-text">ver mais informações</p>
-          </div>
-        </div>
-      </div>
-      <!-- Repetir os cards conforme necessário -->
-    </div>
 
-    <div class="text-center">
-      <a href="" class="btn btn-primary">Veja todos os cursos</a>
+      <div v-else class="text-center">
+        <p>Carregando cursos...</p>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="/cursos" class="btn btn-primary">Veja todos os cursos</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 </template>
+
+<script setup>
+import { onMounted, ref, computed } from 'vue';
+
+// Referência dos postsCursos
+const postsCursos = ref([]);
+
+// Computada para pegar os últimos 3 postsCursos
+const lastThreePosts = computed(() => {
+  return postsCursos.value.slice(0, 3);
+});
+
+onMounted(async () => {
+  try {
+    const response = await $fetch('/api/postsCursos');
+    // Capitalizar títulos diretamente após carregar os dados
+    postsCursos.value = response.map((postsCursos) => ({
+      ...postsCursos,
+      title: capitalizeTitle(postsCursos.title),
+    }));
+  } catch (error) {
+    console.error('Erro ao carregar cursos:', error);
+  }
+});
+
+// Função para capitalizar a primeira letra do título
+const capitalizeTitle = (title) => {
+  if (!title) return '';
+  return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+};
+</script>
+
+<style scoped>
+.card-body {
+  border-radius: 0 0 10px 10px;
+  padding: 50px;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column; /* Organiza o conteúdo do card em colunas */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cursos-card {
+  min-height: 450px; /* Define a altura mínima para garantir que os cards tenham o mesmo tamanho */
+}
+
+.img-container {
+  width: 100%;
+  padding-top: 60%; /* Define a altura para manter a proporção */
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right;
+}
+
+p.card-text {
+  color: var(--bs-primary);
+}
+
+.text-center {
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+}
+</style>

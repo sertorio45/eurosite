@@ -51,7 +51,7 @@
     </div>
 
     <div class="text-center">
-      <a href="" class="btn btn-light">Veja todos os cursos</a>
+      <NuxtLink to="/cursos" class="btn btn-light">Veja todos os cursos</NuxtLink>
     </div>
   </div>
 </section>

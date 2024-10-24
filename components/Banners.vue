@@ -11,13 +11,13 @@
                 <img src="https://www.euroanglocursos.com.br/assets/img/slider/hall-dos-contratados2.jpg" class="d-block w-100" alt="">
               </div>
               <div class="carousel-item">
-                <img src="https://placeholder.com/1920x780?text=Slide2" class="d-block w-100" alt="">
+                <img src="https://placeholder.com/1920x780" class="d-block w-100" alt="">
               </div>
               <div class="carousel-item">
-                <img src="https://placeholder.com/1920x780?text=Slide2" class="d-block w-100" alt="">
+                <img src="https://placeholder.com/1920x780" class="d-block w-100" alt="">
               </div>
               <div class="carousel-item">
-                <img src="https://placeholder.com/1920x780?text=Slide2" class="d-block w-100" alt="">
+                <img src="https://placeholder.com/1920x780" class="d-block w-100" alt="">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#banners" data-bs-slide="prev">

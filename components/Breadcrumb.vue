@@ -3,22 +3,22 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <div class="breadcrumbs-menu ptb-150">
+          <div class="breadcrumbs-menu">
             <!-- Título do topo dinâmico -->
             <h1 class="l-height text-center">{{ pageTitle }}</h1>
             
             <!-- Breadcrumbs -->
             <nav aria-label="breadcrumb">
               <ul class="clearfix justify-content-center">
-                <li v-for="(crumb, index) in breadcrumbs" :key="index" class="breadcrumb-item mx-1">
+                <li class="breadcrumb-item">
                   <NuxtLink to="/">Início</NuxtLink>
-                  <i v-if="index < breadcrumbs.length - 1" class="zmdi zmdi-chevron-right"></i>
+                  <i v-if="breadcrumbs.length > 0" class="zmdi zmdi-chevron-right"></i>
                 </li>
                 <li v-for="(crumb, index) in breadcrumbs" :key="index" class="breadcrumb-item">
-                  <NuxtLink v-if="crumb.path" :to="crumb.path">{{ crumb.name }}</NuxtLink>
-                  <span v-else class="px-1">{{ crumb.name }}</span>
+                  <NuxtLink v-if="crumb.path" :to="crumb.path" class="link-tow">{{ crumb.name }}</NuxtLink>
+                  <span v-else class="link-tow">{{ crumb.name }}</span>
                   <!-- Adiciona um ícone se não for o último breadcrumb -->
-                   <i v-if="index < breadcrumbs.length - 1" class="zmdi zmdi-chevron-left"></i>
+                  <i v-if="index < breadcrumbs.length - 1" class="zmdi zmdi-chevron-right"></i>
                 </li>
               </ul>
             </nav>
@@ -28,18 +28,20 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
+import { computed } from 'vue'
 
 // Obtém a rota atual
 const route = useRoute()
 
 // Função para gerar o título da página com base na rota atual
 const pageTitle = computed(() => {
-  const lastSegment = route.path.split('/').filter(Boolean).pop() || 'Home'
-  return lastSegment
+  const lastSegment = route.path.split('/').filter(Boolean).pop() || 'Início'
+  return decodeURIComponent(lastSegment)
     .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .map(word => word.charAt(0).toLocaleUpperCase('pt-BR') + word.slice(1).toLocaleLowerCase('pt-BR'))
     .join(' ')
 })
 
@@ -48,9 +50,9 @@ const breadcrumbs = computed(() => {
   const paths = route.path.split('/').filter(Boolean) // Remove partes vazias da URL
   return paths.map((segment, index) => {
     const path = `/${paths.slice(0, index + 1).join('/')}`
-    const name = segment
+    const name = decodeURIComponent(segment)
       .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .map(word => word.charAt(0).toLocaleUpperCase('pt-BR') + word.slice(1).toLocaleLowerCase('pt-BR'))
       .join(' ')
     return {
       name, // Capitaliza a primeira letra de cada palavra
@@ -59,7 +61,11 @@ const breadcrumbs = computed(() => {
   })
 })
 </script>
+
 <style scoped>
+.link-tow {
+  margin-left: 5px !important;
+}
 .breadcrumbs-title {
   background-color: var(--v-primary-base); /* Substitui a imagem por uma cor de fundo */
   background-position: 0 0;
@@ -86,7 +92,6 @@ const breadcrumbs = computed(() => {
 .breadcrumbs-menu li {
   font-size: 16px;
   color: white;
-  margin-right: 10px;
 }
 
 .breadcrumbs-menu li a {
@@ -101,6 +106,6 @@ const breadcrumbs = computed(() => {
 
 .zmdi-chevron-right {
   color: white;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 </style>

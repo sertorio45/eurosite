@@ -23,6 +23,7 @@
     "sass-loader": "^16.0.1",
     "vue": "latest",
     "vue-content-loader": "^2.0.1",
+    "vue-easy-lightbox": "^1.19.0",
     "vue-router": "latest",
     "vue-skeleton-loader": "^1.0.0"
   },

@@ -8,11 +8,11 @@
                   <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, 
                     e vem sendo utilizado desde o século XVI, quando um impressor
                   </p>
-                    <NuxtImg src="girl.webp" alt="" class="girl-img" width="650px"/>
+                    <NuxtImg src="girl.webp" alt="" class="girl-img" width="500px"/>
             </div>
 
             <div class="col-md-6 col-sm-12 container-motivos">
-                 <div class="row text-center g-0">
+                 <div class="row text-center g-4">
                   <div class="col-6">
                     <div class="card">
                     <div class="card-body">
@@ -62,28 +62,18 @@
 
 <style>
 .girl-img {
+    
     position: relative;
-    margin-top: -300px;
-    margin-left: 30px;
+    margin-top: -200px;
+    margin-left: 40%;
 }
 
 .container-motivos {
-  margin-left: 300px;
+  margin-left: auto;
 }
 
-@media (max-width: 576px) { 
-  .girl-img {
-    position: sticky;
-    margin: 30px 0px 30px 0px;
-    justify-content: center;
-    width: 100%;
-}
 
-.container-motivos {
-  margin-left: 0;
-  
-}
 
- }
+
 
 </style>

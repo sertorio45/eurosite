@@ -3,9 +3,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 mb-4">
-          <NuxtImg src="/sobre/fachada-campinas.webp" width="500px" alt="Sobre a Empresa" class="rounded"/>
+          <NuxtImg src="/sobre/fachada-campinas.webp" width="100%" alt="Sobre a Empresa" class="rounded img-fluid"/>
         </div>
-        <div class="col-md-6 mb-4">
+        <div class="col-md-6 mb-4 align-content-center">
           <h1 class="mb-5">Quem Somos</h1>
           <p class="lead">
             Desde 2008, estamos comprometidos com a transformação de vidas por meio de <strong>cursos profissionalizantes</strong> de alta qualidade. Fundada em Ribeirão Preto, nossa instituição se tornou referência em <em>educação profissional</em>, capacitando milhares de brasileiros para o mercado de trabalho com uma educação acessível e de excelência.
@@ -13,7 +13,7 @@
           <p>
             Com unidades em expansão pelo Brasil, nossa missão é oferecer o melhor conteúdo educacional para quem busca qualificação profissional e sucesso em suas carreiras.
           </p>
-          <a href="#" class="btn btn-primary">Nossos Cursos</a>
+          <a href="/cursos" class="btn btn-primary">Nossos Cursos</a>
         </div>
       </div>
     </div>
@@ -79,9 +79,7 @@
 <script lang="ts" setup>
 definePageMeta({
   layout: 'default-breadcrumb',
-  title: 'Sobre Nós - Cursos Profissionalizantes',
-  description: 'Saiba mais sobre nossa instituição de ensino e como nossos cursos profissionalizantes podem ajudar você a transformar sua carreira.'
-});
+  });
 </script>
 
 <style scoped>

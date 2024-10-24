@@ -1,50 +1,89 @@
 import mysql from 'mysql2/promise';
 
 export default defineEventHandler(async (event) => {
-  let connection;
-  
-  try {
-    // Estabelecendo conexão
-    connection = await mysql.createConnection({
-      host: process.env.DB_SERVERNAME,
-      user: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
-    });
+  // Cria a conexão com o banco de dados
+  const connection = await mysql.createConnection({
+    host: process.env.DB_SERVERNAME,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+  });
 
-    // Query ajustada para usar a coluna 'dia' e formatar a data
-    const [rows] = await connection.execute(`
+  try {
+    // Consulta para unir 'cursos', 'cursos_conteudo' e 'cursos_mediasalarial'
+    const [coursesWithDetails] = await connection.execute(`
       SELECT 
-        id, 
-        titulo AS title, 
-        imagem_principal AS image, 
-        DATE_FORMAT(dia, '%d/%m/%Y') AS date, 
-        metodologia,
-        mercadotrabalho,
-        ativo,
-        subtitulo,
-        video,
-        slug
-      FROM cursos
-      ORDER BY dia DESC
+        c.id AS courseId, 
+        c.titulo AS title, 
+        c.imagem_principal AS image, 
+        DATE_FORMAT(c.dia, '%d/%m/%Y') AS date, 
+        c.metodologia,
+        c.mercadotrabalho,
+        c.ativo,
+        c.subtitulo,
+        c.video,
+        c.slug,
+        cc.id AS contentId,
+        cc.conteudo AS content,
+        cm.id AS salaryId,
+        cm.cargo AS jobTitle,
+        cm.salario AS salary
+      FROM cursos c
+      LEFT JOIN cursos_conteudo cc ON c.id = cc.id_curso AND cc.ativo = 1
+      LEFT JOIN cursos_mediasalarial cm ON c.id = cm.id_curso AND cm.ativo = 1
+      ORDER BY c.dia DESC
     `);
 
-    return rows;
+    // Organiza os dados em um formato mais estruturado
+    const coursesMap = {};
 
+    coursesWithDetails.forEach(row => {
+      // Verifica se o curso já existe no mapa, caso contrário, adiciona
+      if (!coursesMap[row.courseId]) {
+        coursesMap[row.courseId] = {
+          id: row.courseId,
+          title: row.title,
+          image: row.image,
+          date: row.date,
+          metodologia: row.metodologia,
+          mercadotrabalho: row.mercadotrabalho,
+          ativo: row.ativo,
+          subtitulo: row.subtitulo,
+          video: row.video,
+          slug: row.slug,
+          contents: [],
+          salaries: []
+        };
+      }
+
+      // Adiciona o conteúdo se ainda não estiver presente
+      if (row.contentId && !coursesMap[row.courseId].contents.some(content => content.id === row.contentId)) {
+        coursesMap[row.courseId].contents.push({
+          id: row.contentId,
+          conteudo: row.content
+        });
+      }
+
+      // Adiciona a média salarial se ainda não estiver presente
+      if (row.salaryId && !coursesMap[row.courseId].salaries.some(salary => salary.id === row.salaryId)) {
+        coursesMap[row.courseId].salaries.push({
+          id: row.salaryId,
+          cargo: row.jobTitle,
+          salario: row.salary
+        });
+      }
+    });
+
+    // Converte o objeto de mapeamento para um array de cursos
+    const coursesWithDetailsArray = Object.values(coursesMap);
+
+    // Retorna os cursos com o conteúdo e as médias salariais
+    return coursesWithDetailsArray;
   } catch (error) {
-    // Log do erro para depuração
-    console.error('Erro ao executar a query MySQL:', error);
-
-    // Retornando uma mensagem de erro personalizada
-    return {
-      statusCode: 500,
-      message: 'Erro ao buscar os cursos. Tente novamente mais tarde.',
-    };
-
+    console.error('Erro ao carregar dados:', error);
+    throw new Error('Erro ao carregar dados');
   } finally {
-    // Fechando conexão se ela foi criada
-    if (connection) {
-      await connection.end();
-    }
+    // Fecha a conexão
+    await connection.end();
   }
 });

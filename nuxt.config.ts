@@ -76,7 +76,8 @@ export default defineNuxtConfig({
     domains: [
       's3.gsstudio.com.br', 
       'placeholder.com', 
-      'gsstudio.com.br'
+      'gsstudio.com.br',
+      'euroanglocursos.com.br'
     ],
     quality: 75,
     format: ['webp', 'avif'], // Melhorando a compatibilidade de imagens

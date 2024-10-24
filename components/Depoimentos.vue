@@ -20,7 +20,7 @@
                   <div class="carousel-item active">
                     <div class="d-flex">
                       <div class="col-6 text-center d-flex justify-items-center align-items-center">
-                        <NuxtImg src="https://placeholder.com/400x400" class="rounded-circle img-fluid"/>
+                        <img src="https://placeholder.com/400x400" class="rounded-circle img-fluid"/>
                       </div>
                       <div class="col-6">
                         <h3>NOME ALUNO 1</h3>
@@ -31,7 +31,7 @@
                   <div class="carousel-item">
                     <div class="d-flex">
                       <div class="col-6 text-center d-flex justify-items-center align-items-center">
-                        <NuxtImg src="https://placeholder.com/400x400" class="rounded-circle img-fluid"/>
+                        <img src="https://placeholder.com/400x400" class="rounded-circle img-fluid"/>
                       </div>
                       <div class="col-6">
                         <h3>NOME ALUNO 2</h3>
@@ -42,7 +42,7 @@
                   <div class="carousel-item">
                     <div class="d-flex">
                       <div class="col-6 text-center d-flex justify-items-center align-items-center">
-                        <NuxtImg src="https://placeholder.com/400x400" class="rounded-circle img-fluid"/>
+                        <img src="https://placeholder.com/400x400" class="rounded-circle img-fluid"/>
                       </div>
                       <div class="col-6">
                         <h3>NOME ALUNO 3</h3>

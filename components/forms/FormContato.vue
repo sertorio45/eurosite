@@ -9,7 +9,7 @@
     </div>
 
     <!-- Formulário de Contato -->
-    <form class="custom-input" id="contact_form" autocomplete="off" novalidate @submit.prevent="handleSubmit">
+    <form class="custom-input needs-validation" id="contact_form" autocomplete="off" novalidate @submit.prevent="handleSubmit">
       <div class="row gx-1 gy-1">
         <div class="col-md-6">
           <input
@@ -148,7 +148,9 @@ const isFormValid = () => {
 
 // Função para enviar o formulário
 const handleSubmit = async () => {
-  if (!isFormValid()) {
+  const form = document.querySelector('#contact_form') as HTMLFormElement;
+  if (!form.checkValidity()) {
+    form.classList.add('was-validated');
     errorMessage.value = 'Por favor, preencha todos os campos obrigatórios.';
     setTimeout(() => { errorMessage.value = ''; }, 3000);
     return;
@@ -180,7 +182,7 @@ const handleSubmit = async () => {
     });
 
     successMessage.value = 'Mensagem enviada com sucesso!';
-    resetForm(); 
+    resetForm();
     setTimeout(() => { successMessage.value = ''; }, 3000);
   } catch (error) {
     errorMessage.value = 'Houve um problema ao enviar o e-mail. Tente novamente mais tarde.';
@@ -206,5 +208,7 @@ const resetForm = () => {
   contactNumber.value = '';
   contactCidade.value = '';
   contactMessage.value = '';
+  const form = document.querySelector('#contact_form') as HTMLFormElement;
+  form.classList.remove('was-validated');
 };
 </script>

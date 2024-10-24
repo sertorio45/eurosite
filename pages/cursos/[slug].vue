@@ -33,6 +33,9 @@ interface Course {
 const courses = ref<Course[]>([]);
 const displayedCourses = ref<Course[]>([]);
 
+// Estado da tab ativa
+const activeTab = ref<string>('');
+
 // Pegando o slug da rota
 const route = useRoute();
 const slug = route.params.slug as string;
@@ -48,6 +51,17 @@ onMounted(async () => {
     
     if (cursoCorrespondente) {
       displayedCourses.value = [cursoCorrespondente];
+
+      // Definir a primeira tab ativa por padrão
+      if (cursoCorrespondente.salaries.length) {
+        activeTab.value = 'media-salarial';
+      } else if (cursoCorrespondente.contents.length) {
+        activeTab.value = 'conteudo';
+      } else if (cursoCorrespondente.mercadotrabalho) {
+        activeTab.value = 'mercado-de-trabalho';
+      } else if (cursoCorrespondente.metodologia) {
+        activeTab.value = 'metodologia';
+      }
     } else {
       console.warn('Curso correspondente não encontrado para o slug:', slug);
     }
@@ -85,8 +99,8 @@ onMounted(async () => {
         </div>
       </div>
 
-      <!-- Tabs com informações adicionais -->
-      <div class="row">
+      <!-- Tabs com informações adicionais (somente exibe se o curso estiver ativo) -->
+      <div v-if="displayedCourses[0]?.ativo" class="row">
         <div class="col-sm-8">
           <div>
             <div class="clearfix pt-0">
@@ -97,23 +111,30 @@ onMounted(async () => {
             </div>
 
             <ul class="nav nav-tabs mt-5">
-              <li class="nav-item">
-                <a class="nav-link active" href="#media-salarial" data-bs-toggle="tab">Média Salarial</a>
+              <!-- Tab: Média Salarial -->
+              <li class="nav-item" v-if="displayedCourses[0]?.salaries.length">
+                <a class="nav-link" :class="{ active: activeTab === 'media-salarial' }" @click="activeTab = 'media-salarial'" href="#media-salarial" data-bs-toggle="tab">Média Salarial</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#conteudo" data-bs-toggle="tab">Conteúdo Programático</a>
+
+              <!-- Tab: Conteúdo Programático -->
+              <li class="nav-item" v-if="displayedCourses[0]?.contents.length">
+                <a class="nav-link" :class="{ active: activeTab === 'conteudo' }" @click="activeTab = 'conteudo'" href="#conteudo" data-bs-toggle="tab">Conteúdo Programático</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#mercado-de-trabalho" data-bs-toggle="tab">Mercado de Trabalho</a>
+
+              <!-- Tab: Mercado de Trabalho -->
+              <li class="nav-item" v-if="displayedCourses[0]?.mercadotrabalho">
+                <a class="nav-link" :class="{ active: activeTab === 'mercado-de-trabalho' }" @click="activeTab = 'mercado-de-trabalho'" href="#mercado-de-trabalho" data-bs-toggle="tab">Mercado de Trabalho</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#metodologia" data-bs-toggle="tab">Metodologia</a>
+
+              <!-- Tab: Metodologia -->
+              <li class="nav-item" v-if="displayedCourses[0]?.metodologia">
+                <a class="nav-link" :class="{ active: activeTab === 'metodologia' }" @click="activeTab = 'metodologia'" href="#metodologia" data-bs-toggle="tab">Metodologia</a>
               </li>
             </ul>
 
             <div class="tab-content p-30">
               <!-- Tab: Média Salarial -->
-              <div class="tab-pane fade show active" id="media-salarial">
+              <div class="tab-pane fade" id="media-salarial" :class="{ show: activeTab === 'media-salarial', active: activeTab === 'media-salarial' }" v-if="displayedCourses[0]?.salaries.length">
                 <table class="table table-striped table-borderless mt-2">
                   <thead>
                     <tr>
@@ -131,7 +152,7 @@ onMounted(async () => {
               </div>
 
               <!-- Tab: Conteúdo Programático -->
-              <div class="tab-pane fade" id="conteudo">
+              <div class="tab-pane fade" id="conteudo" :class="{ show: activeTab === 'conteudo', active: activeTab === 'conteudo' }" v-if="displayedCourses[0]?.contents.length">
                 <table class="table table-striped table-borderless">
                   <tbody>
                     <tr v-for="content in displayedCourses[0]?.contents" :key="content.id">
@@ -142,12 +163,12 @@ onMounted(async () => {
               </div>
 
               <!-- Tab: Mercado de Trabalho -->
-              <div class="tab-pane fade py-3" id="mercado-de-trabalho">
+              <div class="tab-pane fade py-3" id="mercado-de-trabalho" :class="{ show: activeTab === 'mercado-de-trabalho', active: activeTab === 'mercado-de-trabalho' }" v-if="displayedCourses[0]?.mercadotrabalho">
                 {{ displayedCourses[0]?.mercadotrabalho }}
               </div>
 
               <!-- Tab: Metodologia -->
-              <div class="tab-pane fade py-3" id="metodologia">
+              <div class="tab-pane fade py-3" id="metodologia" :class="{ show: activeTab === 'metodologia', active: activeTab === 'metodologia' }" v-if="displayedCourses[0]?.metodologia">
                 {{ displayedCourses[0]?.metodologia }}
               </div>
             </div>

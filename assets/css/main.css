@@ -94,7 +94,7 @@ h1,h2,h3,h3,h5,h6 {
   color: var(--bs-primary) !important;
 }
 .router-link-active {
-    color: var(--bs-primary) !important;
+    color: var(--bs-secondary) !important;
 }
 .nav-link::after {
   content: '';
@@ -103,7 +103,7 @@ h1,h2,h3,h3,h5,h6 {
   bottom: 0;
   width: 100%;
   height: 2px;
-  background-color: var(--color-primary);
+  background-color: var(--bs-secondary);
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease-in-out;

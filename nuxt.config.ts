@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+  ssr: false,
   modules: [
     '@nuxt/image', 
     '@nuxtjs/google-fonts', 
@@ -11,12 +12,12 @@ export default defineNuxtConfig({
     DB_USERNAME: process.env.DB_USERNAME,
     DB_PASSWORD: process.env.DB_PASSWORD,
     public: {
-      apiBase: '/api'
+      apiBase: '/api/'
     }
   },
 
   app: {
-    baseURL: '/',
+    baseURL: '/euro',
     head: {
       meta: [
         { charset: 'utf-8' },

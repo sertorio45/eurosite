@@ -3,10 +3,10 @@ import mysql from 'mysql2/promise';
 export default defineEventHandler(async (event) => {
   // Cria a conexão com o banco de dados
   const connection = await mysql.createConnection({
-    host: process.env.NUXT_DB_SERVERNAME,
-    user: process.env.NUXT_NUXT_DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.NUXT_DB_DATABASE,
+    host: NUXT_DB_SERVERNAME,
+    user: NUXT_NUXT_DB_USERNAME,
+    password: NUXT_DB_PASSWORD,
+    database: NUXT_DB_DATABASE,
   });
 
   try {

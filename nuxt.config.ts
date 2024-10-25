@@ -85,7 +85,7 @@ export default defineNuxtConfig({
       'euroanglocursos.com.br'
     ],
     quality: 75,
-    format: ['webp'], // Melhorando a compatibilidade de imagens
+    format: ['webp', 'png', 'jpg', 'jpeg', 'svg'], // Melhorando a compatibilidade de imagens
     dir: 'assets/img',
   },
 

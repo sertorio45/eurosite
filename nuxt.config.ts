@@ -84,7 +84,6 @@ export default defineNuxtConfig({
     ],
     quality: 75,
     format: ['webp', 'png', 'jpg', 'jpeg', 'svg'], // Melhorando a compatibilidade de imagens
-    dir: 'public/img',
   },
 
   vite: {

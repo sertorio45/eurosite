@@ -11,10 +11,10 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    DB_SERVERNAME: process.env.DB_SERVERNAME,
-    DB_DATABASE: process.env.DB_DATABASE,
-    DB_USERNAME: process.env.DB_USERNAME,
-    DB_PASSWORD: process.env.DB_PASSWORD,
+    DB_SERVERNAME: process.env.NUXT_DB_SERVERNAME,
+    DB_DATABASE: process.env.NUXT_DB_DATABASE,
+    DB_USERNAME: process.env.NUXT_DB_USERNAME,
+    DB_PASSWORD: process.env.NUXT_DB_PASSWORD,
     public: {
       apiBase: '/api/'
     }

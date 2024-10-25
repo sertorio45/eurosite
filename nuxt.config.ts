@@ -6,9 +6,7 @@ export default defineNuxtConfig({
     'nuxt-mail'
   ],
 
-  nitro: {
-    preset: 'node-server'
-  },
+  
 
     runtimeConfig: {
       // Variáveis privadas (disponíveis apenas no lado do servidor)

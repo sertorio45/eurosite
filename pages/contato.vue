@@ -3,7 +3,7 @@
     <div class="container min-vh-100">
       <div class="row align-items-center justify-items-center py-5">
         <div class="col-md-6 mb-3 text-center">
-          <div><NuxtImg src="woman-contact.webp" width="400px" /></div>
+          <div><NuxtImg src="img/woman-contact.webp" width="400px" /></div>
           <div class="mt-3"><a href="#">Veja onde está nossas unidades</a></div>
           <a href="#unidades"><Icon icon="bx bx-chevrons-down" color="var(--bs-primary)" fontSize="3em" /></a>
         </div>

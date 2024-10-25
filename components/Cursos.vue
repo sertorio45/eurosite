@@ -19,7 +19,7 @@
             </div>
             <div class="card-body d-flex flex-column">
               <h3>{{ postsCursos.title }}</h3>
-              <a class="card-text mt-auto">Ver mais informações</a>
+              <NuxtLink class="card-text mt-auto" :to="`/cursos/${postsCursos.slug}`">Mais informações</NuxtLink>
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@
       </div>
 
       <div class="text-center mt-4">
-        <a href="/cursos" class="btn btn-primary">Veja todos os cursos</a>
+        <NuxtLink href="/cursos" class="btn btn-primary">Veja todos os cursos</NuxtLink>
       </div>
     </div>
   </section>

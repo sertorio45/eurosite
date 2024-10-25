@@ -4,10 +4,10 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
 
   const connection = await mysql.createConnection({
-    host: config.NUXT_DB_SERVERNAME,
-    user: config.NUXT_DB_USERNAME,
-    password: config.NUXT_DB_PASSWORD,
-    database: config.NUXT_DB_DATABASE,
+    host: '162.214.100.2',
+    user: 'euroanglo_admin',
+    password: 'Agenciagsstudio1993#@!',
+    database: 'euroanglo_site',
   });
 
   // Query ajustada para usar a coluna 'dia' e formatar a data

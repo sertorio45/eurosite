@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 mb-4">
-          <NuxtImg src="/sobre/fachada-campinas.webp" width="100%" alt="Sobre a Empresa" class="rounded img-fluid"/>
+          <NuxtImg src="img/sobre/fachada-campinas.webp" width="100%" alt="Sobre a Empresa" class="rounded img-fluid"/>
         </div>
         <div class="col-md-6 mb-4 align-content-center">
           <h1 class="mb-5">Quem Somos</h1>

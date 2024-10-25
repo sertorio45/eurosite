@@ -2,10 +2,10 @@ import mysql from 'mysql2/promise';
 
 export default defineEventHandler(async (event) => {
   const connection = await mysql.createConnection({
-    host: process.env.DB_SERVERNAME,
-    user: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
+    host: '162.214.100.2',
+    user: 'euroanglo_admin',
+    password: 'Agenciagsstudio1993#@!',
+    database: 'euroanglo_site',
   });
 
   // Query ajustada para usar a coluna 'dia' e formatar a data

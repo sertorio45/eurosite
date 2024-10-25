@@ -5,7 +5,7 @@
       <!-- Logo e Direitos Reservados -->
       <div class="col-md-3 p-0 m-0">
         <!-- <img src="@/assets/img/logo-footer.svg" alt="Logo EuroAnglo" class="img-fluid mb-2"> -->
-        <NuxtImg src="logo-footer.svg" width="200px" />
+        <NuxtImg src="img/logo-footer.svg" width="200px" />
       </div>
 
       <!-- Nossas Unidades -->

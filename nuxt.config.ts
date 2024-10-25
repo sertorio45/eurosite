@@ -6,6 +6,10 @@ export default defineNuxtConfig({
     'nuxt-mail'
   ],
 
+  nitro: {
+    preset: 'netlify'
+  },
+
   runtimeConfig: {
     DB_SERVERNAME: process.env.DB_SERVERNAME,
     DB_DATABASE: process.env.DB_DATABASE,

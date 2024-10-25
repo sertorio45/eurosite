@@ -7,15 +7,15 @@ export default defineNuxtConfig({
   ],
 
   nitro: {
-    preset: 'static'
+    preset: 'netlify_edge'
   },
 
     runtimeConfig: {
       // Variáveis privadas (disponíveis apenas no lado do servidor)
-      DB_SERVERNAME: process.env.NUXT_DB_SERVERNAME || 'defaultServerName',
-      DB_DATABASE: process.env.NUXT_DB_DATABASE || 'defaultDatabase',
-      DB_USERNAME: process.env.NUXT_DB_USERNAME || 'defaultUsername',
-      DB_PASSWORD: process.env.NUXT_DB_PASSWORD || 'defaultPassword',
+      NUXT_DB_SERVERNAME: process.env.NUXT_DB_SERVERNAME || 'localhost',
+      NUXT_DB_USERNAME: process.env.NUXT_DB_USERNAME || 'root',
+      NUXT_DB_PASSWORD: process.env.NUXT_DB_PASSWORD || '',
+      NUXT_DB_DATABASE: process.env.NUXT_DB_DATABASE || 'euroanglo',
   
       // Variáveis públicas (disponíveis no cliente)
       public: {

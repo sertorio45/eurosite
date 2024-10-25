@@ -4,9 +4,9 @@ export default defineEventHandler(async (event) => {
   // Cria a conexão com o banco de dados
   const connection = await mysql.createConnection({
     host: '162.214.100.2',
-    user: 'euroanglo_site',
-    password: 'euroanglo_admin',
-    database: 'Agenciagsstudio1993#@!',
+    user: 'euroanglo_admin',
+    password: 'Agenciagsstudio1993#@!',
+    database: 'euroanglo_site',
   });
 
   try {

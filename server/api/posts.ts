@@ -1,11 +1,13 @@
 import mysql from 'mysql2/promise';
 
 export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig();
+
   const connection = await mysql.createConnection({
-    host: process.env.NUXT_DB_SERVERNAME,
-    user: process.env.NUXT_DB_USERNAME,
-    password: process.env.NUXT_DB_PASSWORD,
-    database: process.env.NUXT_DB_DATABASE,
+    host: config.NUXT_DB_SERVERNAME,
+    user: config.NUXT_DB_USERNAME,
+    password: config.NUXT_DB_PASSWORD,
+    database: config.NUXT_DB_DATABASE,
   });
 
   // Query ajustada para usar a coluna 'dia' e formatar a data

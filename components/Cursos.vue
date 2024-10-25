@@ -15,7 +15,7 @@
         <div v-for="(postsCursos, index) in lastThreePosts" :key="postsCursos.id" class="col-lg-4 col-md-6 col-sm-12 mb-4">
           <div class="card cursos-card h-100 d-flex flex-column">
             <div class="img-container">
-              <img :src="postsCursos.image" class="card-img-top img-fluid" :alt="postsCursos.title || 'Imagem do curso'" />
+              <img :src="postsCursos.image" class="card-img-top img-fluid" :alt="postsCursos.title || 'Imagem do curso'" lazy="loading"/>
             </div>
             <div class="card-body d-flex flex-column">
               <h3>{{ postsCursos.title }}</h3>

@@ -5622,6 +5622,11 @@ sisteransi@^1.0.5:
   resolved "https://registry.npmjs.org/sisteransi/-/sisteransi-1.0.5.tgz"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
+skeleton-loader-vue@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/skeleton-loader-vue/-/skeleton-loader-vue-1.0.10.tgz#bbbc3d10330e7fc1e44ef0ed1324d7e16e3a4ec4"
+  integrity sha512-71WVaMrXxpzZp1NY1U+DEXi1EbMJ7PdUDW2aiCXKrP0a0IZBMfLX2Nxq9hQXK7M8YHweTMlCRTDYScH/B3/7nQ==
+
 slash@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/slash/-/slash-4.0.0.tgz"
@@ -6374,7 +6379,7 @@ vue-bundle-renderer@^2.1.0:
 
 vue-content-loader@^2.0.1:
   version "2.0.1"
-  resolved "https://registry.npmjs.org/vue-content-loader/-/vue-content-loader-2.0.1.tgz"
+  resolved "https://registry.yarnpkg.com/vue-content-loader/-/vue-content-loader-2.0.1.tgz#c6a3ff0e653671e5e8cff9e0c3814e6d04d3411d"
   integrity sha512-pkof4+q2xmzNEdhqelxtJejeP/vQUJtLle4/v2ueG+HURqM9Q/GIGC8GJ2bVVWeLfTDET51jqimwQdmxJTlu0g==
 
 vue-devtools-stub@^0.1.0:
@@ -6396,7 +6401,7 @@ vue-router@^4.4.3, vue-router@latest:
 
 vue-skeleton-loader@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.npmjs.org/vue-skeleton-loader/-/vue-skeleton-loader-1.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/vue-skeleton-loader/-/vue-skeleton-loader-1.0.0.tgz#046b53a6f89d4851f585087e11f4d6fb7db53120"
   integrity sha512-J6AtYmW3Ycy9wsAWWIcHfFvtfj/LzwUJ0VxdMC1bOSqd/3DMwuiZupg/nJ1CY4aKhJvSeHTkgveXt+lCrFDP4w==
 
 vue@^3.5.0, vue@latest:

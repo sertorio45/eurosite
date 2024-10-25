@@ -3,10 +3,16 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image', 
     '@nuxtjs/google-fonts', 
-    'nuxt-mail'
+    'nuxt-mail',
   ],
 
-  
+  plugins: [
+    
+  ],
+
+  nitro: {
+    preset: 'netlify_builder'
+  },
 
     runtimeConfig: {
       // Variáveis privadas (disponíveis apenas no lado do servidor)
@@ -99,6 +105,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-09-06',
 
   devtools: {
-    enabled: true,
+    enabled: false,
   },
 });

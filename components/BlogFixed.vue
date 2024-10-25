@@ -6,7 +6,7 @@
         <!-- Loop pelos últimos 3 posts -->
         <div class="col-md-4" v-for="post in lastThreePosts" :key="post.slug">
           <div class="card blog-card h-100">
-            <img :src="post.image" class="card-img-top img-fluid" alt="Imagem do post" />
+            <img :src="post.image" class="card-img-top img-fluid" alt="Imagem do post" lazy="loading"/>
             <div class="card-body">
               <!-- Data já formatada no backend -->
               <small class="text-muted">{{ post.date }}</small>

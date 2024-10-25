@@ -8,7 +8,7 @@
                   <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, 
                     e vem sendo utilizado desde o século XVI, quando um impressor
                   </p>
-                    <NuxtImg src="girl.webp" alt="" class="girl-img" width="500px"/>
+                    <NuxtImg src="img/girl.webp" alt="" class="girl-img" width="500px"/>
             </div>
 
             <div class="col-md-6 col-sm-12 container-motivos">

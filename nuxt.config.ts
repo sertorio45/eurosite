@@ -23,7 +23,6 @@ export default defineNuxtConfig({
       }
     },
 
-  
 
   app: {
     baseURL: '/',
@@ -88,7 +87,7 @@ export default defineNuxtConfig({
   ],
 
   image: {
-    
+    provider: 'netlify',
     domains: [
       's3.gsstudio.com.br', 
       'placeholder.com', 

@@ -62,6 +62,14 @@ export default defineNuxtConfig({
     },
   },
 
+<<<<<<< Updated upstream
+=======
+  build: {
+    transpile: [], // Remover a transpilação do Boxicons
+  },
+
+
+>>>>>>> Stashed changes
   googleFonts: {
     families: {
       'Josefin': [400, 700],

@@ -10,15 +10,20 @@ export default defineNuxtConfig({
     preset: 'netlify'
   },
 
-  runtimeConfig: {
-    DB_SERVERNAME: process.env.NUXT_DB_SERVERNAME,
-    DB_DATABASE: process.env.NUXT_DB_DATABASE,
-    DB_USERNAME: process.env.NUXT_DB_USERNAME,
-    DB_PASSWORD: process.env.NUXT_DB_PASSWORD,
-    public: {
-      apiBase: '/api/'
-    }
-  },
+    runtimeConfig: {
+      // Variáveis privadas (disponíveis apenas no lado do servidor)
+      DB_SERVERNAME: process.env.NUXT_DB_SERVERNAME || 'defaultServerName',
+      DB_DATABASE: process.env.NUXT_DB_DATABASE || 'defaultDatabase',
+      DB_USERNAME: process.env.NUXT_DB_USERNAME || 'defaultUsername',
+      DB_PASSWORD: process.env.NUXT_DB_PASSWORD || 'defaultPassword',
+  
+      // Variáveis públicas (disponíveis no cliente)
+      public: {
+        apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api/' // Use uma variável de ambiente, se aplicável
+      }
+    },
+
+  
 
   app: {
     baseURL: '/',
@@ -83,6 +88,7 @@ export default defineNuxtConfig({
   ],
 
   image: {
+    
     domains: [
       's3.gsstudio.com.br', 
       'placeholder.com', 

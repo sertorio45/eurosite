@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   ],
 
   nitro: {
-    preset: 'netlify'
+    preset: 'static'
   },
 
     runtimeConfig: {
@@ -35,15 +35,6 @@ export default defineNuxtConfig({
         { name: 'keywords', content: 'design, marketing, tecnologia, agência, GS Studio' },
         { name: 'robots', content: 'index,follow' },
         { name: 'author', content: 'GS Studio' },
-        { property: 'og:title', content: 'GS Studio - Agência Especializada em Design, Marketing e Tecnologia' },
-        { property: 'og:description', content: 'GS Studio é uma agência focada em design, marketing e tecnologia.' },
-        { property: 'og:image', content: '/og-image.png' },
-        { property: 'og:url', content: 'https://www.gsstudio.com.br' },
-        { property: 'og:type', content: 'website' },
-        { property: 'twitter:card', content: 'summary_large_image' },
-        { property: 'twitter:title', content: 'GS Studio - Agência Especializada em Design, Marketing e Tecnologia' },
-        { property: 'twitter:description', content: 'GS Studio é uma agência focada em design, marketing e tecnologia.' },
-        { property: 'twitter:image', content: '/og-image.png' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }
@@ -87,7 +78,6 @@ export default defineNuxtConfig({
   ],
 
   image: {
-    provider: 'netlify',
     domains: [
       's3.gsstudio.com.br', 
       'placeholder.com', 
@@ -95,7 +85,7 @@ export default defineNuxtConfig({
       'euroanglocursos.com.br'
     ],
     quality: 75,
-    format: ['webp', 'avif'], // Melhorando a compatibilidade de imagens
+    format: ['webp'], // Melhorando a compatibilidade de imagens
     dir: 'assets/img',
   },
 

@@ -21,7 +21,7 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: '/euro',
+    baseURL: '/',
     head: {
       meta: [
         { charset: 'utf-8' },

@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   ],
 
   nitro: {
-    preset: 'netlify_edge'
+    preset: 'netlify_builder'
   },
 
     runtimeConfig: {

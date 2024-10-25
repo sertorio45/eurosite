@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   ],
 
   nitro: {
-    preset: 'netlify_builder'
+    preset: 'static'
   },
 
     runtimeConfig: {

@@ -34,7 +34,7 @@ onMounted(async () => {
             <h1 class="my-4">{{ post.title }}</h1>
             <small>Postado em: {{ post.date }}</small>
 
-            <div class="my-5"><NuxtImg :src="post.image || 'https://placeholder.com/150x150'" alt="Imagem do artigo" class="img-fluid" quality="50"/></div>
+            <div class="my-5"><NuxtImg :src="post.image || 'https://placeholder.com/150x150'" alt="Imagem do artigo" class="img-fluid" quality="75"/></div>
             <p class="mt-5 px-5" v-html="post.content"></p>
           </div>
           <div class="col-sm-4">

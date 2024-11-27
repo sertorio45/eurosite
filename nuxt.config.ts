@@ -66,12 +66,9 @@ export default defineNuxtConfig({
       },
     },
   },
-
-
   build: {
     transpile: [], 
   },
-
   googleFonts: {
     families: {
       'Josefin': [400, 700],
@@ -84,7 +81,7 @@ export default defineNuxtConfig({
     'animate.css/animate.min.css',
     '@/assets/scss/custom.scss',
     '@/assets/css/main.css',
-    'boxicons/css/boxicons.min.css',
+    'boxicons/css/boxicons.css',
   ],
 
   image: {

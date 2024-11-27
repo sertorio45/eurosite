@@ -11,15 +11,15 @@
         </p>
       </div>
 
-      <div v-if="lastThreePosts.length > 0" class="row text-center justify-content-center align-items-center g-1 my-4">
-        <div v-for="(postsCursos, index) in lastThreePosts" :key="postsCursos.id" class="col-lg-4 col-md-6 col-sm-12 mb-4">
+      <div v-if="lastThreeCourses.length > 0" class="row text-center justify-content-center align-items-center g-1 my-4">
+        <div v-for="(course, index) in lastThreeCourses" :key="course.id" class="col-lg-4 col-md-6 col-sm-12 mb-4">
           <div class="card cursos-card h-100 d-flex flex-column">
             <div class="img-container">
-              <img :src="postsCursos.image" class="card-img-top img-fluid" :alt="postsCursos.title || 'Imagem do curso'" lazy="loading"/>
+              <img :src="course.image" class="card-img-top img-fluid" :alt="course.title || 'Imagem do curso'" lazy="loading"/>
             </div>
             <div class="card-body d-flex flex-column">
-              <h3>{{ postsCursos.title }}</h3>
-              <NuxtLink class="card-text mt-auto" :to="`/cursos/${postsCursos.slug}`">Mais informações</NuxtLink>
+              <h3>{{ course.title }}</h3>
+              <NuxtLink class="card-text mt-auto" :to="`/cursos/${course.slug}`">Mais informações</NuxtLink>
             </div>
           </div>
         </div>
@@ -37,23 +37,21 @@
 </template>
 
 <script setup>
-import { onMounted, ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
-// Referência dos postsCursos
-const postsCursos = ref([]);
+const courses = ref([]);
 
-// Computada para pegar os últimos 3 postsCursos
-const lastThreePosts = computed(() => {
-  return postsCursos.value.slice(0, 3);
-});
+// Computada para pegar os últimos 3 cursos
+const lastThreeCourses = computed(() => courses.value.slice(0, 3));
 
 onMounted(async () => {
   try {
     const response = await $fetch('/api/postsCursos');
+    
     // Capitalizar títulos diretamente após carregar os dados
-    postsCursos.value = response.map((postsCursos) => ({
-      ...postsCursos,
-      title: capitalizeTitle(postsCursos.title),
+    courses.value = response.map((course) => ({
+      ...course,
+      title: capitalizeTitle(course.title),
     }));
   } catch (error) {
     console.error('Erro ao carregar cursos:', error);

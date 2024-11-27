@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
   modules: [
     '@nuxt/image', 
     '@nuxtjs/google-fonts', 
@@ -16,10 +16,12 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
       // Variáveis privadas (disponíveis apenas no lado do servidor)
-      NUXT_DB_SERVERNAME: process.env.NUXT_DB_SERVERNAME || 'localhost',
-      NUXT_DB_USERNAME: process.env.NUXT_DB_USERNAME || 'root',
-      NUXT_DB_PASSWORD: process.env.NUXT_DB_PASSWORD || '',
-      NUXT_DB_DATABASE: process.env.NUXT_DB_DATABASE || 'euroanglo',
+      NUXT_DB_SERVERNAME: process.env.NUXT_DB_SERVERNAME,
+      NUXT_DB_USERNAME: process.env.NUXT_DB_USERNAME,
+      NUXT_DB_PASSWORD: process.env.NUXT_DB_PASSWORD,
+      NUXT_DB_DATABASE: process.env.NUXT_DB_DATABASE,
+
+      apiSecret: '123',
   
       // Variáveis públicas (disponíveis no cliente)
       public: {

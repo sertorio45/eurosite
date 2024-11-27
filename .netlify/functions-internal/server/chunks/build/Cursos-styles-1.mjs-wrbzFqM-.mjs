@@ -1,0 +1,4 @@
+const Cursos_vue_vue_type_style_index_0_scoped_ba6d15ff_lang = ".card-body[data-v-ba6d15ff]{border-radius:0 0 10px 10px;padding:50px}.card[data-v-ba6d15ff]{display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease}.card[data-v-ba6d15ff]:hover{box-shadow:0 4px 8px rgba(0,0,0,.1);transform:translateY(-5px)}.cursos-card[data-v-ba6d15ff]{min-height:450px}.img-container[data-v-ba6d15ff]{overflow:hidden;padding-top:60%;position:relative;width:100%}.card-img-top[data-v-ba6d15ff]{height:100%;left:0;-o-object-fit:cover;object-fit:cover;-o-object-position:right;object-position:right;position:absolute;top:0;width:100%}p.card-text[data-v-ba6d15ff]{color:var(--bs-primary)}.text-center[data-v-ba6d15ff]{margin-top:20px}.btn-primary[data-v-ba6d15ff]{background-color:var(--bs-primary)}";
+
+export { Cursos_vue_vue_type_style_index_0_scoped_ba6d15ff_lang as C };
+//# sourceMappingURL=Cursos-styles-1.mjs-wrbzFqM-.mjs.map

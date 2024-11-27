@@ -9,15 +9,25 @@ export default defineNuxtConfig({
   ],
 
   plugins: [
-    '~/plugins/bxicons.client.ts'
+    '~/plugins/bxicons.server.ts'
   ],
 
   nitro: {
     preset: 'netlify',
+    prerender: {
+      crawlLinks: true,
+    }
   },
 
     runtimeConfig: {
+      // Variáveis privadas (disponíveis apenas no lado do servidor)
+      NUXT_DB_SERVERNAME: process.env.NUXT_DB_SERVERNAME,
+      NUXT_DB_USERNAME: process.env.NUXT_DB_USERNAME,
+      NUXT_DB_PASSWORD: process.env.NUXT_DB_PASSWORD,
+      NUXT_DB_DATABASE: process.env.NUXT_DB_DATABASE,
 
+      apiSecret: '123',
+  
       // Variáveis públicas (disponíveis no cliente)
       public: {
         apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api/' // Use uma variável de ambiente, se aplicável
@@ -75,6 +85,7 @@ export default defineNuxtConfig({
     'animate.css/animate.min.css',
     '@/assets/scss/custom.scss',
     '@/assets/css/main.css',
+    'boxicons/fonts/boxicons.ttf',
   ],
 
   image: {

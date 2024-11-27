@@ -1,6 +1,9 @@
 import mysql from 'mysql2/promise';
 
 export default defineEventHandler(async (event) => {
+
+  const config = useRuntimeConfig();
+  
   const connection = await mysql.createConnection({
     host: '162.214.100.2',
     user: 'euroanglo_admin',

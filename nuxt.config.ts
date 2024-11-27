@@ -7,11 +7,11 @@ export default defineNuxtConfig({
   ],
 
   plugins: [
-    'plugins/bxicons.client.ts'
+    
   ],
 
   nitro: {
-    preset: 'netlify_builder'
+    preset: 'netlify'
   },
 
     runtimeConfig: {

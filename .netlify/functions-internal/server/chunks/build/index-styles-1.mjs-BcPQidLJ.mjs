@@ -1,0 +1,4 @@
+const index_vue_vue_type_style_index_0_scoped_cc3eabe7_lang = ".card-body[data-v-cc3eabe7]{border-radius:0 0 10px 10px}.card[data-v-cc3eabe7]{display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease}.card[data-v-cc3eabe7]:hover{box-shadow:0 4px 8px rgba(0,0,0,.1);transform:translateY(-5px)}.cursos-card[data-v-cc3eabe7]{min-height:450px}.img-container[data-v-cc3eabe7]{overflow:hidden;padding-top:60%;position:relative;width:100%}.card-img-top[data-v-cc3eabe7]{height:100%;left:0;-o-object-fit:cover;object-fit:cover;position:absolute;top:0;width:100%}h3[data-v-cc3eabe7]{font-size:1.5rem;font-weight:700}p.card-text[data-v-cc3eabe7]{color:var(--bs-primary)}.text-center[data-v-cc3eabe7]{margin-top:20px}.btn-primary[data-v-cc3eabe7]{background-color:var(--bs-primary)}";
+
+export { index_vue_vue_type_style_index_0_scoped_cc3eabe7_lang as i };
+//# sourceMappingURL=index-styles-1.mjs-BcPQidLJ.mjs.map

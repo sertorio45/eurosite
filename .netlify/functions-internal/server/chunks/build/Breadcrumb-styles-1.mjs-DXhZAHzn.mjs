@@ -1,0 +1,4 @@
+const Breadcrumb_vue_vue_type_style_index_0_scoped_fe3ec480_lang = ".link-tow[data-v-fe3ec480]{margin-left:5px!important}.breadcrumbs-title[data-v-fe3ec480]{background-color:var(--v-primary-base);background-position:0 0;padding-bottom:100px;padding-top:100px}.breadcrumbs-menu h1[data-v-fe3ec480]{color:#fff;font-size:36px;line-height:1.2;margin-bottom:20px;text-align:center}.breadcrumbs-menu ul[data-v-fe3ec480]{display:flex;justify-content:center;list-style:none;margin:0;padding:0}.breadcrumbs-menu li[data-v-fe3ec480]{color:#fff;font-size:16px}.breadcrumbs-menu li a[data-v-fe3ec480]{color:#fff;text-decoration:none}.breadcrumbs-menu li span[data-v-fe3ec480]{color:#ccc;text-align:center}.zmdi-chevron-right[data-v-fe3ec480]{color:#fff;margin:0 5px}";
+
+export { Breadcrumb_vue_vue_type_style_index_0_scoped_fe3ec480_lang as B };
+//# sourceMappingURL=Breadcrumb-styles-1.mjs-DXhZAHzn.mjs.map

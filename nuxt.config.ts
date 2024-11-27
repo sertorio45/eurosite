@@ -75,7 +75,6 @@ export default defineNuxtConfig({
     'animate.css/animate.min.css',
     '@/assets/scss/custom.scss',
     '@/assets/css/main.css',
-    'boxicons/fonts/boxicons.ttf',
   ],
 
   image: {

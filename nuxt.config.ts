@@ -26,7 +26,11 @@ export default defineNuxtConfig({
         apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api/' // Use uma variável de ambiente, se aplicável
       }
     },
-
+    
+    routeRules: {
+      // Generated at build time for SEO purpose
+      '/': { prerender: true },
+      },
 
   app: {
     baseURL: '/',
@@ -63,7 +67,7 @@ export default defineNuxtConfig({
 
 
   build: {
-    transpile: [], // Remover a transpilação do Boxicons
+    transpile: [], 
   },
 
   googleFonts: {

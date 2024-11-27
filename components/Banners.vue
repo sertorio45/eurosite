@@ -25,7 +25,12 @@
               <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#banners" data-bs-slide="next">
-              <span aria-hidden="true"><Icon icon="bx bxs-right-arrow-circle" fontSize="3em"/></span>
+              <!-- <span aria-hidden="true">
+                <Icon icon="bx bxs-right-arrow-circle" fontSize="3em"/>
+              </span> -->
+              <span aria-hidden="true">
+                <Icon icon="bx bxs-right-arrow-circle" fontSize="3em"/>
+              </span>
               <span class="visually-hidden">Next</span>
             </button>
           </div>
@@ -36,6 +41,8 @@
 </template>
 
 <script lang="ts" setup>
+
+
 
 </script>
 

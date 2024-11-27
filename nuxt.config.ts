@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   ],
 
   plugins: [
-    
+    'plugins/bxicons.client.ts'
   ],
 
   nitro: {
@@ -33,11 +33,7 @@ export default defineNuxtConfig({
         apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api/' // Use uma variável de ambiente, se aplicável
       }
     },
-    
-    routeRules: {
-      // Generated at build time for SEO purpose
-      '/': { prerender: true },
-      },
+  
 
   app: {
     baseURL: '/',
@@ -82,14 +78,14 @@ export default defineNuxtConfig({
         base64: true,
         overwriting: false,
     },
-    download: false,
+    download: true,
   },
 
   css: [
     'animate.css/animate.min.css',
     '@/assets/scss/custom.scss',
     '@/assets/css/main.css',
-    
+    'boxicons/fonts/boxicons.ttf',
   ],
 
   image: {
@@ -116,6 +112,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-09-06',
 
   devtools: {
-    enabled: true,
+    enabled: false,
   },
 });

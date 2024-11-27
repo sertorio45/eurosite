@@ -5,6 +5,7 @@
       <div class="col-6 d-flex justify-content-start">
        <a href=""><Icon icon="bx bxl-instagram" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
        <a href=""><Icon icon="bx bxl-facebook" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
+       
        <a href=""><Icon icon="bx bxl-linkedin" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
       </div>
       <div class="col-6 d-flex justify-content-end">

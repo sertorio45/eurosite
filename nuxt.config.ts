@@ -1,3 +1,5 @@
+import { defineNuxtConfig } from "nuxt/config";
+
 export default defineNuxtConfig({
   ssr: true,
   modules: [
@@ -11,7 +13,10 @@ export default defineNuxtConfig({
   ],
 
   nitro: {
-    preset: 'netlify'
+    preset: 'netlify',
+    prerender: {
+      crawlLinks: true,
+    }
   },
 
     runtimeConfig: {
@@ -73,6 +78,9 @@ export default defineNuxtConfig({
     families: {
       'Josefin': [400, 700],
       'Poppins': [400, 700],
+        fontsDir: 'assets/fonts',
+        base64: true,
+        overwriting: false,
     },
     download: false,
   },
@@ -81,7 +89,7 @@ export default defineNuxtConfig({
     'animate.css/animate.min.css',
     '@/assets/scss/custom.scss',
     '@/assets/css/main.css',
-    'boxicons/css/boxicons.css',
+    
   ],
 
   image: {
@@ -108,6 +116,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-09-06',
 
   devtools: {
-    enabled: false,
+    enabled: true,
   },
 });

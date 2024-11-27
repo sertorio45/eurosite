@@ -1118,12 +1118,16 @@ const plugin_nuxt3_gGdllsjxuZ = /* @__PURE__ */ defineNuxtPlugin(() => ({
     }
   }
 }));
+const bxicons_4CU2AJ34xL = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
+  console.log("Boxicons loaded successfully!");
+});
 const plugins = [
   unhead_KgADcZ0jPj,
   plugin,
   revive_payload_server_eJ33V7gbc6,
   components_plugin_KR1HBZs4kY,
-  plugin_nuxt3_gGdllsjxuZ
+  plugin_nuxt3_gGdllsjxuZ,
+  bxicons_4CU2AJ34xL
 ];
 const layouts = {
   "default-breadcrumb": () => import('./default-breadcrumb-D3RAIFhO.mjs').then((m) => m.default || m),

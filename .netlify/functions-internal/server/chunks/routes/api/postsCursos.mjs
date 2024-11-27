@@ -1,4 +1,4 @@
-import { d as defineEventHandler, c as createError } from '../../runtime.mjs';
+import { d as defineEventHandler, u as useRuntimeConfig, c as createError } from '../../runtime.mjs';
 import mysql from 'mysql2/promise';
 import 'node:http';
 import 'node:https';
@@ -10,6 +10,7 @@ import 'node:url';
 import 'ipx';
 
 const postsCursos = defineEventHandler(async (event) => {
+  useRuntimeConfig();
   const connection = await mysql.createConnection({
     host: "162.214.100.2",
     user: "euroanglo_admin",

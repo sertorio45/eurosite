@@ -3347,7 +3347,7 @@ const appConfig = defuFn(inlineAppConfig);
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "3078ff10-1384-47fa-beb0-efe06061a43c",
+    "buildId": "d1e8f607-a812-4e9d-a0dd-776e8a10fdc5",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -3378,6 +3378,11 @@ const _inlineRuntimeConfig = {
   "public": {
     "apiBase": "123"
   },
+  "NUXT_DB_SERVERNAME": "162.214.100.2",
+  "NUXT_DB_USERNAME": "euroanglo_admin",
+  "NUXT_DB_PASSWORD": "Agenciagsstudio1993",
+  "NUXT_DB_DATABASE": "euroanglo_site",
+  "apiSecret": "123",
   "ipx": {
     "baseURL": "/_ipx",
     "alias": {},

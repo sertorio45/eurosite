@@ -1,5 +1,3 @@
-import { defineNuxtConfig } from "nuxt/config";
-
 export default defineNuxtConfig({
   ssr: true,
   modules: [
@@ -9,14 +7,11 @@ export default defineNuxtConfig({
   ],
 
   plugins: [
-    '~/plugins/bxicons.server.ts'
+    '~/plugins/bxicons.ts'
   ],
 
   nitro: {
     preset: 'netlify',
-    prerender: {
-      crawlLinks: true,
-    }
   },
 
     runtimeConfig: {
@@ -85,7 +80,6 @@ export default defineNuxtConfig({
     'animate.css/animate.min.css',
     '@/assets/scss/custom.scss',
     '@/assets/css/main.css',
-    'boxicons/fonts/boxicons.ttf',
   ],
 
   image: {

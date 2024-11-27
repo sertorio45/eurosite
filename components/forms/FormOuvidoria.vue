@@ -128,7 +128,7 @@
         </div>
         <span style="font-size: 0.8em!important;" class="my-4">
           Ao enviar o formulário você está de acordo com nossa
-          <a href="/politica-privacidade">Política de Privacidade</a>
+          <a href="/politica-de-privacidade">Política de Privacidade</a>
         </span>
       </div>
     </form>

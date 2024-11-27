@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   ],
 
   plugins: [
-    
+    'plugins/bxicons.client.ts'
   ],
 
   nitro: {

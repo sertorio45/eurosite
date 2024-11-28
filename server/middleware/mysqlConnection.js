@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
     user: 'euroanglo_admin',
     password: 'Agenciagsstudio1993#@!',
     database: 'euroanglo_site',
-    connectTimeout: 1000 // 10 segundos
+    connectTimeout: 10000 // 10 segundos
   });
   
 

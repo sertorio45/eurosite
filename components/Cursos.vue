@@ -15,7 +15,7 @@
         <div v-for="(course, index) in lastThreeCourses" :key="course.id" class="col-lg-4 col-md-6 col-sm-12 mb-4">
           <div class="card cursos-card h-100 d-flex flex-column">
             <div class="img-container">
-              <img :src="course.image" class="card-img-top img-fluid" :alt="course.title || 'Imagem do curso'" lazy="loading"/>
+              <img :src="course.image" class="card-img-top img-fluid" :alt="course.title || 'Imagem do curso'" loading="lazy" />
             </div>
             <div class="card-body d-flex flex-column">
               <h3>{{ course.title }}</h3>
@@ -25,8 +25,26 @@
         </div>
       </div>
 
-      <div v-else class="text-center">
-        <p>Carregando cursos...</p>
+      <div v-else class="row text-center justify-content-center align-items-center g-1 my-4">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" v-for="n in 3" :key="n">
+          <div class="card cursos-card d-flex flex-column">
+            <div class="img-container">
+              <div class="placeholder-glow w-100">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='100%25' height='100%25' fill='%23e0e0e0'/%3E%3C/svg%3E" 
+                  alt="Imagem Placeholder"
+                  class="card-img-top img-fluid" />
+              </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h1 class="placeholder-glow">
+                <span class="placeholder col-12"></span>
+              </h1>
+              <p class="card-text placeholder-glow">
+                <span class="placeholder col-12"></span>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="text-center mt-4">
@@ -68,13 +86,12 @@ const capitalizeTitle = (title) => {
 <style scoped>
 .card-body {
   border-radius: 0 0 10px 10px;
-  padding: 50px;
 }
 
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
-  flex-direction: column; /* Organiza o conteúdo do card em colunas */
+  flex-direction: column;
 }
 
 .card:hover {
@@ -83,35 +100,44 @@ const capitalizeTitle = (title) => {
 }
 
 .cursos-card {
-  min-height: 450px; /* Define a altura mínima para garantir que os cards tenham o mesmo tamanho */
+  min-height: 450px;
 }
 
 .img-container {
   width: 100%;
-  padding-top: 60%; /* Define a altura para manter a proporção */
+  aspect-ratio: 16 / 9; /* Garante proporção padrão para imagens */
   position: relative;
   overflow: hidden;
 }
 
 .card-img-top {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: right;
 }
 
 p.card-text {
   color: var(--bs-primary);
 }
 
-.text-center {
-  margin-top: 20px;
+.placeholder {
+  background-color: #e0e0e0;
+  border-radius: 4px;
 }
 
-.btn-primary {
-  background-color: var(--bs-primary);
+.placeholder-glow .placeholder {
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #f5f5f5;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
 }
 </style>

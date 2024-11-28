@@ -2,7 +2,7 @@ import { _ as _sfc_main$3 } from './Icon-5pRBvot5.mjs';
 import { useSSRContext, ref, computed, mergeProps, withCtx, createTextVNode } from 'vue';
 import { ssrRenderAttrs, ssrRenderComponent, ssrRenderList, ssrRenderAttr, ssrInterpolate } from 'vue/server-renderer';
 import { _ as _export_sfc } from './server.mjs';
-import { _ as __nuxt_component_1 } from './Cursos-D9E2GdTH.mjs';
+import { _ as __nuxt_component_1 } from './Cursos-C3rIh1Ep.mjs';
 import { _ as __nuxt_component_1$1 } from './Wins-BfMTXwLz.mjs';
 import { _ as __nuxt_component_3 } from './Motivos-BLKyMOFF.mjs';
 import { _ as __nuxt_component_0$1 } from './nuxt-link-DRGY1ko4.mjs';
@@ -12,6 +12,7 @@ import 'node:http';
 import 'node:https';
 import 'node:fs';
 import 'node:path';
+import 'mysql2/promise';
 import 'nodemailer';
 import '@dword-design/functions';
 import 'node:url';
@@ -121,4 +122,4 @@ _sfc_main.setup = (props, ctx) => {
 const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-fd146756"]]);
 
 export { index as default };
-//# sourceMappingURL=index-DHwGODw8.mjs.map
+//# sourceMappingURL=index-BXkEaAWK.mjs.map

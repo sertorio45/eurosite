@@ -2,6 +2,7 @@ import process from 'node:process';globalThis._importMeta_=globalThis._importMet
 import https from 'node:https';
 import { promises, existsSync } from 'node:fs';
 import { dirname, resolve, join } from 'node:path';
+import mysql from 'mysql2/promise';
 import nodemailer from 'nodemailer';
 import { findIndex, omit } from '@dword-design/functions';
 import { fileURLToPath } from 'node:url';
@@ -3347,7 +3348,7 @@ const appConfig = defuFn(inlineAppConfig);
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "d1e8f607-a812-4e9d-a0dd-776e8a10fdc5",
+    "buildId": "a93f1672-2f02-41b2-8603-570e71f6bb0e",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -5249,6 +5250,23 @@ const errorHandler = (async function errorhandler(error, event) {
   return send$1(event, html);
 });
 
+const _6kAy6U = defineEventHandler$1(async (event) => {
+  useRuntimeConfig();
+  event.context.connection = await mysql.createConnection({
+    host: "162.214.100.2",
+    user: "euroanglo_admin",
+    password: "Agenciagsstudio1993#@!",
+    database: "euroanglo_site",
+    connectTimeout: 1e4
+    // 10 segundos
+  });
+  event.res.on("finish", async () => {
+    if (event.context.connection) {
+      await event.context.connection.end();
+    }
+  });
+});
+
 function hasProp(obj, prop) {
   try {
     return prop in obj;
@@ -5620,6 +5638,7 @@ const _lazy_G9gcHJ = () => import('./routes/api/postsCursos.mjs');
 const _lazy_XCErEf = () => import('./routes/renderer.mjs').then(function (n) { return n.r; });
 
 const handlers = [
+  { route: '', handler: _6kAy6U, lazy: false, middleware: true, method: undefined },
   { route: '/api/posts', handler: _lazy_FabgGG, lazy: true, middleware: false, method: undefined },
   { route: '/api/postsAlunosContratados', handler: _lazy_AVsQ3E, lazy: true, middleware: false, method: undefined },
   { route: '/api/postsCursos', handler: _lazy_G9gcHJ, lazy: true, middleware: false, method: undefined },

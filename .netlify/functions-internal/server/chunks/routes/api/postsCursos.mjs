@@ -1,22 +1,16 @@
-import { d as defineEventHandler, u as useRuntimeConfig, c as createError } from '../../runtime.mjs';
-import mysql from 'mysql2/promise';
+import { d as defineEventHandler, c as createError } from '../../runtime.mjs';
 import 'node:http';
 import 'node:https';
 import 'node:fs';
 import 'node:path';
+import 'mysql2/promise';
 import 'nodemailer';
 import '@dword-design/functions';
 import 'node:url';
 import 'ipx';
 
 const postsCursos = defineEventHandler(async (event) => {
-  useRuntimeConfig();
-  const connection = await mysql.createConnection({
-    host: "162.214.100.2",
-    user: "euroanglo_admin",
-    password: "Agenciagsstudio1993#@!",
-    database: "euroanglo_site"
-  });
+  const connection = event.context.connection;
   try {
     const [coursesWithDetails] = await connection.execute(`
       SELECT 
@@ -80,8 +74,6 @@ const postsCursos = defineEventHandler(async (event) => {
       statusCode: 500,
       statusMessage: "Erro ao carregar dados"
     });
-  } finally {
-    await connection.end();
   }
 });
 

@@ -1,5 +1,5 @@
 import { _ as _sfc_main$1 } from './NuxtImg-CP6STrL9.mjs';
-import { _ as __nuxt_component_1 } from './Cursos-D9E2GdTH.mjs';
+import { _ as __nuxt_component_1 } from './Cursos-C3rIh1Ep.mjs';
 import { useSSRContext, defineComponent, ref } from 'vue';
 import { ssrRenderAttrs, ssrRenderList, ssrRenderComponent, ssrInterpolate, ssrIncludeBooleanAttr } from 'vue/server-renderer';
 import { _ as _export_sfc } from './server.mjs';
@@ -10,6 +10,7 @@ import 'node:http';
 import 'node:https';
 import 'node:fs';
 import 'node:path';
+import 'mysql2/promise';
 import 'nodemailer';
 import '@dword-design/functions';
 import 'node:url';
@@ -86,4 +87,4 @@ _sfc_main.setup = (props, ctx) => {
 const alunosContratados = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-5edfee4c"]]);
 
 export { alunosContratados as default };
-//# sourceMappingURL=alunos-contratados-Dpo7s6h7.mjs.map
+//# sourceMappingURL=alunos-contratados-DPJ0euC7.mjs.map

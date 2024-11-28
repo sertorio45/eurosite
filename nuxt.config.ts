@@ -78,8 +78,8 @@ export default defineNuxtConfig({
 
   css: [
     'animate.css/animate.min.css',
-    '@/assets/scss/custom.scss',
-    '@/assets/css/main.css',
+    '~/assets/scss/custom.scss',
+    '~/assets/css/main.css',
   ],
 
   image: {

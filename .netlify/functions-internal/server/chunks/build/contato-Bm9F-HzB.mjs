@@ -10,6 +10,7 @@ import 'node:http';
 import 'node:https';
 import 'node:fs';
 import 'node:path';
+import 'mysql2/promise';
 import 'nodemailer';
 import '@dword-design/functions';
 import 'node:url';

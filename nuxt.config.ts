@@ -62,24 +62,24 @@ export default defineNuxtConfig({
       },
     },
   },
-  build: {
-    transpile: [], 
-  },
   googleFonts: {
     families: {
-      'Josefin': [400, 700],
+      'Josefin+Sans': [400, 700],
       'Poppins': [400, 700],
-        fontsDir: 'assets/fonts',
-        base64: true,
-        overwriting: false,
     },
     download: true,
+    fontsDir: 'assets/fonts',
+    overwriting: true,
+    base64: true,
+    fontsPath: 'assets/fonts'
+
+
   },
 
   css: [
     'animate.css/animate.min.css',
     '~/assets/scss/custom.scss',
-    '~/assets/css/main.css',
+    '@/assets/css/main.css',
   ],
 
   image: {

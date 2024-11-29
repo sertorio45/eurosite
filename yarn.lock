@@ -1088,9 +1088,9 @@
     consola "^3.2.3"
     dotenv "^8.2.0"
 
-"@nuxtjs/google-fonts@^3.2.0":
+"@nuxtjs/google-fonts@3.2.0":
   version "3.2.0"
-  resolved "https://registry.npmjs.org/@nuxtjs/google-fonts/-/google-fonts-3.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/google-fonts/-/google-fonts-3.2.0.tgz#03e3284dc980e6bcaa0c67c3080aecda76574b1c"
   integrity sha512-cGAjDJoeQ2jm6VJCo4AtSmKO6KjsbO9RSLj8q261fD0lMVNMZCxkCxBkg8L0/2Vfgp+5QBHWVXL71p1tiybJFw==
   dependencies:
     "@nuxt/kit" "^3.10.3"

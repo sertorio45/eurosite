@@ -2,7 +2,7 @@
   <section class="py-5">
     <div class="container my-5 py-5 min-vh-100 justify-content-center">
       <div class="row justify-content-center align-items-center g-3 text-center">
-        <h1>Nossos Cursos</h1>
+        <h2>A melhor qualificação para você.</h2>
         <p>
           Conheça nossos cursos profissionalizantes que oferecem a melhor qualificação para o mercado de trabalho.
         </p>

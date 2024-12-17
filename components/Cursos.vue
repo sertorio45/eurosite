@@ -4,10 +4,8 @@
       <div class="row justify-content-center align-items-center g-3 text-center">
         <h1>Nossos cursos</h1>
         <p>
-          Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
-          quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Ipsum sobreviveu não
-          só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década
-          de 60, quando a Letraset lançou decalques contendo passagens.
+          Os cursos profissionalizantes Euro Anglo foram elaborados para você que deseja se preparar para o mercado de trabalho ou adquirir novos conhecimentos.
+          Criamos uma metodologia que relaciona a teoria e a prática, simulando situações que acontecem diariamente nas empresas, para que você aprenda a resolvê-las.
         </p>
       </div>
 

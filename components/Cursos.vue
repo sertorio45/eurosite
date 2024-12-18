@@ -13,7 +13,17 @@
         <div v-for="(course, index) in lastThreeCourses" :key="course.id" class="col-lg-4 col-md-6 col-sm-12 mb-4">
           <div class="card cursos-card h-100 d-flex flex-column">
             <div class="img-container">
-              <NuxtImg :src="course.image" class="card-img-top img-fluid" :alt="course.title || 'Imagem do course'" densities="x1 x2" :placeholder="[900, 500, 75, 5]" width="900" height="500" loading="lazy" quality="80" />
+              <NuxtImg 
+                :src="course.image" 
+                class="card-img-top img-fluid" 
+                :alt="course.title || 'Imagem do course'" 
+                densities="x1 x2" 
+                :placeholder="[900, 500, 75, 5]" 
+                width="900" 
+                height="500" 
+                loading="lazy" 
+                quality="80" 
+              />
             </div>
             <div class="card-body d-flex flex-column">
               <h3>{{ course.title }}</h3>
@@ -54,32 +64,26 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
-
-const courses = ref([]);
-
-// Computada para pegar os últimos 3 cursos
-const lastThreeCourses = computed(() => courses.value.slice(0, 3));
-
-onMounted(async () => {
-  try {
-    const response = await $fetch('/api/postsCursos');
-    
-    // Capitalizar títulos diretamente após carregar os dados
-    courses.value = response.map((course) => ({
-      ...course,
-      title: capitalizeTitle(course.title),
-    }));
-  } catch (error) {
-    console.error('Erro ao carregar cursos:', error);
-  }
-});
+import { computed } from 'vue';
+import { useAsyncData } from '#app';
 
 // Função para capitalizar a primeira letra do título
 const capitalizeTitle = (title) => {
   if (!title) return '';
   return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
 };
+
+// Buscando dados com useAsyncData
+const { data: courses, pending, error } = useAsyncData('courses', async () => {
+  const response = await $fetch('/api/postsCursos');
+  return response.map((course) => ({
+    ...course,
+    title: capitalizeTitle(course.title),
+  }));
+});
+
+// Computada para pegar os últimos 3 cursos
+const lastThreeCourses = computed(() => courses.value?.slice(0, 3) || []);
 </script>
 
 <style scoped>

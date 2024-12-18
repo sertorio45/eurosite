@@ -1,6 +1,6 @@
 <template>
-  <section class="py-5 bg-primary text-light">
-    <div class="container my-5 py-5 min-vh-100 justify-content-center">
+  <section class="py-5 bg-primary text-light align-content-center">
+    <div class="container my-5 py-5 justify-content-center">
       <div class="row justify-content-center align-items-center g-3 text-center">
         <h1>A melhor estrutura para você</h1>
         <p>

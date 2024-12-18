@@ -14,6 +14,7 @@ h1,h2,h3,h3,h5,h6 {
     text-transform: uppercase;
 }   
 
+
 .container {
     padding: 0;
 }
@@ -88,14 +89,40 @@ h1,h2,h3,h3,h5,h6 {
   color: #000000 !important;
   position: relative;
   transition: color 0.3s ease-in-out;
+  text-decoration: none !important;
 }
 
-.nav-link:hover {
-  color: var(--bs-primary) !important;
+.link-menu {
+  text-decoration: none !important;
 }
-.router-link-active {
+
+#head1 {
+  .link-menu:hover {
+    color: #ffffff;
+    opacity: 0.7;
+  }
+  
+  .navbar-brand {
+    opacity: 1!important;
+  }
+  
+  .router-link-active {
+    color: var(--bs-white);
+    opacity: 0.6;
+    text-decoration: none;
+  }
+}
+
+#head2 { 
+  .nav-link:hover   {
+    color: var(--bs-primary) !important; 
+    text-decoration: none;
+  }
+  .router-link-active {
     color: var(--bs-secondary) !important;
+  }
 }
+
 .nav-link::after {
   content: '';
   position: absolute;

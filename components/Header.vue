@@ -1,5 +1,5 @@
 <template>
-<section class="bg-primary py-3 text-light d-flex justify-content-center">
+<section class="bg-primary py-3 text-light d-flex justify-content-center" id="head1">
   <div class="container">
     <div class="row">
       <div class="col-6 d-flex justify-content-start">
@@ -10,17 +10,17 @@
       </div>
       <div class="col-6 d-flex justify-content-end">
         <span>
-          <NuxtLink to="#" class="text-light">Seja Franquiado</NuxtLink> | 
-          <NuxtLink to="/ouvidoria" class="text-light">Ouvidoria</NuxtLink> | 
-          <NuxtLink to="/trabalhe-conosco" class="text-light">Trabalhe Conosco</NuxtLink>
+          <NuxtLink to="#" class="text-light link-menu">Seja Franquiado</NuxtLink> | 
+          <NuxtLink to="/ouvidoria" class="text-light link-menu">Ouvidoria</NuxtLink> | 
+          <NuxtLink to="/trabalhe-conosco" class="text-light link-menu">Trabalhe Conosco</NuxtLink>
         </span>
       </div>
     </div>
   </div>
 </section>
 
-
-  <div :class="['container-fluid', 'py-2', {'position-fixed top-0 start-0 w-100 fixed-navbar': isScrolled}]">
+<section id="head2">
+  <div :class="['container-fluid', 'py-2', {'position-fixed top-0 start-0 w-100 fixed-navbar': isScrolled}]" >
     <div class="row g-0">
       <div class="col-12">
         <nav class="navbar navbar-expand-lg navbar-light w-100">
@@ -77,6 +77,7 @@
       </div>
     </div>
   </div>
+</section>
 </template>
 
 <script setup>
@@ -102,4 +103,9 @@ onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll);
 });
 </script>
+
+<style scoped>
+
+
+</style>
 

@@ -12,11 +12,11 @@
             </div>
 
             <div class="col-md-6 col-sm-12 container-motivos">
-                 <div class="row text-center g-4">
+                 <div class="row text-center g-0">
                   <div class="col-6">
                     <div class="card">
                     <div class="card-body">
-                      <img src="https://placeholder.com/150x150" class="rounded-circle my-3" alt="">
+                      <NuxtImg src="img/motivos/parcerias.webp" alt="Aprenda cursos e trabalhe para grandes empresas" class="rounded-circle shadow p-4 mb-4 bg-white" width="150px" />
                       <h3 class="h5 fw-bold">Parceria com grandes empresas</h3>
                     </div>
                   </div>
@@ -25,7 +25,7 @@
                   <div class="col-6">
                     <div class="card">
                     <div class="card-body">
-                      <img src="https://placeholder.com/150x150" class="rounded-circle my-3" alt="">
+                      <NuxtImg src="img/motivos/material.webp" alt="Material didático de última geração." class="rounded-circle shadow p-4 mb-4 bg-white" width="150px"/>
                       <h3 class="h5 fw-bold">Material didático atualizado</h3>
                     </div>
                   </div>
@@ -34,7 +34,7 @@
                   <div class="col-6">
                     <div class="card">
                     <div class="card-body">
-                      <img src="https://placeholder.com/150x150" class="rounded-circle my-3" alt="">
+                      <NuxtImg src="img/motivos/aprendizado.webp" alt="Aprenda cursos e trabalhe para grandes empresas" class="rounded-circle shadow p-4 mb-4 bg-white" width="150px"/>
                       <h3 class="h5 fw-bold">Aplique o que você aprendeu</h3>
                     </div>
                   </div>
@@ -43,7 +43,7 @@
                   <div class="col-6">
                     <div class="card">
                     <div class="card-body">
-                      <img src="https://placeholder.com/150x150" class="rounded-circle my-3" alt="">
+                      <NuxtImg src="img/motivos/história.webp" alt="Aprenda cursos e trabalhe para grandes empresas" class="rounded-circle shadow p-4 mb-4 bg-white" width="150px"/>
                       <h3 class="h5 fw-bold">Mais de quinze anos de história</h3>
                     </div>
                   </div>
@@ -71,9 +71,4 @@
 .container-motivos {
   margin-left: auto;
 }
-
-
-
-
-
 </style>

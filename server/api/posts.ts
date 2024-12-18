@@ -3,12 +3,7 @@ import mysql from 'mysql2/promise';
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
 
-  const connection = await mysql.createConnection({
-    host: '162.214.100.2',
-    user: 'euroanglo_admin',
-    password: 'Agenciagsstudio1993#@!',
-    database: 'euroanglo_site',
-  });
+  const connection = event.context.connection;
 
   // Query ajustada para usar a coluna 'dia' e formatar a data
   const [rows] = await connection.execute(`

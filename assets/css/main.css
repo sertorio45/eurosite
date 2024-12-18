@@ -187,5 +187,12 @@ h1,h2,h3,h5,h6 {
   }
 }
 
+@media (max-width: 576px) {
+  .container {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
 
 

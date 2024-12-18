@@ -5,10 +5,8 @@
           <div class="row">
             <div class="col-md-3 col-sm-12">
                 <h2>MOTIVOS PARA ESCOLHER A EURO ANGLO</h2>
-                  <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, 
-                    e vem sendo utilizado desde o século XVI, quando um impressor
-                  </p>
-                    <NuxtImg src="img/girl.webp" alt="" class="girl-img" width="500px"/>
+                  <p>Todos os alunos que se formam na Euro Anglo Cursos tem garantia de sucesso profissional, pois nossos cursos sempre estão atualizados com o mercado atual.</p>
+                    <NuxtImg src="img/girl.webp" alt="" class="girl-img d-none d-sm-block" width="500px"/>
             </div>
 
             <div class="col-md-6 col-sm-12 container-motivos">

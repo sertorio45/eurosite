@@ -13,11 +13,10 @@
         <div v-if="courses.length > 0" v-for="(curso, index) in displayedCourses" :key="curso.id" class="col-lg-4 col-md-4 col-sm-12 mb-4">
           <div class="card cursos-card h-100 d-flex flex-column">
             <div class="img-container">
-              <NuxtImg :src="curso.image" class="card-img-top img-fluid" :alt="curso.title || 'Imagem do curso'" />
+              <NuxtImg :src="curso.image" class="card-img-top img-fluid" :alt="curso.title || 'Imagem do curso'" densities="x1 x2" :placeholder="[900, 500, 75, 5]" width="900" height="500" loading="lazy" quality="80" />
             </div>
-            <div class="card-body d-flex flex-column">
+            <div class="card-body align-content-center">
               <h3>{{ curso.title }}</h3>
-              <p>{{ curso.description }}</p>
               <NuxtLink class="card-text mt-auto" :to="`/cursos/${curso.slug}`">Mais informações</NuxtLink>
             </div>
           </div>
@@ -28,7 +27,7 @@
           <div class="card cursos-card h-100 d-flex flex-column">
             <div class="img-container">
               <div class="placeholder-glow w-100">
-                <img 
+                <NuxtImg 
                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='100%25' height='100%25' fill='%23e0e0e0'/%3E%3C/svg%3E" 
                   alt="Imagem Placeholder"
                   class="card-img-top img-fluid" />
@@ -136,6 +135,8 @@ onMounted(async () => {
 h3 {
   font-size: 1.5rem;
   font-weight: bold;
+  text-decoration: none;
+  text-transform: initial ;
 }
 
 p.card-text {

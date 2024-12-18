@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 // Definindo interfaces para o curso, conteúdo e média salarial
@@ -32,9 +32,25 @@ interface Course {
 // Referência para todos os cursos
 const courses = ref<Course[]>([]);
 const displayedCourses = ref<Course[]>([]);
+const isLoading = ref(true);
+const randomStudentNumber = ref<number>(0);
+
+// Computada para pegar o curso correspondente
+const currentCourse = computed(() => displayedCourses.value[0] || null);
 
 // Estado da tab ativa
 const activeTab = ref<string>('');
+
+// Gerar um número aleatório entre 2.000 e 8.000 e armazenar localmente
+const generateRandomNumber = () => {
+  const storedNumber = sessionStorage.getItem('randomStudentNumber');
+  if (storedNumber) {
+    randomStudentNumber.value = parseInt(storedNumber, 10);
+  } else {
+    randomStudentNumber.value = Math.floor(Math.random() * (8000 - 2000 + 1)) + 2000;
+    sessionStorage.setItem('randomStudentNumber', randomStudentNumber.value.toString());
+  }
+};
 
 // Pegando o slug da rota
 const route = useRoute();
@@ -42,6 +58,7 @@ const slug = route.params.slug as string;
 
 // Carrega os cursos e filtra com base no slug
 onMounted(async () => {
+  generateRandomNumber();
   try {
     const response = await $fetch<Course[]>('../api/postsCursos');
     courses.value = response;
@@ -67,74 +84,104 @@ onMounted(async () => {
     }
   } catch (error) {
     console.error('Erro ao carregar cursos:', error);
+  } finally {
+    isLoading.value = false;
   }
 });
 </script>
 
 <template>
+<section class="bg-light py-5 text-center" >
+  <a href="/" style="text-decoration: none;"">Página inicial</a> / {{ currentCourse.title }}
+</section>
+
   <section class="py-5">
     <div class="container">
       <div class="row py-5 my-5">
         <!-- Título do curso -->
         <div class="col-sm-6 text-center">
-          <div class="pt-30" v-for="curso in displayedCourses" :key="curso.id">
-            <h2 class="mb-5" style="color: #b92027; font-size: 36px;">{{ curso.title }}</h2>
+          <div class="pt-30">
+            <h2 v-if="!isLoading && currentCourse" class="mb-5" style="color: #b92027; font-size: 36px;">{{ currentCourse.title }}</h2>
+            <h2 v-else class="placeholder-glow">
+              <span class="placeholder col-6"></span>
+            </h2>
           </div>
           <div>
-            <h2 class="mb-5">A MELHOR QUALIDADE COM A MELHOR ESTRUTURA</h2>
-            <p class="h5">Estude na melhor escola do interior paulista.</p>
+            <h2 v-if="!isLoading" class="mb-5">A MELHOR QUALIDADE COM A MELHOR ESTRUTURA</h2>
+            <h2 v-else class="placeholder-glow">
+              <span class="placeholder col-8"></span>
+            </h2>
+            <p v-if="!isLoading" class="h5">Estude na melhor escola do interior paulista.</p>
+            <p v-else class="placeholder-glow">
+              <span class="placeholder col-4"></span>
+            </p>
             <span id="numbers">
-              <b>+ de 1.000</b>
+              <b v-if="!isLoading">+ de {{ randomStudentNumber }}</b>
+              <span v-else class="placeholder col-3"></span>
               <br />
-              Alunos formados nesse curso
+              <span v-if="!isLoading">Alunos formados nesse curso</span>
+              <span v-else class="placeholder col-5"></span>
             </span>
           </div>
         </div>
 
-        <!-- Vídeo do curso -->
+        <!-- Vídeo ou imagem do curso -->
         <div class="col-sm-6 text-center">
-          <div v-for="curso in displayedCourses" :key="curso.id" class="ratio ratio-16x9">
-            <iframe :src="curso.video" class="rounded shadow"></iframe>
+          <div class="ratio ratio-16x9">
+            <iframe 
+              v-if="!isLoading && currentCourse?.video" 
+              :src="currentCourse.video" 
+              class="rounded shadow">
+            </iframe>
+            <NuxtImg 
+              v-else-if="!isLoading && currentCourse?.image" 
+              :src="currentCourse.image" 
+              alt="Imagem do curso" 
+              class="rounded shadow" />
+            <div v-else class="placeholder-glow">
+              <div class="placeholder col-12" style="height: 100%;"></div>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Tabs com informações adicionais (somente exibe se o curso estiver ativo) -->
-      <div v-if="displayedCourses[0]?.ativo" class="row">
+      <div v-if="!isLoading && currentCourse?.ativo" class="row">
         <div class="col-sm-8">
           <div>
             <div class="clearfix pt-0">
               <h2>INFORMAÇÕES SOBRE O CURSO</h2>
-              <div v-for="curso in displayedCourses" :key="curso.id">
-                <p>{{ curso.subtitulo }}</p>
-              </div>
+              <p v-if="currentCourse">{{ currentCourse.subtitulo }}</p>
+              <p v-else class="placeholder-glow">
+                <span class="placeholder col-8"></span>
+              </p>
             </div>
 
             <ul class="nav nav-tabs mt-5">
               <!-- Tab: Média Salarial -->
-              <li class="nav-item" v-if="displayedCourses[0]?.salaries.length">
+              <li class="nav-item" v-if="currentCourse?.salaries.length">
                 <a class="nav-link" :class="{ active: activeTab === 'media-salarial' }" @click="activeTab = 'media-salarial'" href="#media-salarial" data-bs-toggle="tab">Média Salarial</a>
               </li>
 
               <!-- Tab: Conteúdo Programático -->
-              <li class="nav-item" v-if="displayedCourses[0]?.contents.length">
+              <li class="nav-item" v-if="currentCourse?.contents.length">
                 <a class="nav-link" :class="{ active: activeTab === 'conteudo' }" @click="activeTab = 'conteudo'" href="#conteudo" data-bs-toggle="tab">Conteúdo Programático</a>
               </li>
 
               <!-- Tab: Mercado de Trabalho -->
-              <li class="nav-item" v-if="displayedCourses[0]?.mercadotrabalho">
+              <li class="nav-item" v-if="currentCourse?.mercadotrabalho">
                 <a class="nav-link" :class="{ active: activeTab === 'mercado-de-trabalho' }" @click="activeTab = 'mercado-de-trabalho'" href="#mercado-de-trabalho" data-bs-toggle="tab">Mercado de Trabalho</a>
               </li>
 
               <!-- Tab: Metodologia -->
-              <li class="nav-item" v-if="displayedCourses[0]?.metodologia">
+              <li class="nav-item" v-if="currentCourse?.metodologia">
                 <a class="nav-link" :class="{ active: activeTab === 'metodologia' }" @click="activeTab = 'metodologia'" href="#metodologia" data-bs-toggle="tab">Metodologia</a>
               </li>
             </ul>
 
             <div class="tab-content p-30">
               <!-- Tab: Média Salarial -->
-              <div class="tab-pane fade" id="media-salarial" :class="{ show: activeTab === 'media-salarial', active: activeTab === 'media-salarial' }" v-if="displayedCourses[0]?.salaries.length">
+              <div class="tab-pane fade" id="media-salarial" :class="{ show: activeTab === 'media-salarial', active: activeTab === 'media-salarial' }" v-if="currentCourse?.salaries.length">
                 <table class="table table-striped table-borderless mt-2">
                   <thead>
                     <tr>
@@ -143,7 +190,7 @@ onMounted(async () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="salary in displayedCourses[0]?.salaries" :key="salary.id">
+                    <tr v-for="salary in currentCourse.salaries" :key="salary.id">
                       <th style="font-weight: normal">{{ salary.cargo }}</th>
                       <th style="font-weight: normal">R$ {{ salary.salario }}</th>
                     </tr>
@@ -152,10 +199,10 @@ onMounted(async () => {
               </div>
 
               <!-- Tab: Conteúdo Programático -->
-              <div class="tab-pane fade" id="conteudo" :class="{ show: activeTab === 'conteudo', active: activeTab === 'conteudo' }" v-if="displayedCourses[0]?.contents.length">
+              <div class="tab-pane fade" id="conteudo" :class="{ show: activeTab === 'conteudo', active: activeTab === 'conteudo' }" v-if="currentCourse?.contents.length">
                 <table class="table table-striped table-borderless">
                   <tbody>
-                    <tr v-for="content in displayedCourses[0]?.contents" :key="content.id">
+                    <tr v-for="content in currentCourse.contents" :key="content.id">
                       <th style="font-weight: normal;">{{ content.conteudo }}</th>
                     </tr>
                   </tbody>
@@ -163,13 +210,13 @@ onMounted(async () => {
               </div>
 
               <!-- Tab: Mercado de Trabalho -->
-              <div class="tab-pane fade py-3" id="mercado-de-trabalho" :class="{ show: activeTab === 'mercado-de-trabalho', active: activeTab === 'mercado-de-trabalho' }" v-if="displayedCourses[0]?.mercadotrabalho">
-                {{ displayedCourses[0]?.mercadotrabalho }}
+              <div class="tab-pane fade py-3" id="mercado-de-trabalho" :class="{ show: activeTab === 'mercado-de-trabalho', active: activeTab === 'mercado-de-trabalho' }" v-if="currentCourse?.mercadotrabalho">
+                {{ currentCourse.mercadotrabalho }}
               </div>
 
               <!-- Tab: Metodologia -->
-              <div class="tab-pane fade py-3" id="metodologia" :class="{ show: activeTab === 'metodologia', active: activeTab === 'metodologia' }" v-if="displayedCourses[0]?.metodologia">
-                {{ displayedCourses[0]?.metodologia }}
+              <div class="tab-pane fade py-3" id="metodologia" :class="{ show: activeTab === 'metodologia', active: activeTab === 'metodologia' }" v-if="currentCourse?.metodologia">
+                {{ currentCourse.metodologia }}
               </div>
             </div>
           </div>
@@ -179,9 +226,18 @@ onMounted(async () => {
         <div class="col-sm-4">
           <div>
             <div class="mb-45">
-              <h2 class="">Gostou do curso? <br /></h2>
-              <p class="h5 mb-5">Então garanta sua vaga.</p>
-              <h3 class="text-primary">INSCREVA-SE AGORA!</h3>
+              <h2 v-if="!isLoading" class="">Gostou do curso? <br /></h2>
+              <h2 v-else class="placeholder-glow">
+                <span class="placeholder col-6"></span>
+              </h2>
+              <p v-if="!isLoading" class="h5 mb-5">Então garanta sua vaga.</p>
+              <p v-else class="placeholder-glow">
+                <span class="placeholder col-4"></span>
+              </p>
+              <h3 v-if="!isLoading" class="text-primary">INSCREVA-SE AGORA!</h3>
+              <h3 v-else class="placeholder-glow">
+                <span class="placeholder col-8"></span>
+              </h3>
               <hr />
             </div>
             <FormsInscricao />
@@ -195,5 +251,26 @@ onMounted(async () => {
 <style scoped>
 #numbers {
   font-size: 30px;
+}
+
+.placeholder {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+.placeholder-glow .placeholder {
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #f5f5f5;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
 }
 </style>

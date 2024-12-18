@@ -25,46 +25,74 @@ const latestPosts = computed(() => {
 <template>
   <section class="bg-light py-5 text-center">
     <div>
-      <a href="/" style="text-decoration: none;">Página inicial</a> / <a href="/blog">Blog</a> / <span>{{ post.title }}</span>
+      <a href="/" style="text-decoration: none;">Página inicial</a> / <a href="/blog">Blog</a> / <span v-if="post.title">{{ post.title }}</span>
+      <span v-else class="placeholder-glow">
+        <span class="placeholder col-6"></span>
+      </span>
     </div>
   </section>
   <div>
     <section class="py-5">
       <div class="container my-5">
         <div class="row">
-          <div class="col-sm-8">
-            <h1 class="my-4">{{ post.title }}</h1>
-            <NuxtImg 
+          <div class="col-sm-8 text-justify">
+            <h1 class="my-4" v-if="post.title">{{ post.title }}</h1>
+            <h1 v-else class="placeholder-glow">
+              <span class="placeholder col-8"></span>
+            </h1>
+
+            <div v-if="post.image">
+              <NuxtImg 
                 :src="post.image" 
                 class="rounded"
                 :alt="post.title || 'Imagem do post'" 
                 densities="x1 x2" 
-                width="750" 
+                width="700" 
                 height="350" 
-                loading="eager"
-                :placeholder="[750, 350, 75, 15]"
+                loading="lazy"
+                :placeholder="15"
               />
-            <p class="mt-5 text-justify" v-html="post.content"></p>
+            </div>
+            <div v-else class="placeholder-glow">
+              <div class="placeholder rounded w-100" style="height: 350px; width: 700px;"></div>
+            </div>
+
+            <p class="mt-5" v-if="post.content" v-html="post.content" style="width: 90%;"></p>
+            <p v-else class="placeholder-glow">
+              <span class="placeholder col-12"></span>
+              <span class="placeholder col-10"></span>
+              <span class="placeholder col-8"></span>
+            </p>
           </div>
+
           <div class="col-sm-4">
             <div class="card p-4 sticky-card">
               <a href="javascript:history.back()" class="btn btn-primary mb-4 justify-content-end">Voltar</a>
               <h3 class="mt-4">Mais artigos</h3>
               <hr class="hr hr-blurry" />
               <div v-for="latestPost in latestPosts" :key="latestPost.slug" class="text-left d-flex align-items-center">
-                <NuxtLink :href="`/blog/${latestPost.slug}`" >
-                  <NuxtImg 
+                <div v-if="latestPost.image">
+                  <NuxtLink :href="`/blog/${latestPost.slug}`">
+                    <NuxtImg 
                       :src="latestPost.image" 
-                      class=" m-1 rounded"
+                      class="m-1 rounded"
                       :alt="latestPost.title || 'Imagem do post'" 
                       densities="x1 x2" 
                       width="75" 
                       height="75" 
                       loading="lazy" 
-                      :placeholder="[75, 75, 75, 5]"
-                    /> 
-                </NuxtLink>
-                <NuxtLink :href="`/blog/${latestPost.slug}`" class="latestPost px-2">{{ latestPost.title }}</NuxtLink>
+                      :placeholder="15"
+                    />
+                  </NuxtLink>
+                </div>
+                <div v-else class="placeholder-glow">
+                  <div class="placeholder rounded-circle" style="height: 75px; width: 75px;"></div>
+                </div>
+
+                <NuxtLink :href="`/blog/${latestPost.slug}`" class="latestPost px-2" v-if="latestPost.title">{{ latestPost.title }}</NuxtLink>
+                <span v-else class="placeholder-glow">
+                  <span class="placeholder col-6"></span>
+                </span>
               </div>
             </div>
           </div>

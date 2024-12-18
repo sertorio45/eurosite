@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { useAsyncData } from '#app';
 
 // Definindo interfaces para o curso, conteúdo e média salarial
 interface CourseContent {
@@ -29,7 +30,7 @@ interface Course {
   salaries: CourseSalary[];
 }
 
-// Referência para todos os cursos
+// Referências e estados
 const courses = ref<Course[]>([]);
 const displayedCourses = ref<Course[]>([]);
 const randomStudentNumber = ref<number>(0);
@@ -55,36 +56,42 @@ const generateRandomNumber = () => {
 const route = useRoute();
 const slug = route.params.slug as string;
 
-// Carrega os cursos e filtra com base no slug
-onMounted(async () => {
-  generateRandomNumber();
-  try {
-    const response = await $fetch<Course[]>('../api/postsCursos');
-    courses.value = response;
+// Carrega os cursos usando useAsyncData
+const { data: coursesData, error } = useAsyncData<Course[]>(
+  'courses',
+  () => $fetch('/api/postsCursos')
+);
 
-    // Filtra o curso com base no slug da URL
-    const cursoCorrespondente = courses.value.find((curso) => curso.slug === slug);
-    
-    if (cursoCorrespondente) {
-      displayedCourses.value = [cursoCorrespondente];
+if (error.value) {
+  console.error('Erro ao carregar cursos:', error.value);
+}
 
-      // Definir a primeira tab ativa por padrão
-      if (cursoCorrespondente.salaries.length) {
-        activeTab.value = 'media-salarial';
-      } else if (cursoCorrespondente.contents.length) {
-        activeTab.value = 'conteudo';
-      } else if (cursoCorrespondente.mercadotrabalho) {
-        activeTab.value = 'mercado-de-trabalho';
-      } else if (cursoCorrespondente.metodologia) {
-        activeTab.value = 'metodologia';
-      }
-    } else {
-      console.warn('Curso correspondente não encontrado para o slug:', slug);
+// Atualiza os dados com base no slug quando carregados
+if (coursesData.value) {
+  courses.value = coursesData.value;
+  const cursoCorrespondente = courses.value.find((curso) => curso.slug === slug);
+  if (cursoCorrespondente) {
+    displayedCourses.value = [cursoCorrespondente];
+
+    // Define a primeira tab ativa por padrão
+    if (cursoCorrespondente.salaries.length) {
+      activeTab.value = 'media-salarial';
+    } else if (cursoCorrespondente.contents.length) {
+      activeTab.value = 'conteudo';
+    } else if (cursoCorrespondente.mercadotrabalho) {
+      activeTab.value = 'mercado-de-trabalho';
+    } else if (cursoCorrespondente.metodologia) {
+      activeTab.value = 'metodologia';
     }
-  } catch (error) {
-    console.error('Erro ao carregar cursos:', error);
+  } else {
+    console.warn('Curso correspondente não encontrado para o slug:', slug);
   }
-});
+}
+
+// Gera o número aleatório no lado do cliente
+if (process.client) {
+  generateRandomNumber();
+}
 </script>
 
 <template>

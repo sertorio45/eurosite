@@ -60,7 +60,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, computed, watch } from 'vue';
+import { useAsyncData } from '#app';
 
 definePageMeta({
   layout: 'default-breadcrumb',
@@ -84,17 +85,20 @@ const loadMoreCourses = () => {
   }, 1000); // Simula um tempo de carregamento
 };
 
-// Simulação de carregamento dos cursos
-onMounted(async () => {
-  try {
-    const response = await $fetch('/api/postsCursos'); // Substitua pela API real
-    courses.value = response; // Carrega os cursos da API
-    displayedCourses.value = courses.value.slice(0, coursesPerPage); // Mostra os primeiros cursos
-  } catch (error) {
-    console.error('Erro ao carregar cursos:', error);
-  }
+// Carregando os cursos com useAsyncData
+const { data, pending, error } = useAsyncData('courses', async () => {
+  const response = await $fetch('/api/postsCursos');
+  // Certifique-se de que a resposta é um array
+  return Array.isArray(response) ? response : [];
+});
+
+// Atualizar os cursos e os exibidos inicialmente
+watch(data, (newData) => {
+  courses.value = newData || [];
+  displayedCourses.value = courses.value.slice(0, coursesPerPage);
 });
 </script>
+
 
 <style scoped>
 .card-body {
@@ -136,7 +140,7 @@ h3 {
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
-  text-transform: initial ;
+  text-transform: initial;
 }
 
 p.card-text {

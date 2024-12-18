@@ -91,6 +91,10 @@ const lastThreeCourses = computed(() => courses.value?.slice(0, 3) || []);
   border-radius: 0 0 10px 10px;
 }
 
+.card-body h3 {
+  text-transform: initial;
+}
+
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;

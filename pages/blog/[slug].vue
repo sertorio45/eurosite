@@ -5,12 +5,14 @@ import { useRoute } from 'vue-router';
 // Rota atual
 const route = useRoute();
 
-// Fetch de dados com useAsyncData
-const { data, error } = useAsyncData('posts', () => $fetch('/api/posts'));
+// Fetch de dados com useLazyFetch
+const { data, pending, error } = useLazyFetch('/api/posts');
 
 // Dados do post atual e últimos posts
 const post = computed(() => {
-  return data.value?.find((p) => p.slug === route.params.slug) || {};
+  if (!data.value) return {};
+  const currentPost = data.value.find((p) => p.slug === route.params.slug);
+  return currentPost || { title: 'Carregando...', content: 'Carregando conteúdo...', image: '' };
 });
 
 const latestPosts = computed(() => {
@@ -35,7 +37,7 @@ const latestPosts = computed(() => {
     <section class="py-5">
       <div class="container my-5">
         <div class="row">
-          <div class="col-sm-8 text-justify">
+          <div class="col-sm-8 text-center">
             <h1 class="my-4" v-if="post.title">{{ post.title }}</h1>
             <h1 v-else class="placeholder-glow">
               <span class="placeholder col-8"></span>
@@ -57,7 +59,7 @@ const latestPosts = computed(() => {
               <div class="placeholder rounded w-100" style="height: 350px; width: 700px;"></div>
             </div>
 
-            <p class="mt-5" v-if="post.content" v-html="post.content" style="width: 90%;"></p>
+            <p class="mt-5 px-5" v-if="post.content" v-html="post.content"></p>
             <p v-else class="placeholder-glow">
               <span class="placeholder col-12"></span>
               <span class="placeholder col-10"></span>

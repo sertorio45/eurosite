@@ -8,9 +8,9 @@
         </p>
       </div>
 
-      <!-- Exibindo os cursos -->
+      <!-- Exibindo os cursos ou placeholders -->
       <div class="row text-center justify-content-center align-items-center g-3 my-4">
-        <div v-for="(curso, index) in displayedCourses" :key="curso.id" class="col-lg-4 col-md-4 col-sm-12 mb-4">
+        <div v-if="courses.length > 0" v-for="(curso, index) in displayedCourses" :key="curso.id" class="col-lg-4 col-md-4 col-sm-12 mb-4">
           <div class="card cursos-card h-100 d-flex flex-column">
             <div class="img-container">
               <NuxtImg :src="curso.image" class="card-img-top img-fluid" :alt="curso.title || 'Imagem do curso'" />
@@ -19,6 +19,28 @@
               <h3>{{ curso.title }}</h3>
               <p>{{ curso.description }}</p>
               <NuxtLink class="card-text mt-auto" :to="`/cursos/${curso.slug}`">Mais informações</NuxtLink>
+            </div>
+          </div>
+        </div>
+
+        <!-- Placeholders enquanto os cursos são carregados -->
+        <div v-else v-for="n in coursesPerPage" :key="n" class="col-lg-4 col-md-4 col-sm-12 mb-4">
+          <div class="card cursos-card h-100 d-flex flex-column">
+            <div class="img-container">
+              <div class="placeholder-glow w-100">
+                <img 
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='100%25' height='100%25' fill='%23e0e0e0'/%3E%3C/svg%3E" 
+                  alt="Imagem Placeholder"
+                  class="card-img-top img-fluid" />
+              </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h3 class="placeholder-glow">
+                <span class="placeholder col-12"></span>
+              </h3>
+              <p class="placeholder-glow">
+                <span class="placeholder col-12"></span>
+              </p>
             </div>
           </div>
         </div>
@@ -68,7 +90,7 @@ onMounted(async () => {
   try {
     const response = await $fetch('/api/postsCursos'); // Substitua pela API real
     courses.value = response; // Carrega os cursos da API
-    displayedCourses.value = courses.value.slice(0, coursesPerPage); // Mostra os primeiros 8 cursos
+    displayedCourses.value = courses.value.slice(0, coursesPerPage); // Mostra os primeiros cursos
   } catch (error) {
     console.error('Erro ao carregar cursos:', error);
   }
@@ -126,5 +148,26 @@ p.card-text {
 
 .btn-primary {
   background-color: var(--bs-primary);
+}
+
+.placeholder {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+.placeholder-glow .placeholder {
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #f5f5f5;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
 }
 </style>

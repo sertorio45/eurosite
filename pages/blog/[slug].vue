@@ -1,40 +1,63 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
-// Referência dos posts
-const post = ref({});
-const relatedPosts = ref([]);
+// Rota atual
 const route = useRoute();
 
-onMounted(async () => {
-  try {
-    // Ajustando para buscar todos os posts e filtrar pelo slug
-    const response = await $fetch('/api/posts');
-    const posts = response;
-    if (posts && posts.length > 0) {
-      post.value = posts.find((p) => p.slug === route.params.slug);
+// Referência para o post e artigos relacionados
+const post = ref({});
+const relatedPosts = ref([]);
 
-      // Buscando mais artigos relacionados
-      relatedPosts.value = posts.filter((p) => p.slug !== route.params.slug).slice(0, 3);
-    }
-  } catch (error) {
-    console.error('Erro ao buscar dados do post:', error);
+// Uso de useAsyncData para buscar os dados
+const { data: posts } = useAsyncData('posts', () => $fetch('/api/posts'));
+
+// Computada para encontrar o post atual e artigos relacionados
+const currentPost = computed(() => {
+  if (posts.value) {
+    return posts.value.find((p) => p.slug === route.params.slug) || {};
   }
+  return {};
 });
+
+const otherPosts = computed(() => {
+  if (posts.value) {
+    return posts.value.filter((p) => p.slug !== route.params.slug).slice(0, 3);
+  }
+  return [];
+});
+
+// Atualizando os valores do post e artigos relacionados
+post.value = currentPost.value;
+relatedPosts.value = otherPosts.value;
 </script>
 
 <template>
+  <section class="bg-light py-5 text-center">
+    <div>
+      <a href="/" style="text-decoration: none;">Página inicial</a> / <span>{{ post.title }}</span>
+    </div>
+  </section>
   <div>
     <section class="py-5">
       <div class="container my-5">
         <div class="row">
           <div class="col-sm-8 text-center">
-            <NuxtLink to="/">Início</NuxtLink>
             <h1 class="my-4">{{ post.title }}</h1>
-            <small>Postado em: {{ post.date }}</small>
 
-            <div class="my-5"><NuxtImg :src="post.image || 'https://placeholder.com/150x150'" alt="Imagem do artigo" class="img-fluid" quality="75"/></div>
+            <div class="my-5">
+              <NuxtImg 
+                :src="post.image" 
+                class="card-img-top img-fluid"
+                :alt="post.title || 'Imagem do post'" 
+                densities="x1 x2" 
+                :placeholder="[500, 500, 75, 5]" 
+                width="600" 
+                height="350" 
+                loading="eager" 
+                quality="80" 
+              />
+            </div>
             <p class="mt-5 px-5" v-html="post.content"></p>
           </div>
           <div class="col-sm-4">
@@ -55,12 +78,12 @@ onMounted(async () => {
 
 <style>
 .card {
-    margin: 0px !important;
+  margin: 0px !important;
 }
 
 .sticky-card {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 20px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
 }
 </style>

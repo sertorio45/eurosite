@@ -5,20 +5,9 @@
         <!-- Loop pelos posts -->
         <div class="col-md-4 mb-4" v-for="post in displayedPosts" :key="post.id">
           <div class="card blog-card h-100">
-            <NuxtImg 
-                :src="post.image" 
-                class="card-img-top img-fluid"
-                :alt="post.title || 'Imagem do post'" 
-                densities="x1 x2" 
-                :placeholder="[500, 500, 75, 5]" 
-                width="500" 
-                height="500" 
-                loading="lazy" 
-                quality="80" 
-            />
+            <NuxtImg :src="post.image" class="card-img-top img-fluid" alt="Imagem do post" />
             <div class="card-body">
-              <!-- Data já formatada no backend -->
-              <small class="text-muted">{{ post.date }}</small>
+
               <!-- Título com a primeira letra maiúscula -->
               <h5 class="card-title mt-2">{{ capitalizeTitle(post.title) }}</h5>
               <NuxtLink class="btn btn-primary" :to="`/blog/${post.slug}`">Ver artigo</NuxtLink>
@@ -89,7 +78,7 @@ const capitalizeTitle = (title) => {
 .card-title {
   font-weight: bold;
   display: -webkit-box;
-
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;

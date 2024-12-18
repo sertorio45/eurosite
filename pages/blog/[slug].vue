@@ -1,41 +1,40 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 // Rota atual
 const route = useRoute();
-
-// Referência para o post e artigos relacionados
 const post = ref({});
-const relatedPosts = ref([]);
+const latestPosts = ref([]);
 
-// Uso de useAsyncData para buscar os dados
-const { data: posts } = useAsyncData('posts', () => $fetch('/api/posts'));
-
-// Computada para encontrar o post atual e artigos relacionados
-const currentPost = computed(() => {
-  if (posts.value) {
-    return posts.value.find((p) => p.slug === route.params.slug) || {};
+// Fetch de dados na rota atual
+const fetchPostData = async () => {
+  try {
+    const { data } = await useFetch('/api/posts');
+    const posts = data.value || [];
+    post.value = posts.find((p) => p.slug === route.params.slug) || {};
+    latestPosts.value = posts
+      .filter((p) => p.slug !== route.params.slug)
+      .slice(0, 3); // Limita aos 3 últimos artigos
+  } catch (error) {
+    console.error('Erro ao carregar os posts:', error);
   }
-  return {};
-});
+};
 
-const otherPosts = computed(() => {
-  if (posts.value) {
-    return posts.value.filter((p) => p.slug !== route.params.slug).slice(0, 3);
-  }
-  return [];
-});
-
-// Atualizando os valores do post e artigos relacionados
-post.value = currentPost.value;
-relatedPosts.value = otherPosts.value;
+// Atualiza os dados ao carregar ou alterar a rota
+watch(
+  () => route.params.slug,
+  () => {
+    fetchPostData();
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
   <section class="bg-light py-5 text-center">
     <div>
-      <a href="/" style="text-decoration: none;">Página inicial</a> / <span>{{ post.title }}</span>
+      <a href="/" style="text-decoration: none;">Página inicial</a> / <a href="/blog">Blog</a> / <span>{{ post.title }}</span>
     </div>
   </section>
   <div>
@@ -44,20 +43,16 @@ relatedPosts.value = otherPosts.value;
         <div class="row">
           <div class="col-sm-8 text-center">
             <h1 class="my-4">{{ post.title }}</h1>
-
-            <div class="my-5">
-              <NuxtImg 
+            <NuxtImg 
                 :src="post.image" 
-                class="card-img-top img-fluid"
+                class="rounded"
                 :alt="post.title || 'Imagem do post'" 
                 densities="x1 x2" 
-                :placeholder="[500, 500, 75, 5]" 
-                width="600" 
-                height="350" 
-                loading="eager" 
-                quality="80" 
+                width="700" 
+                height="450" 
+                loading="eager"
+                :preload="post.image"
               />
-            </div>
             <p class="mt-5 px-5" v-html="post.content"></p>
           </div>
           <div class="col-sm-4">
@@ -65,8 +60,20 @@ relatedPosts.value = otherPosts.value;
               <a href="javascript:history.back()" class="btn btn-primary mb-4 justify-content-end">Voltar</a>
               <h3 class="mt-4">Mais artigos</h3>
               <hr class="hr hr-blurry" />
-              <div v-for="relatedPost in relatedPosts" :key="relatedPost.slug" class="text-left">
-                <NuxtLink :href="`/blog/${relatedPost.slug}`">{{ relatedPost.title }}</NuxtLink>
+              <div v-for="latestPost in latestPosts" :key="latestPost.slug" class="text-left d-flex align-items-center">
+                <NuxtLink :href="`/blog/${latestPost.slug}`" >
+                  <NuxtImg 
+                      :src="latestPost.image" 
+                      class=" m-1"
+                      :alt="latestPost.title || 'Imagem do post'" 
+                      densities="x1 x2" 
+                      width="75" 
+                      height="75" 
+                      loading="lazy" 
+                      :placeholder="[75, 75, 50, 5]" 
+                    /> 
+                </NuxtLink>
+                <NuxtLink :href="`/blog/${latestPost.slug}`" class="latestPost px-2">{{ latestPost.title }}</NuxtLink>
               </div>
             </div>
           </div>
@@ -84,6 +91,18 @@ relatedPosts.value = otherPosts.value;
 .sticky-card {
   position: -webkit-sticky;
   position: sticky;
-  top: 20px;
+  top: 15%;
+}
+
+.latestPost {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: var(--bs-black);
 }
 </style>

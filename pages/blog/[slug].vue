@@ -6,7 +6,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 
 // Fetch de dados com useLazyFetch
-const { data, pending, error } = useLazyFetch('/api/posts');
+const { data, pending, error } = useFetch('/api/posts');
 
 // Dados do post atual e últimos posts
 const post = computed(() => {
@@ -37,7 +37,7 @@ const latestPosts = computed(() => {
     <section class="py-5">
       <div class="container my-5">
         <div class="row">
-          <div class="col-sm-8 text-center">
+          <div class="col-sm-8 text-justify">
             <h1 class="my-4" v-if="post.title">{{ post.title }}</h1>
             <h1 v-else class="placeholder-glow">
               <span class="placeholder col-8"></span>
@@ -85,6 +85,7 @@ const latestPosts = computed(() => {
                       height="75" 
                       loading="lazy" 
                       :placeholder="15"
+                      fit="cover"
                     />
                   </NuxtLink>
                 </div>

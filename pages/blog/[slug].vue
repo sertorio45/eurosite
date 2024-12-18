@@ -53,6 +53,7 @@ const latestPosts = computed(() => {
                 height="350" 
                 loading="lazy"
                 :placeholder="15"
+                fit="cover"
               />
             </div>
             <div v-else class="placeholder-glow">

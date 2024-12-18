@@ -1,34 +1,25 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 // Rota atual
 const route = useRoute();
-const post = ref({});
-const latestPosts = ref([]);
 
-// Fetch de dados na rota atual
-const fetchPostData = async () => {
-  try {
-    const { data } = await useFetch('/api/posts');
-    const posts = data.value || [];
-    post.value = posts.find((p) => p.slug === route.params.slug) || {};
-    latestPosts.value = posts
-      .filter((p) => p.slug !== route.params.slug)
-      .slice(0, 3); // Limita aos 3 últimos artigos
-  } catch (error) {
-    console.error('Erro ao carregar os posts:', error);
-  }
-};
+// Fetch de dados com useAsyncData
+const { data, error } = useAsyncData('posts', () => $fetch('/api/posts'));
 
-// Atualiza os dados ao carregar ou alterar a rota
-watch(
-  () => route.params.slug,
-  () => {
-    fetchPostData();
-  },
-  { immediate: true }
-);
+// Dados do post atual e últimos posts
+const post = computed(() => {
+  return data.value?.find((p) => p.slug === route.params.slug) || {};
+});
+
+const latestPosts = computed(() => {
+  return (
+    data.value
+      ?.filter((p) => p.slug !== route.params.slug)
+      .slice(0, 3) || []
+  );
+});
 </script>
 
 <template>
@@ -41,19 +32,19 @@ watch(
     <section class="py-5">
       <div class="container my-5">
         <div class="row">
-          <div class="col-sm-8 text-center">
+          <div class="col-sm-8">
             <h1 class="my-4">{{ post.title }}</h1>
             <NuxtImg 
                 :src="post.image" 
                 class="rounded"
                 :alt="post.title || 'Imagem do post'" 
                 densities="x1 x2" 
-                width="700" 
-                height="450" 
+                width="750" 
+                height="350" 
                 loading="eager"
-                :preload="post.image"
+                :placeholder="[750, 350, 75, 15]"
               />
-            <p class="mt-5 px-5" v-html="post.content"></p>
+            <p class="mt-5 text-justify" v-html="post.content"></p>
           </div>
           <div class="col-sm-4">
             <div class="card p-4 sticky-card">
@@ -64,13 +55,13 @@ watch(
                 <NuxtLink :href="`/blog/${latestPost.slug}`" >
                   <NuxtImg 
                       :src="latestPost.image" 
-                      class=" m-1"
+                      class=" m-1 rounded"
                       :alt="latestPost.title || 'Imagem do post'" 
                       densities="x1 x2" 
                       width="75" 
                       height="75" 
                       loading="lazy" 
-                      :placeholder="[75, 75, 50, 5]" 
+                      :placeholder="[75, 75, 75, 5]"
                     /> 
                 </NuxtLink>
                 <NuxtLink :href="`/blog/${latestPost.slug}`" class="latestPost px-2">{{ latestPost.title }}</NuxtLink>

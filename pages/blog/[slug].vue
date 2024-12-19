@@ -27,30 +27,22 @@ const latestPosts = computed(() => {
 <template>
   <section class="bg-light py-5 text-center">
     <div>
-      <a href="/" style="text-decoration: none;">Página inicial</a> / <a href="/blog">Blog</a> / <span v-if="post.title">{{ post.title }}</span>
-      <span v-else class="placeholder-glow">
-        <span class="placeholder col-6"></span>
-      </span>
+      <a href="/" style="text-decoration: none;">Página inicial</a> / <a href="/blog">Blog</a>
     </div>
   </section>
   <div>
     <section class="py-5">
       <div class="container my-5">
         <div class="row">
-          <div class="col-sm-8 text-justify">
-            <h1 class="my-4" v-if="post.title">{{ post.title }}</h1>
-            <h1 v-else class="placeholder-glow">
-              <span class="placeholder col-8"></span>
-            </h1>
+          <div class="col-sm-8 col-md-8 text-justify">
 
             <div v-if="post.image">
               <NuxtImg 
                 :src="post.image" 
-                class="rounded"
+                class="rounded mb-4"
                 :alt="post.title || 'Imagem do post'" 
                 densities="x1 x2" 
-                width="700" 
-                height="350" 
+                sizes="sm:90vw md:100vw"
                 loading="lazy"
                 :placeholder="15"
                 fit="cover"
@@ -59,18 +51,23 @@ const latestPosts = computed(() => {
             <div v-else class="placeholder-glow">
               <div class="placeholder rounded w-100" style="height: 350px; width: 700px;"></div>
             </div>
+            <h1 class="my-4" style="width: 90%;" v-if="post.title">{{ post.title }}</h1>
+            <h1 v-else class="placeholder-glow">
+              <span class="placeholder col-8"></span>
+            </h1>
 
-            <p class="mt-5 px-5" v-if="post.content" v-html="post.content"></p>
-            <p v-else class="placeholder-glow">
+    
+
+            <div class="mt-2" v-if="post.content" v-html="post.content" style="width: 90%;"></div>
+            <div v-else class="placeholder-glow">
               <span class="placeholder col-12"></span>
               <span class="placeholder col-10"></span>
               <span class="placeholder col-8"></span>
-            </p>
+            </div>
           </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-4 col-md-4 my-0 my-md-0 my-sm-2">
             <div class="card p-4 sticky-card">
-              <a href="javascript:history.back()" class="btn btn-primary mb-4 justify-content-end">Voltar</a>
               <h3 class="mt-4">Mais artigos</h3>
               <hr class="hr hr-blurry" />
               <div v-for="latestPost in latestPosts" :key="latestPost.slug" class="text-left d-flex align-items-center">
@@ -128,4 +125,11 @@ const latestPosts = computed(() => {
   text-decoration: none;
   color: var(--bs-black);
 }
+
+@media (max-width: 576px) {
+  .sticky-card {
+    margin-top: 5vh !important;
+  }
+}
+
 </style>

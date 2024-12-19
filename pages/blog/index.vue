@@ -5,7 +5,18 @@
         <!-- Loop pelos posts -->
         <div class="col-md-4 mb-4" v-for="post in displayedPosts" :key="post.id">
           <div class="card blog-card h-100">
-            <NuxtImg :src="post.image" class="card-img-top img-fluid" alt="Imagem do post" />
+            <NuxtImg 
+                :src="post.image" 
+                class="card-img-top img-fluid" alt="Imagem do post" 
+                :alt="post.title || 'Imagem do post'" 
+                densities="x1 x2" 
+                :placeholder="15" 
+                width="500" 
+                height="500" 
+                loading="lazy" 
+                quality="80" 
+                fit="cover"
+            />
             <div class="card-body">
 
               <!-- Título com a primeira letra maiúscula -->

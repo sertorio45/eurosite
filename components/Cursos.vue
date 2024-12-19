@@ -23,9 +23,11 @@
                 height="500" 
                 loading="lazy" 
                 quality="80" 
+                fit="cover"
+                placeholder="[900, 500, 75, 5]"
               />
             </div>
-            <div class="card-body d-flex flex-column">
+            <div class="card-body">
               <h3>{{ course.title }}</h3>
               <NuxtLink class="card-text mt-auto" :to="`/cursos/${course.slug}`">Mais informações</NuxtLink>
             </div>
@@ -65,7 +67,6 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useAsyncData } from '#app';
 
 // Função para capitalizar a primeira letra do título
 const capitalizeTitle = (title) => {

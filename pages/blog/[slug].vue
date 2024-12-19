@@ -39,10 +39,10 @@ const latestPosts = computed(() => {
             <div v-if="post.image">
               <NuxtImg 
                 :src="post.image" 
-                class="rounded mb-4"
+                class="rounded mb-4 img-fluid"
                 :alt="post.title || 'Imagem do post'" 
                 densities="x1 x2" 
-                sizes="sm:90vw md:100vw"
+                sizes="700px sm:90vw md:100vw"
                 loading="lazy"
                 :placeholder="15"
                 fit="cover"

@@ -50,7 +50,7 @@ const latestPosts = computed(() => {
                 height="500"
                 loading="lazy"
                 fit="cover"
-                :placeholder="[800, 500, 75, 5]"
+                :placeholder="15"
               />
             </div>
 

@@ -5,20 +5,21 @@ import { useRoute } from 'vue-router';
 // Rota atual
 const route = useRoute();
 
-// Fetch de dados com useLazyFetch
-const { data, pending, error } = useFetch('/api/posts');
+// Fetch de dados com useAsyncData
+const { data, pending, error } = useAsyncData('posts', () => $fetch('/api/posts'));
 
 // Dados do post atual e últimos posts
 const post = computed(() => {
-  if (!data.value) return {};
+  if (error.value || !data.value) return { title: 'Erro ao carregar', content: 'Erro ao carregar conteúdo.', image: '' };
   const currentPost = data.value.find((p) => p.slug === route.params.slug);
   return currentPost || { title: 'Carregando...', content: 'Carregando conteúdo...', image: '' };
 });
 
 const latestPosts = computed(() => {
+  if (error.value || !data.value) return [];
   return (
     data.value
-      ?.filter((p) => p.slug !== route.params.slug)
+      .filter((p) => p.slug !== route.params.slug)
       .slice(0, 3) || []
   );
 });
@@ -27,7 +28,7 @@ const latestPosts = computed(() => {
 <template>
   <section class="bg-light py-5 text-center">
     <div>
-      <a href="/" style="text-decoration: none;">Página inicial</a> / <a href="/blog">Blog</a>
+      <NuxtLink href="/" style="text-decoration: none;">Página inicial</NuxtLink> / <NuxtLink href="/blog" style="text-decoration: none;">Blog</NuxtLink>
     </div>
   </section>
   <div>
@@ -35,43 +36,42 @@ const latestPosts = computed(() => {
       <div class="container my-5">
         <div class="row">
           <div class="col-sm-8 col-md-8 text-justify">
-
-            <div v-if="post.image">
+            <!-- Imagem do Post -->
+            <div v-if="!post.image">
+              <p>Carregando imagem...</p>
+            </div>
+            <div v-else>
               <NuxtImg 
                 :src="post.image" 
                 class="rounded mb-4 img-fluid"
                 :alt="post.title || 'Imagem do post'" 
-                densities="x1 x2" 
-                sizes="700px sm:90vw md:100vw"
+                densities="x1 x2"
+                width="800"
+                height="500"
                 loading="lazy"
-                :placeholder="15"
                 fit="cover"
+                :placeholder="[800, 500, 75, 5]"
               />
             </div>
-            <div v-else class="placeholder-glow">
-              <div class="placeholder rounded w-100" style="height: 350px; width: 700px;"></div>
-            </div>
-            <h1 class="my-4" style="width: 90%;" v-if="post.title">{{ post.title }}</h1>
-            <h1 v-else class="placeholder-glow">
-              <span class="placeholder col-8"></span>
-            </h1>
 
-    
+            <!-- Título do Post -->
+            <h1 class="my-4" v-if="post.title">{{ post.title }}</h1>
 
-            <div class="mt-2" v-if="post.content" v-html="post.content" style="width: 90%;"></div>
-            <div v-else class="placeholder-glow">
-              <span class="placeholder col-12"></span>
-              <span class="placeholder col-10"></span>
-              <span class="placeholder col-8"></span>
-            </div>
+            <!-- Conteúdo do Post -->
+            <div class="my-5" v-if="post.content" v-html="post.content"></div>
           </div>
 
-          <div class="col-sm-4 col-md-4 my-0 my-md-0 my-sm-2">
+          <!-- Mais artigos -->
+          <div class="col-sm-4 col-md-4">
             <div class="card p-4 sticky-card">
               <h3 class="mt-4">Mais artigos</h3>
               <hr class="hr hr-blurry" />
               <div v-for="latestPost in latestPosts" :key="latestPost.slug" class="text-left d-flex align-items-center">
-                <div v-if="latestPost.image">
+                <!-- Imagem do Post -->
+                <div v-if="!latestPost.image">
+                  <p>Carregando imagem...</p>
+                </div>
+                <div v-else>
                   <NuxtLink :href="`/blog/${latestPost.slug}`">
                     <NuxtImg 
                       :src="latestPost.image" 
@@ -80,20 +80,17 @@ const latestPosts = computed(() => {
                       densities="x1 x2" 
                       width="75" 
                       height="75" 
-                      loading="lazy" 
-                      :placeholder="15"
+                      loading="lazy"
                       fit="cover"
+                      :placeholder="[75, 75, 75, 5]"
                     />
                   </NuxtLink>
                 </div>
-                <div v-else class="placeholder-glow">
-                  <div class="placeholder rounded-circle" style="height: 75px; width: 75px;"></div>
-                </div>
 
-                <NuxtLink :href="`/blog/${latestPost.slug}`" class="latestPost px-2" v-if="latestPost.title">{{ latestPost.title }}</NuxtLink>
-                <span v-else class="placeholder-glow">
-                  <span class="placeholder col-6"></span>
-                </span>
+                <!-- Título do Post -->
+                <NuxtLink v-if="latestPost.title" :href="`/blog/${latestPost.slug}`" class="latestPost px-2">
+                  {{ latestPost.title }}
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -128,8 +125,7 @@ const latestPosts = computed(() => {
 
 @media (max-width: 576px) {
   .sticky-card {
-    margin-top: 5vh !important;
+    margin-top: 0px !important;
   }
 }
-
 </style>

@@ -2,13 +2,13 @@
 <section class="bg-primary py-3 text-light d-flex justify-content-center" id="head1">
   <div class="container">
     <div class="row">
-      <div class="col-6 d-flex justify-content-start">
-       <a href=""><Icon icon="bx bxl-instagram" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
-       <a href=""><Icon icon="bx bxl-facebook" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
+      <div class="col-3 col-lg-6 d-flex justify-content-start">
+       <a href=""><Icon icon="bxl-instagram" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
+       <a href=""><Icon icon="bxl-facebook" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
        
-       <a href=""><Icon icon="bx bxl-linkedin" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
+       <a href=""><Icon icon="bxl-linkedin" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
       </div>
-      <div class="col-6 d-flex justify-content-end">
+      <div class="col-9 col-lg-6 d-flex justify-content-end links-header1">
         <span>
           <NuxtLink to="#" class="text-light link-menu">Seja Franquiado</NuxtLink> | 
           <NuxtLink to="/ouvidoria" class="text-light link-menu">Ouvidoria</NuxtLink> | 
@@ -45,7 +45,7 @@
             </button>
 
             <!-- Menu Colapsável -->
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse mt-4" id="navbarNav">
               <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                   <NuxtLink to="/" class="nav-link">Página inicial</NuxtLink>
@@ -106,6 +106,14 @@ onBeforeUnmount(() => {
 
 <style scoped>
 
+#head1 {
+
+  .links-header1 {
+    font-size: 0.8em;
+    align-items: center;
+  }
+
+}
 
 </style>
 

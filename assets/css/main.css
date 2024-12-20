@@ -33,7 +33,6 @@ h1,h2,h3,h5,h6 {
     -webkit-box-shadow: 10px 10px 21px 2px var(--bs-shadow-color);
     -moz-box-shadow: 10px 10px 21px 2px var(--bs-shadow-color);
     box-shadow: 0 4px 21px 2px var(--bs-shadow-color);
-    margin: 10px;
 }
 
 .card-body {
@@ -192,6 +191,12 @@ h1,h2,h3,h5,h6 {
     padding-left: 1em;
     padding-right: 1em;
   }
+  .card-body {
+    padding: 2rem 10px 2rem 10px;
+    border: 1px solid transparent;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+}
 }
 
 

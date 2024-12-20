@@ -1,16 +1,21 @@
 <template>
-<footer class="pt-5">
+<footer class="pt-0 pt-x-0">
   <div class="container py-5">
     <div class="row d-flex justify-content-center align-content-center">
       <!-- Logo e Direitos Reservados -->
-      <div class="col-md-3 p-0 m-0">
+      <div class="col-md-3 py-sm-2">
         <!-- <img src="@/assets/img/logo-footer.svg" alt="Logo EuroAnglo" class="img-fluid mb-2"> -->
-        <NuxtImg src="img/logo-footer.svg" width="200px" />
+        <NuxtImg 
+          src="img/logo-footer.svg"
+          class="mb-5 mb-lg-0 mb-sm-0 mb-md-0" 
+          width="200px"
+          loading="lazy"
+        />
       </div>
 
       <!-- Nossas Unidades -->
       <div class="col-md-2 mb-4">
-        <h5 class="fw-bold">Nossas Unidades</h5>
+        <h5 class="fw-bold">Unidades</h5>
         <ul class="list-unstyled">
           <li><a href="#">Campinas</a></li>
           <li><a href="#">Franca</a></li>
@@ -42,24 +47,33 @@
       </div>
 
       <!-- Redes Sociais e Botão -->
-      <div class="col-md-3 mb-4">
+      <div class="col-md-3 mb-4 social-links">
         <h5 class="fw-bold">Redes sociais</h5>
-        <a href="#"><Icon icon="bx blx-instagram" /></a>
-        <a href="#"><i class="bi bi-linkedin fs-4 me-2 text-dark"></i></a>
-        <a href="#"><i class="bi bi-facebook fs-4"></i></a>
-        <div class="mt-3">
-          <ButtonAtendimentoRapido valor="Atendimento rápdio" />
-        </div>
+          <div class=" ">
+            <a href="htpps"><Icon icon="bxl-facebook" fontSize="1.7em" color="#fff" class="mx-auto" /></a>
+            <a href="#"><Icon icon="bxl-linkedin" fontSize="1.7em" color="#fff" /></a>
+            <a href="#"><Icon icon="bxl-instagram" fontSize="1.7em" color="#fff" /></a>
+          </div>
+            <ButtonAtendimentoRapido valor="Atendimento rápdio" class="mt-3" />
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container" id="copyright">
       <div class="row d-flex justify-content-between">
-        <div class="col-6 text-start">
+        <div class="col-lg-6 col-sm-12 col-md-12 text-lg-start text-left">
         <p>Copyright © 2024 - Todos os direitos reservados.</p>
         </div>
-        <div class="col-6 text-end justify-content-center">
-        <p>Criado e hospedado por: <NuxtImg src="https://s3.gsstudio.com.br/gsstudio/branding/gsstudio-logotipo.svg" alt="GS Studio" class="img-fluid mx-1" width="100px"/></p>
+        <div class="col-lg-6 col-sm-12 col-md-12 text-lg-end text-left">
+        <p>Criado e hospedado por:
+          <NuxtImg 
+            src="https://s3.gsstudio.com.br/gsstudio/branding/gsstudio-logotipo.svg" 
+            alt="GS Studio" 
+            class="mx-1"
+            width="100" 
+            sizes="100vw sm:50vw md:400px"
+            loading="lazy"
+          /> 
+        </p>
         </div>
       </div>
     </div>
@@ -72,9 +86,27 @@
 </script>
 
 <style>
+
+.social-links i {
+  background-color: var(--bs-primary);
+  padding: 0.3em;
+  border-radius: 100px;
+  margin: 2px;
+}
+
+footer {
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+}
+
 footer a {
   color: #000;
-  font-size: 14px;
+  font-size: 0.9rem;
   text-decoration: none;
 }
+
+#copyright {
+  font-size: 0.8rem;
+}
+
 </style>

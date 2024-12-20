@@ -129,16 +129,11 @@ footer a {
   
 }
 @media (min-width: 1024px) {
-  .btn-primary {
-    padding: .5rem 1rem .5rem 1rem;
-    border-radius: 5px;
-    border: 0;
-    font-size: 0.75em;
-}
+
   
 }
 
 @media (min-width: 1440px) {
-  
+
 }
 </style>

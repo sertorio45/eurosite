@@ -67,6 +67,9 @@
 <script setup>
 import { computed } from 'vue';
 
+// IDs específicos dos cursos a serem exibidos
+const allowedCourseIds = [6, 8, 21, 29, 17, 18];
+
 // Função para capitalizar a primeira letra do título
 const capitalizeTitle = (title) => {
   if (!title) return '';
@@ -82,9 +85,12 @@ const { data: courses, pending, error } = useAsyncData('courses', async () => {
   }));
 });
 
-// Computada para pegar os últimos 3 cursos
-const lastThreeCourses = computed(() => courses.value?.slice(0, 6) || []);
+// Computada para pegar apenas os cursos com IDs permitidos
+const lastThreeCourses = computed(() => 
+  courses.value?.filter(course => allowedCourseIds.includes(course.id)) || []
+);
 </script>
+
 
 <style scoped>
 .card-body {

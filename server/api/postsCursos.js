@@ -28,6 +28,11 @@ export default defineEventHandler(async (event) => {
     const coursesMap = {};
 
     coursesWithDetails.forEach(row => {
+      // Verifica se o curso está ativo
+      if (row.ativo !== 1) {
+        return; // Ignora cursos inativos
+      }
+
       if (!coursesMap[row.courseId]) {
         coursesMap[row.courseId] = {
           id: row.courseId,

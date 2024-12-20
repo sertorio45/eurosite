@@ -120,8 +120,8 @@ const anoEmpresa = computed(() => anoAtual - anoFundacao);
 @media (min-width: 1024px) {
   .girl-img {
     position: relative;
-    top: -20%;
-    right: 27%;
+    top: -15%;
+    right: 5%;
   }
 }
 

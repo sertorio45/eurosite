@@ -27,7 +27,7 @@
           <div class="container p-0">
             <!-- Logo -->
             <NuxtLink to="/" class="navbar-brand">
-              <Logo />
+              <NuxtImg src="/img/logotipo.svg" width="185px" />
             </NuxtLink>
 
             <!-- Botão de Toggle com Boxicons -->
@@ -45,7 +45,7 @@
             </button>
 
             <!-- Menu Colapsável -->
-            <div class="collapse navbar-collapse mt-4" id="navbarNav">
+            <div class="collapse navbar-collapse mt-4 mt-lg-2 mt-md-2 " id="navbarNav">
               <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                   <NuxtLink to="/" class="nav-link">Página inicial</NuxtLink>
@@ -134,15 +134,24 @@ onBeforeUnmount(() => {
   color: var(--color-primary)!important;
   margin: 2px;
 }
-  
+
 }
 @media (min-width: 1024px) {
-
+  
+  .nav-item {
+    font-size: 0.85em!important;
+  }
+  a.dropdown-item.nav-link {
+    font-size: 0.85em!important;
+}
 }
 
 @media (min-width: 1440px) {
-
+  .nav-item {
+    font-size: 1.1vw;
+  }
 }
+
 
 
 

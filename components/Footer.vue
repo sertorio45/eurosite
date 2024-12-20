@@ -120,11 +120,11 @@ footer a {
   margin: 2px;
   font-size: 20px!important;
 }
-.btn-primary {
+.social-links .btn-primary {
     padding: .5rem 1rem .5rem 1rem;
     border-radius: 5px;
     border: 0;
-    font-size: 0.7em;
+    font-size: 0.75em;
 }
   
 }

@@ -1,6 +1,6 @@
 <template>
   <section class="py-5">
-    <div class="container my-5 py-5 min-vh-100 justify-content-center">
+    <div class="container my-5 py-0 py-lg-5 py-md-5 py-sm-4 min-vh-100 justify-content-center">
       <div class="row justify-content-center align-items-center g-3 text-center">
         <h1>Nossos cursos</h1>
         <p>

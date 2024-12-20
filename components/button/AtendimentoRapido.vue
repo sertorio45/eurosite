@@ -15,5 +15,5 @@ defineProps({
 </script>
 
 <style scoped>
-/* Adicione estilos personalizados, se necessário */
+
 </style>

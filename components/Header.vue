@@ -2,13 +2,13 @@
 <section class="bg-primary py-3 text-light d-flex justify-content-center" id="head1">
   <div class="container">
     <div class="row">
-      <div class="col-3 col-lg-6 d-flex justify-content-start">
+      <div class="col-2 col-lg-6 d-flex justify-content-start">
        <a href=""><Icon icon="bxl-instagram" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
        <a href=""><Icon icon="bxl-facebook" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
        
        <a href=""><Icon icon="bxl-linkedin" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
       </div>
-      <div class="col-9 col-lg-6 d-flex justify-content-end links-header1">
+      <div class="col-10 col-lg-6 d-flex justify-content-end links-header1">
         <span>
           <NuxtLink to="#" class="text-light link-menu">Seja Franquiado</NuxtLink> | 
           <NuxtLink to="/ouvidoria" class="text-light link-menu">Ouvidoria</NuxtLink> | 
@@ -108,12 +108,44 @@ onBeforeUnmount(() => {
 
 #head1 {
 
-  .links-header1 {
-    font-size: 0.8em;
-    align-items: center;
-  }
+
 
 }
+
+@media (max-width: 576px) {
+  .social-icon {
+  background-color: #ffffff;
+  border-radius: 10%;
+  padding: 2.2px;
+  font-size: 14px!important;
+  color: var(--color-primary)!important;
+  margin: 1px;
+}
+.links-header1 {
+    font-size: 0.65em;
+    align-items: center;
+  }
+}
+@media (min-width: 768px) {
+  .social-icon {
+  background-color: #ffffff;
+  border-radius: 20%;
+  padding: 3px;
+  color: var(--color-primary)!important;
+  margin: 2px;
+}
+  
+}
+@media (min-width: 1024px) {
+
+}
+
+@media (min-width: 1440px) {
+
+}
+
+
+
 
 </style>
 

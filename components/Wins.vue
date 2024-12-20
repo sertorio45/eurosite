@@ -8,7 +8,7 @@
         </p>
       </div>
 
-      <div class="row text-center justify-content-center align-items-center g-0 my-4">
+      <div class="row text-center justify-content-center align-items-center my-4">
         <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
           <div class="card">
             <div class="card-body">

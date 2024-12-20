@@ -36,7 +36,6 @@ h1,h2,h3,h5,h6 {
 }
 
 .card-body {
-    padding: 70px 10px 70px 10px;
     border: 1px solid transparent; /* Corrigido para ter uma borda visível, se necessário */
     transition: ease-in-out;
     transition-duration: 0.2s;
@@ -192,10 +191,7 @@ h1,h2,h3,h5,h6 {
     padding-right: 1em;
   }
   .card-body {
-    padding: 2rem 10px 2rem 10px;
-    border: 1px solid transparent;
-    transition: ease-in-out;
-    transition-duration: 0.2s;
+   
 }
 }
 

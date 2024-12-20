@@ -9,9 +9,9 @@
         </p>
       </div>
 
-      <div v-if="lastThreeCourses.length > 0" class="row text-center justify-content-center align-items-center g-1 my-4">
+      <div v-if="lastThreeCourses.length > 0" class="row text-center justify-content-center align-items-center g-2 g-lg-3 my-4">
         <div v-for="(course, index) in lastThreeCourses" :key="course.id" class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card cursos-card h-100 d-flex flex-column">
+          <div class="card cursos-card">
             <div class="img-container">
               <NuxtImg 
                 :src="course.image" 
@@ -21,8 +21,7 @@
                 :placeholder="[900, 500, 75, 5]" 
                 width="900" 
                 height="500" 
-                loading="lazy" 
-                quality="80" 
+                loading="lazy"  
                 fit="cover"
                 placeholder="[900, 500, 75, 5]"
               />
@@ -37,7 +36,7 @@
 
       <div v-else class="row text-center justify-content-center align-items-center g-1 my-4">
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4" v-for="n in 3" :key="n">
-          <div class="card cursos-card d-flex flex-column">
+          <div class="card cursos-card">
             <div class="img-container">
               <div class="placeholder-glow w-100">
                 <img 
@@ -84,7 +83,7 @@ const { data: courses, pending, error } = useAsyncData('courses', async () => {
 });
 
 // Computada para pegar os últimos 3 cursos
-const lastThreeCourses = computed(() => courses.value?.slice(0, 3) || []);
+const lastThreeCourses = computed(() => courses.value?.slice(0, 6) || []);
 </script>
 
 <style scoped>
@@ -148,4 +147,42 @@ p.card-text {
     background-color: #e0e0e0;
   }
 }
+
+/* Responsividade */
+
+@media (max-width: 576px) {
+  .cursos-card {
+    min-height: 350px;
+  }
+  .card-body {
+    align-content: center;
+  }
+}
+@media (min-width: 768px) {
+  .cursos-card {
+    min-height: 400px;
+  }
+  .card-body {
+    align-content: center;
+  }
+}
+  
+@media (min-width: 1024px) {
+  .cursos-card {
+    min-height: 370px;
+  }
+  .card-body {
+    align-content: center;
+  }
+}
+
+@media (min-width: 1440px) {
+  .cursos-card {
+    min-height: 400px;
+  }
+  .card-body {
+    align-content: center;
+  }
+}
+
 </style>

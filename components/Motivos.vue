@@ -110,7 +110,7 @@
 @media (min-width: 1024px) {
   .girl-img {
     position: relative;
-    top: -7%;
+    top: -20%;
     right: 27%;
 }
 }

@@ -6,7 +6,7 @@
           <div class="col-sm-12 col-md-12 col-lg-4 align-content-center">
             <h1>Depoimentos</h1>
             <p>
-              Confira os depoimentos de nossos alunos e como a Euro Anglo tem transformado vidas com cursos de alta qualidade e encaminhamento profissional.
+              Confira os depoimentos de nossos alunos e como a Euro Anglo Cursos tem transformado vidas com ensino de alta qualidade e encaminhamento profissional.
             </p>
             <ButtonAtendimentoRapido valor="Atendimento rápido" />
           </div>
@@ -30,7 +30,8 @@
                         class="rounded-circle img-fluid"
                         width="150px"
                         loading="lazy"
-                        placeholder="15"
+                        :placeholder="15"
+                        fit="cover"
                       />
                     </div>
                     <div class="col-12 col-md-7 col-lg-8 px-3">
@@ -66,49 +67,49 @@ const depoimentos = [
   {
     nome: "Rafael",
     texto:
-      "Olá, meu nome é Rafael. Eu estudo na escola Euro Anglo e faço o curso de Informática Kids. Aqui eu aprendi muitas coisas como fazer pesquisas que estão me ajudando muito mais nos meus trabalhos escolares.",
+      "Olá, meu nome é Rafael. Estudo na Euro Anglo Cursos e faço Informática Kids. Aprendi muitas habilidades que ajudam nos trabalhos escolares. Faça parte você também!",
     imagem: "/img/depoimentos/rafael.jpg",
   },
   {
     nome: "Renata",
     texto:
-      "Olá, meu nome é Renata e eu faço o curso de Administração aqui na Euro Anglo. Os professores são qualificados, o material didático é super atualizado. Eu super recomendo o curso. Vem pra Euro Anglo!",
+      "Meu nome é Renata. Faço Administração na Euro Anglo Cursos. Professores qualificados e material atualizado. Recomendo muito. Venha para Euro Anglo!",
     imagem: "/img/depoimentos/renata.jpg",
   },
   {
     nome: "Nícolas",
     texto:
-      "Oi. Meu nome é Nícolas, e eu fiz o curso de Informática Profissional da Euro Anglo. Atualmente eu trabalho em uma clínica odontológica. Eu faço parte, faça parte você também!",
+      "Oi, sou Nícolas. Fiz Informática Profissional na Euro Anglo Cursos e trabalho em uma clínica odontológica. Faça parte você também!",
     imagem: "/img/depoimentos/nicolas.jpg",
   },
   {
     nome: "Giovana",
     texto:
-      "Olá, meu nome é Giovana. Graças à qualificação e o projeto de encaminhamento ao mercado de trabalho, conquistei uma vaga no mercado de trabalho. Eu faço parte, faça parte você também!",
+      "Olá, sou Giovana. Graças à Euro Anglo Cursos e ao projeto de encaminhamento profissional, conquistei uma vaga no mercado. Venha fazer parte!",
     imagem: "/img/depoimentos/giovana.jpg",
   },
   {
     nome: "Tiago",
     texto:
-      "Olá! Meu nome é Tiago, sou aluno do curso de Auxiliar Veterinário. O curso tem me ajudado bastante. Eu recomendo a Euro Anglo. Eu faço parte, faça parte você também!",
+      "Olá! Sou Tiago, aluno do curso de Auxiliar Veterinário na Euro Anglo Cursos. O aprendizado tem sido incrível. Eu recomendo, venha fazer parte!",
     imagem: "/img/depoimentos/tiago.jpg",
   },
   {
     nome: "Ana Beatriz",
     texto:
-      "Olá, meu nome é Ana Beatriz. Estou gostando bastante do curso de Administração. A formação profissional traz um diferencial competitivo. Eu faço parte, faça parte você também!",
+      "Oi, sou Ana Beatriz. Estou adorando o curso de Administração na Euro Anglo Cursos. A formação profissional traz diferenciais competitivos. Venha também!",
     imagem: "/img/depoimentos/ana-beatriz.jpg",
   },
   {
     nome: "Saul",
     texto:
-      "Olá, meu nome é Saul. No curso de Administração, aprendo a gerenciar empresas e me preparo para o mercado de trabalho. Eu faço parte da Euro Anglo, venha fazer parte você também!",
+      "Olá, sou Saul. No curso de Administração da Euro Anglo Cursos, aprendo a gerenciar empresas e me preparo para o mercado. Venha fazer parte!",
     imagem: "/img/depoimentos/saul.jpg",
   },
   {
     nome: "Ana Paula",
     texto:
-      "Olá, meu nome é Ana Paula. Participo do projeto de encaminhamento profissional, Euro Jobs. Com a qualificação, conquistei uma vaga de trabalho. Eu faço parte, faça parte você também!",
+      "Olá, sou Ana Paula. Participo do Euro Jobs da Euro Anglo Cursos e conquistei uma vaga de trabalho. Faça parte desse projeto também!",
     imagem: "/img/depoimentos/ana-paula.jpg",
   },
 ];
@@ -150,7 +151,6 @@ const depoimentos = [
 @media (max-width: 768px) {
   .carousel-item .col-md-7 {
     padding-left: 0;
-    
   }
   .carousel-item img {
     margin: 0 auto;

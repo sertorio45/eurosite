@@ -12,9 +12,9 @@
                   class="d-block w-100"
                   src="/img/banners-rotativos/bolsas-desktop.webp" 
                   densities="x1 x2" 
-                  :placeholder="[1920, 780, 75, 5]" 
+                  :placeholder="15" 
                   width="1920"  
-                  loading="lazy"
+                  loading="eager"
                   fit="cover" 
                 />
               </div>
@@ -22,7 +22,7 @@
                 <NuxtImg src="/img/banners-rotativos/cursos-gratuitos-desktop.webp" 
                   class="d-block w-100" 
                   densities="x1 x2" 
-                  :placeholder="[1920, 780, 75, 5]" 
+                  :placeholder="15" 
                   width="1920"  
                   loading="lazy"
                   fit="cover" 

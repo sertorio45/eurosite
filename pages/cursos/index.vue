@@ -26,7 +26,7 @@ const loadMoreCourses = () => {
 
 // Fetch inicial para carregar cursos
 const { data, pending, error } = useAsyncData('courses', async () => {
-  const response = await $fetch('api/postsCursos');
+  const response = await $fetch('/api/postsCursos');
   if (Array.isArray(response)) {
     courses.value = response;
     displayedCourses.value = response.slice(0, coursesPerPage);
@@ -59,17 +59,16 @@ const { data, pending, error } = useAsyncData('courses', async () => {
                   :src="curso.image || '/placeholder.jpg'"
                   class="card-img-top img-fluid"
                   :alt="curso.title || 'Imagem do curso'"
-                  densities="x1 x2"
-                  width="900"
-                  height="500"
-                  loading="lazy"
-                  quality="80"
+                  densities="x1 x2" 
+                  :placeholder="[900, 500, 75, 5]" 
+                  width="900" 
+                  height="500" 
+                  loading="lazy"  
                   fit="cover"
-                  :placeholder="15"
                 />
               </div>
               <div class="card-body align-content-center">
-                <h3>{{ curso.title }}</h3>
+                <h4>{{ curso.title }}</h4>
                 <NuxtLink class="card-text mt-auto" :to="`/cursos/${curso.slug}`">
                   Mais informações
                 </NuxtLink>
@@ -120,6 +119,8 @@ const { data, pending, error } = useAsyncData('courses', async () => {
       </div>
     </div>
   </section>
+  <Depoimentos />
+  <CtaWhatsApp />
 </template>
 
 <style scoped>
@@ -179,4 +180,42 @@ const { data, pending, error } = useAsyncData('courses', async () => {
     background-color: #e0e0e0;
   }
 }
+
+/* Responsividade */
+
+@media (max-width: 576px) {
+  .cursos-card {
+    min-height: 350px;
+  }
+  .card-body {
+    align-content: center;
+  }
+}
+@media (min-width: 768px) {
+  .cursos-card {
+    min-height: 400px;
+  }
+  .card-body {
+    align-content: center;
+  }
+}
+  
+@media (min-width: 1024px) {
+  .cursos-card {
+    min-height: 370px;
+  }
+  .card-body {
+    align-content: center;
+  }
+}
+
+@media (min-width: 1440px) {
+  .cursos-card {
+    min-height: 400px;
+  }
+  .card-body {
+    align-content: center;
+  }
+}
+
 </style>

@@ -3,10 +3,18 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 mb-4">
-          <NuxtImg src="img/sobre/fachada-campinas.webp" width="600px" alt="Sobre a Empresa" class="rounded img-fluid"/>
+          <NuxtImg 
+            src="img/sobre/fachada-campinas.webp" 
+            width="600px"  
+            alt="Sobre a Empresa" 
+            class="rounded img-fluid"
+            fit="cover"
+            :placeholder="15"
+            loading="lazy"
+          />
         </div>
         <div class="col-md-6 mb-4 align-content-center">
-          <h1 class="mb-5">Quem Somos</h1>
+          <h1 class="mb-3">Quem Somos</h1>
           <p class="lead">
             Desde 2008, estamos comprometidos com a transformação de vidas por meio de <strong>cursos profissionalizantes</strong> de alta qualidade. Fundada em Ribeirão Preto, nossa instituição se tornou referência em <em>educação profissional</em>, capacitando milhares de brasileiros para o mercado de trabalho com uma educação acessível e de excelência.
           </p>

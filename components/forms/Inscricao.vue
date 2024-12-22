@@ -228,7 +228,7 @@ const resetForm = () => {
               class="form-select"
               required
             >
-              <option value="">Selecione um curso...</option>
+              <option value="">Selecione um área...</option>
               <option value="Administracao">Administração</option>
               <option value="Saude">Saúde</option>
               <option value="Tecnologia">Tecnologia</option>

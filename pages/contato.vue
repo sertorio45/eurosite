@@ -2,12 +2,21 @@
   <div class="contact-area section-padding">
     <div class="container min-vh-100">
       <div class="row align-items-center justify-items-center py-5">
-        <div class="col-md-6 mb-3 text-center">
-          <div><NuxtImg src="img/woman-contact.webp" width="400px" /></div>
+        <div class="col-md-6 order-2 order-lg-1 order-md-1 mb-3 text-center">
+          <div>
+            <NuxtImg 
+              src="img/woman-contact.webp" 
+              width="400px"
+              class="img-fluid d-lg-inline d-md-inline d-sm-inline d-none"
+              :placeholder="15" 
+              loading="lazy" 
+              alt="Euro Anglo Cursos Contato" 
+            />
+          </div>
           <div class="mt-3"><a href="#">Veja onde está nossas unidades</a></div>
           <a href="#unidades"><Icon icon="bx bx-chevrons-down" color="var(--bs-primary)" fontSize="3em" /></a>
         </div>
-        <div class="col-md-6 mb-3">
+        <div class="col-md-6 order-1 order-lg-2 mb-3">
           <FormsFormContato />
         </div>
       </div>

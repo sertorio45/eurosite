@@ -23,11 +23,10 @@
                 height="500" 
                 loading="lazy"  
                 fit="cover"
-                placeholder="[900, 500, 75, 5]"
               />
             </div>
-            <div class="card-body">
-              <h3>{{ course.title }}</h3>
+            <div class="card-body py-4">
+              <h4 class="my-4">{{ course.title }}</h4>
               <NuxtLink class="card-text mt-auto" :to="`/cursos/${course.slug}`">Mais informações</NuxtLink>
             </div>
           </div>
@@ -97,7 +96,7 @@ const lastThreeCourses = computed(() =>
   border-radius: 0 0 10px 10px;
 }
 
-.card-body h3 {
+.card-body h4 {
   text-transform: initial;
 }
 

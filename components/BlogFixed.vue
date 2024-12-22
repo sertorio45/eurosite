@@ -1,3 +1,15 @@
+<script setup>
+import { ref, computed } from 'vue';
+
+// Uso de useAsyncData para buscar os posts da API
+const { data: posts } = useAsyncData('posts', () => $fetch('/api/posts'));
+
+// Computada para pegar os últimos 3 posts
+const lastThreePosts = computed(() => {
+  return posts?.value?.slice(0, 3) || [];
+});
+</script>
+
 <template>
   <section class="bg-primary py-5">
     <div class="container my-5">
@@ -18,8 +30,8 @@
                 quality="80" 
             />
             <div class="card-body">
-              <!-- Título com a primeira letra maiúscula -->
-              <h5 class="card-title mt-2">{{ capitalizeTitle(post.title) }}</h5>
+              <!-- Título do post -->
+              <h4 class="card-title mt-2">{{ post.title }}</h4>
               <!-- Link dinâmico para o slug -->
               <NuxtLink class="btn btn-primary" :to="`/blog/${post.slug}`">Ver artigo</NuxtLink>
             </div>
@@ -30,23 +42,7 @@
   </section>
 </template>
 
-<script setup>
-import { ref, computed } from 'vue';
 
-// Uso de useAsyncData para buscar os posts da API
-const { data: posts } = useAsyncData('posts', () => $fetch('/api/posts'));
-
-// Computada para pegar os últimos 3 posts
-const lastThreePosts = computed(() => {
-  return posts?.value?.slice(0, 3) || [];
-});
-
-// Função para capitalizar a primeira letra do título
-const capitalizeTitle = (title) => {
-  if (!title) return '';
-  return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
-};
-</script>
 
 <style scoped>
 .card-body {
@@ -68,9 +64,10 @@ const capitalizeTitle = (title) => {
   font-weight: bold;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  overflow: hidden;
+  overflow: hidden; 
   text-overflow: ellipsis;
-  text-transform: none;
+  display: -webkit-box;
+  font-size: 17px;
 }
 
 .card-body small {

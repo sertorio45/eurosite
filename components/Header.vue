@@ -1,5 +1,5 @@
 <template>
-<section class="bg-primary py-3 text-light d-flex justify-content-center" id="head1">
+<header class="bg-primary py-3 text-light d-flex justify-content-center" id="head1">
   <div class="container">
     <div class="row">
       <div class="col-2 col-lg-6 d-flex justify-content-start">
@@ -17,9 +17,9 @@
       </div>
     </div>
   </div>
-</section>
+</header>
 
-<section id="head2">
+<header id="head2">
   <div :class="['container-fluid', 'py-2', {'position-fixed top-0 start-0 w-100 fixed-navbar': isScrolled}]" >
     <div class="row g-0">
       <div class="col-12">
@@ -77,7 +77,7 @@
       </div>
     </div>
   </div>
-</section>
+</header>
 </template>
 
 <script setup>
@@ -106,11 +106,6 @@ onBeforeUnmount(() => {
 
 <style scoped>
 
-#head1 {
-
-
-
-}
 
 @media (max-width: 576px) {
   .social-icon {
@@ -139,7 +134,7 @@ onBeforeUnmount(() => {
 @media (min-width: 1024px) {
   
   .nav-item {
-    font-size: 0.85em!important;
+    font-size: 0.85em;
   }
   a.dropdown-item.nav-link {
     font-size: 0.85em!important;
@@ -148,7 +143,7 @@ onBeforeUnmount(() => {
 
 @media (min-width: 1440px) {
   .nav-item {
-    font-size: 1.1vw;
+    font-size: 1vw;
   }
 }
 

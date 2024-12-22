@@ -15,7 +15,7 @@
 
       <!-- Nossas Unidades -->
       <div class="col-md-2">
-        <h5 class="fw-bold">Unidades</h5>
+        <h6 class="fw-bold">Unidades</h6>
         <ul class="list-unstyled">
           <li><a href="#">Campinas</a></li>
           <li><a href="#">Ribeirão Preto</a></li>
@@ -25,7 +25,7 @@
 
       <!-- Mapa do Site -->
       <div class="col-sm-3 col-md-2">
-        <h5 class="fw-bold">Mapa do site</h5>
+        <h6 class="fw-bold">Mapa do site</h6>
         <ul class="list-unstyled">
           <li><a href="#">Blog</a></li>
           <li><a href="#">Contato</a></li>
@@ -36,7 +36,7 @@
 
       <!-- Links Úteis -->
       <div class="col-md-3 col-lg-2">
-        <h5 class="fw-bold">Links úteis</h5>
+        <h6 class="fw-bold">Links úteis</h6>
         <ul class="list-unstyled">
           <li><a href="#">Ouvidoria</a></li>
           <li><a href="#">Política de privacidade</a></li>
@@ -47,7 +47,7 @@
 
       <!-- Redes Sociais e Botão -->
       <div class="col-md-3 col-lg-3 social-links">
-        <h5 class="fw-bold">Redes sociais</h5>
+        <h6 class="fw-bold">Redes sociais</h6>
           <div class=" ">
             <a href="htpps"><Icon icon="bxl-facebook" fontSize="1.7em" color="#fff" class="mx-auto" /></a>
             <a href="#"><Icon icon="bxl-linkedin" fontSize="1.7em" color="#fff" /></a>
@@ -109,7 +109,7 @@ footer a {
 }
 
 @media (min-width: 768px) {
-  h5 {
+  h6 {
     font-size: 0.9em;
   }
 

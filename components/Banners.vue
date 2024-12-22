@@ -8,10 +8,25 @@
           <div id="banners-desktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <NuxtImg src="/img/banners-rotativos/bolsas-desktop.webp" class="d-block w-100" alt="Banner Desktop" fit="cover"  loading="eager" width="100%" />
+                <NuxtImg
+                  class="d-block w-100"
+                  src="/img/banners-rotativos/bolsas-desktop.webp" 
+                  densities="x1 x2" 
+                  :placeholder="[1920, 780, 75, 5]" 
+                  width="1920"  
+                  loading="lazy"
+                  fit="cover" 
+                />
               </div>
               <div class="carousel-item">
-                <NuxtImg src="/img/banners-rotativos/cursos-gratuitos-desktop.webp" class="d-block w-100" alt="Banner Desktop 2" fit="cover" placeholder="15" loading="eager" />
+                <NuxtImg src="/img/banners-rotativos/cursos-gratuitos-desktop.webp" 
+                  class="d-block w-100" 
+                  densities="x1 x2" 
+                  :placeholder="[1920, 780, 75, 5]" 
+                  width="1920"  
+                  loading="lazy"
+                  fit="cover" 
+                />
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#banners-desktop" data-bs-slide="prev">
@@ -28,10 +43,10 @@
           <div id="banners-mobile" class="carousel slide d-block d-md-none" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <NuxtImg src="/img/banners-rotativos/bolsas-mobile.webp" class="d-block w-100" alt="Banner Mobile" fit="cover" placeholder="15" loading="eager" />
+                <NuxtImg src="/img/banners-rotativos/bolsas-mobile.webp" class="d-block w-100" alt="Banner Mobile" fit="cover"  loading="eager" width="100%" placeholder="25" />
               </div>
               <div class="carousel-item">
-                <NuxtImg src="/img/banners-rotativos/cursos-gratuitos-mobile.webp" class="d-block w-100" alt="Banner Mobile 2" fit="cover" placeholder="15" loading="eager" />
+                <NuxtImg src="/img/banners-rotativos/cursos-gratuitos-mobile.webp" class="d-block w-100" alt="Banner Mobile 2" fit="cover"  loading="eager" width="100%" placeholder="25" />
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#banners-mobile" data-bs-slide="prev">

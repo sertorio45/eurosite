@@ -9,11 +9,14 @@
             <div id="carouselGallery" class="carousel slide mt-5" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div v-for="(image, index) in campinasImages" :key="index" :class="['carousel-item', { active: index === 0 }]">
-                  <img
+                  <NuxtImg
                     :src="`/unidades/campinas/${image}`"
                     class="d-block w-100"
                     :alt="`Imagem ${index + 1}`"
                     @click="openLightbox(index, 'campinas')"
+                    :placeholder="15"
+                    fit="cover"
+                    width="500px"
                   />
                 </div>
               </div>

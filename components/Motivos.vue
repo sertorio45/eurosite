@@ -12,10 +12,12 @@
             </p>
             <NuxtImg
               src="img/girl.webp"
-              alt=""
+              alt="Motivos para fazer um curso com a Euro Anglo Cursos"
               class="girl-img d-none d-sm-block"
               width="100%"
               sizes="sm:400px md:500px lg:500px"
+              :placeholder="15"
+              loading="lazy"
             />
           </div>
 
@@ -30,6 +32,8 @@
                       class="rounded-circle shadow p-4 mb-4 bg-white"
                       width="100px"
                       sizes="lg:100vw md:100vw"
+                      loading="lazy"
+                      :placeholder="15"
                     />
                     <h3 class="h6 fw-bold">Grandes parcerias</h3>
                   </div>
@@ -45,6 +49,8 @@
                       class="rounded-circle shadow p-4 mb-4 bg-white"
                       width="100px"
                       sizes="lg:100vw md:100vw"
+                      loading="lazy"
+                      :placeholder="15"
                     />
                     <h3 class="h6 fw-bold">Material didático</h3>
                   </div>
@@ -60,6 +66,8 @@
                       class="rounded-circle shadow p-4 mb-4 bg-white"
                       width="100px"
                       sizes="lg:100vw md:100vw"
+                      loading="lazy"
+                      :placeholder="15"
                     />
                     <h3 class="h6 fw-bold">Aprenda na prática</h3>
                   </div>
@@ -75,6 +83,8 @@
                       class="rounded-circle shadow p-4 mb-4 bg-white"
                       width="100px"
                       sizes="lg:100vw md:100vw"
+                      loading="lazy"
+                      :placeholder="15"
                     />
                     <h3 class="h6 fw-bold">{{ anoEmpresa }} anos de história</h3>
                   </div>

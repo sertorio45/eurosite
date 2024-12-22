@@ -1,6 +1,6 @@
 <template>
   <div class="breadcrumbs-title parallax overlay dark-5 blank-space bg-primary text-center">
-    <div class="container">
+    <div class="container py-5">
       <div class="row">
         <div class="col-xs-12">
           <div class="breadcrumbs-menu">
@@ -69,8 +69,6 @@ const breadcrumbs = computed(() => {
 .breadcrumbs-title {
   background-color: var(--v-primary-base); /* Substitui a imagem por uma cor de fundo */
   background-position: 0 0;
-  padding-top: 100px;
-  padding-bottom: 100px;
 }
 
 .breadcrumbs-menu h1 {

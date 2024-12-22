@@ -97,7 +97,7 @@ if (process.client) {
 <template>
 <section class="bg-light py-5 text-center">
   <div>
-    <a href="/" style="text-decoration: none;">Página inicial</a> / <span>{{ currentCourse?.title }}</span>
+    <NuxtLink to="/" style="text-decoration: none;">Página inicial</NuxtLink> / <NuxtLink to="/cursos" style="text-decoration: none;">Cursos</NuxtLink> / <span>{{ currentCourse?.title }}</span>
   </div>
 </section>
 

@@ -17,9 +17,9 @@
       <div class="col-md-2">
         <h6 class="fw-bold">Unidades</h6>
         <ul class="list-unstyled">
-          <li><a href="#">Campinas</a></li>
-          <li><a href="#">Ribeirão Preto</a></li>
-          <li><a href="#">São José dos Campos</a></li>
+          <li><NuxtLink to="#">Campinas</NuxtLink></li>
+          <li><NuxtLink to="#">Ribeirão Preto</NuxtLink></li>
+          <li><NuxtLink to="un">São José dos Campos</NuxtLink></li>
         </ul>
       </div>
 
@@ -27,10 +27,10 @@
       <div class="col-sm-3 col-md-2">
         <h6 class="fw-bold">Mapa do site</h6>
         <ul class="list-unstyled">
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contato</a></li>
-          <li><a href="#">Nossa Unidades</a></li>
-          <li><a href="#">Quem somos</a></li>
+          <li><NuxtLink to="/blog">Blog</NuxtLink></li>
+          <li><NuxtLink to="/contato">Contato</NuxtLink></li>
+          <li><NuxtLink to="/unidades">Nossa Unidades</NuxtLink></li>
+          <li><NuxtLink to="/sobre">Quem somos</NuxtLink></li>
         </ul>
       </div>
 
@@ -38,10 +38,10 @@
       <div class="col-md-3 col-lg-2">
         <h6 class="fw-bold">Links úteis</h6>
         <ul class="list-unstyled">
-          <li><a href="#">Ouvidoria</a></li>
-          <li><a href="#">Política de privacidade</a></li>
-          <li><a href="#">Seja franqueado</a></li>
-          <li><a href="#">Trabalhe conosco</a></li>
+          <li><NuxtLink to="/ouvidoria">Ouvidoria</NuxtLink></li>
+          <li><NuxtLink to="/politica-de-privacidade">Política de privacidade</NuxtLink></li>
+          <li><NuxtLink to="https://sejafranqueado.euroanglocursos.com.br">Seja franqueado</NuxtLink></li>
+          <li><NuxtLink to="/trabalhe-conosco">Trabalhe conosco</NuxtLink></li>
         </ul>
       </div>
 
@@ -49,9 +49,9 @@
       <div class="col-md-3 col-lg-3 social-links">
         <h6 class="fw-bold">Redes sociais</h6>
           <div class=" ">
-            <a href="htpps"><Icon icon="bxl-facebook" fontSize="1.7em" color="#fff" class="mx-auto" /></a>
-            <a href="#"><Icon icon="bxl-linkedin" fontSize="1.7em" color="#fff" /></a>
-            <a href="#"><Icon icon="bxl-instagram" fontSize="1.7em" color="#fff" /></a>
+            <NuxtLink to="htpps"><Icon icon="bxl-facebook" fontSize="1.7em" color="#fff" class="mx-auto" /></NuxtLink>
+            <NuxtLink to="#"><Icon icon="bxl-linkedin" fontSize="1.7em" color="#fff" /></NuxtLink>
+            <NuxtLink to="#"><Icon icon="bxl-instagram" fontSize="1.7em" color="#fff" /></NuxtLink>
           </div>
             <ButtonAtendimentoRapido valor="Atendimento rápdio" class="mt-3" />
       </div>

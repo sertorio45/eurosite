@@ -1,14 +1,14 @@
 <template>
 <header class="bg-primary py-3 text-light d-flex justify-content-center" id="head1">
   <div class="container">
-    <div class="row">
-      <div class="col-2 col-lg-6 d-flex justify-content-start">
+    <div class="row p-1">
+      <div class="col-2 col-lg-6 d-flex justify-content-start p-0">
        <a href=""><Icon icon="bxl-instagram" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
        <a href=""><Icon icon="bxl-facebook" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
        
        <a href=""><Icon icon="bxl-linkedin" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
       </div>
-      <div class="col-10 col-lg-6 d-flex justify-content-end links-header1">
+      <div class="col-10 col-lg-6 d-flex justify-content-end links-header1 p-0 align-items-center">
         <span>
           <NuxtLink to="#" class="text-light link-menu">Seja Franquiado</NuxtLink> | 
           <NuxtLink to="/ouvidoria" class="text-light link-menu">Ouvidoria</NuxtLink> | 
@@ -27,7 +27,7 @@
           <div class="container p-0">
             <!-- Logo -->
             <NuxtLink to="/" class="navbar-brand">
-              <NuxtImg src="/img/logotipo.svg" width="185px" />
+              <NuxtImg src="/img/logotipo.svg" width="185px" :placeholder="15" loading="eager" />
             </NuxtLink>
 
             <!-- Botão de Toggle com Boxicons -->
@@ -111,10 +111,10 @@ onBeforeUnmount(() => {
   .social-icon {
   background-color: #ffffff;
   border-radius: 10%;
-  padding: 2.2px;
-  font-size: 14px!important;
+  padding: 3.5px;
+  font-size: 15px!important;
   color: var(--color-primary)!important;
-  margin: 1px;
+  margin: 2px;
 }
 .links-header1 {
     font-size: 0.65em;
@@ -134,11 +134,15 @@ onBeforeUnmount(() => {
 @media (min-width: 1024px) {
   
   .nav-item {
-    font-size: 0.85em;
+    font-size: 1vw!important;
   }
   a.dropdown-item.nav-link {
-    font-size: 0.85em!important;
-}
+    font-size: 1vw!important;
+  }
+
+a.dropdown-item.nav-link {
+    font-size: 1vw;
+  }
 }
 
 @media (min-width: 1440px) {

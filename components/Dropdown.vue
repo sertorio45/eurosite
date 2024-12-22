@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { useAsyncData } from '#app';
 
 // Definindo interface para curso
 interface Course {
@@ -8,17 +8,14 @@ interface Course {
   slug: string;
 }
 
-const courses = ref<Course[]>([]);
+// Busca assíncrona dos cursos usando useAsyncData
+const { data: courses, error } = await useAsyncData<Course[]>('courses', () => 
+  $fetch('/api/postsCursos') // Certifique-se de que a rota esteja correta
+);
 
-// Função para buscar cursos
-onMounted(async () => {
-  try {
-    const response = await $fetch<Course[]>('/api/postsCursos'); // Certifique-se de que a rota esteja correta
-    courses.value = response;
-  } catch (error) {
-    console.error('Erro ao carregar cursos:', error);
-  }
-});
+if (error.value) {
+  console.error('Erro ao carregar cursos:', error.value);
+}
 
 // Função para navegação (opcional)
 const goToCursos = () => {
@@ -51,4 +48,3 @@ const goToCursos = () => {
     </ul>
   </li>
 </template>
-

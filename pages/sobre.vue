@@ -5,10 +5,9 @@
         <div class="col-md-6 mb-4">
           <NuxtImg 
             src="img/sobre/fachada-campinas.webp" 
-            width="600px"  
+            width="600"  
             alt="Sobre a Empresa" 
             class="rounded img-fluid"
-            fit="cover"
             :placeholder="15"
             loading="lazy"
           />

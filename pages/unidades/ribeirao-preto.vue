@@ -3,26 +3,30 @@
     <section class="py-5">
       <div class="container my-5">
 
-        <!-- Seção para São José dos Campos -->
+        <!-- Seção para Ribeirão Preto -->
         <div class="row align-items-center">
-          <div class="col-md-5">
-            <!-- Galeria de São José dos Campos -->
-            <div id="carouselSJC" class="carousel slide mt-5" data-bs-ride="carousel">
+          <div class="col-md-5 py-5">
+            <div id="carouselRibeirao" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
-                <div v-for="(image, index) in sjcImages" :key="index" :class="['carousel-item', { active: index === 0 }]">
-                  <img
-                    :src="`/unidades/saojosedoscampos/${image}`"
+                <div v-for="(image, index) in rpImages" :key="index" :class="['carousel-item', { active: index === 0 }]">
+                  <NuxtImg
+                    :src="`/unidades/ribeirao-preto/${image}`"
                     class="d-block w-100"
                     :alt="`Imagem ${index + 1}`"
-                    @click="openLightbox(index, 'saojosedoscampos')"
+                    @click="openLightbox(index, 'ribeirao-preto')"
+                    densities="x1 x2"
+                    :placeholder="15"
+                    width="500px"
+                    fit="cover"
+                    loading="lazy"
                   />
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselSJC" data-bs-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselRibeirao" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Anterior</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselSJC" data-bs-slide="next">
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselRibeirao" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Próximo</span>
               </button>
@@ -31,21 +35,21 @@
 
           <div class="col-md-7">
             <div class="profile-info pt-4">
-              <h1 class="text-capitalize">São José dos Campos</h1>
+              <h1 class="text-capitalize">Ribeirão Preto</h1>
 
               <div class="contact-info mt-4">
                 <ul class="list-unstyled mb-3">
                   <li>
-                    <p><strong>Telefone:</strong> (12) 99792-8277</p>
+                    <p><strong>Telefone:</strong> (16) 3625-3925</p>
                   </li>
                   <li>
-                    <p><strong>Email:</strong> <a href="mailto:saojosedoscampos@euroanglocursos.com.br">saojosedoscampos@euroanglocursos.com.br</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:escolas@euroanglocursos.com.br">escolas@euroanglocursos.com.br</a></p>
                   </li>
                   <li>
-                    <p><strong>Local:</strong> R. Vilaça, 51 - Centro, São José dos Campos - SP, 12210-000</p>
+                    <p><strong>Local:</strong> Rua: Duque de Caxias, 349 - Centro</p>
                   </li>
                   <li class="map-link">
-                    <a href="https://www.google.com/maps/dir//R.+Vila%C3%A7a,+51+-+Centro,+S%C3%A3o+Jos%C3%A9+dos+Campos+-+SP,+12210-000/@-23.180531,-45.9672419,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94cc4b851743c8e3:0x4eab92541b98fe46!2m2!1d-45.8848675!2d-23.1805583?entry=ttu&g_ep=EgoyMDI0MTAyMC4xIKXMDSoASAFQAw%3D%3D" target="_blank">
+                    <a href="https://www.google.com/maps?q=R.+Duque+de+Caxias,+349+-+Centro,+Ribeir%C3%A3o+Preto+-+SP,+14015-020" target="_blank">
                       <i class="bx bx-map-alt mr-2"></i> Visualize o mapa completo
                     </a>
                   </li>
@@ -53,10 +57,10 @@
 
                 <div class="social-icons text-left">
                   <p class="mb-2"><strong>Siga-nos:</strong></p>
-                  <a href="https://m.facebook.com/euroanglosjc/" target="_blank" class="mr-3">
+                  <a href="https://www.facebook.com/EscolaEuroAnglo" target="_blank" class="mr-3">
                     <Icon icon="bx bxl-facebook-circle" class="social-icon" />
                   </a>
-                  <a href="https://www.instagram.com/eurosjc/" target="_blank">
+                  <a href="https://www.instagram.com/euroanglorp/" target="_blank">
                     <Icon icon="bx bxl-instagram-alt" class="social-icon" />
                   </a>
                 </div>
@@ -97,7 +101,7 @@ const currentImageIndex = ref(0);
 onMounted(async () => {
   try {
     // Importa todas as imagens de todas as pastas de cidades
-    const files = await import.meta.glob('/public/unidades/*/*.{jpg,png,jpeg,gif}');
+    const files = await import.meta.glob('/public/unidades/ribeirao-preto/*.{jpg,png,jpeg,gif}');
 
     // Armazena imagens por cidade
     Object.keys(files).forEach((file) => {

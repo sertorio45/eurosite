@@ -17,6 +17,8 @@
                     :placeholder="15"
                     fit="cover"
                     width="500px"
+                    densities="x1 x2"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -99,7 +101,7 @@ const currentImageIndex = ref(0);
 onMounted(async () => {
   try {
     // Importa todas as imagens de todas as pastas de cidades
-    const files = await import.meta.glob('/public/unidades/*/*.{jpg,png,jpeg,gif}');
+    const files = await import.meta.glob('/public/unidades/campinas/*.{jpg,png,jpeg,gif}');
 
     // Armazena imagens por cidade
     Object.keys(files).forEach((file) => {

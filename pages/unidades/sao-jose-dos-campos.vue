@@ -2,7 +2,6 @@
   <div>
     <section class="py-5">
       <div class="container my-5">
-
         <!-- Seção para São José dos Campos -->
         <div class="row align-items-center">
           <div class="col-md-5">
@@ -10,11 +9,16 @@
             <div id="carouselSJC" class="carousel slide mt-5" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div v-for="(image, index) in sjcImages" :key="index" :class="['carousel-item', { active: index === 0 }]">
-                  <img
+                  <NuxtImg
                     :src="`/unidades/saojosedoscampos/${image}`"
                     class="d-block w-100"
                     :alt="`Imagem ${index + 1}`"
                     @click="openLightbox(index, 'saojosedoscampos')"
+                    densities="x1 x2"
+                    :placeholder="15"
+                    width="500px"
+                    fit="cover"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -97,7 +101,7 @@ const currentImageIndex = ref(0);
 onMounted(async () => {
   try {
     // Importa todas as imagens de todas as pastas de cidades
-    const files = await import.meta.glob('/public/unidades/*/*.{jpg,png,jpeg,gif}');
+    const files = await import.meta.glob('/public/unidades/saojosedoscampos/*.{jpg,png,jpeg,gif}');
 
     // Armazena imagens por cidade
     Object.keys(files).forEach((file) => {

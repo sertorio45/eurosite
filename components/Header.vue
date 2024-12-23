@@ -3,10 +3,9 @@
   <div class="container">
     <div class="row p-1">
       <div class="col-2 col-lg-6 d-flex justify-content-start p-0">
-       <a href=""><Icon icon="bxl-instagram" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
-       <a href=""><Icon icon="bxl-facebook" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
-       
-       <a href=""><Icon icon="bxl-linkedin" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
+       <a href="https://www.linkedin.com/company/euro-anglo"><Icon icon="bxl-instagram" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
+       <a href="https://www.facebook.com/franquiaseuroanglo"><Icon icon="bxl-facebook" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
+       <a href="https://www.linkedin.com/company/euroanglocursos/"><Icon icon="bxl-linkedin" color="#ffffff" font-size="1.5em" class="social-icon"></Icon></a>
       </div>
       <div class="col-10 col-lg-6 d-flex justify-content-end links-header1 p-0 align-items-center">
         <span>
@@ -27,7 +26,7 @@
           <div class="container p-0">
             <!-- Logo -->
             <NuxtLink to="/" class="navbar-brand">
-              <NuxtImg src="/img/logotipo.svg" width="185px" :placeholder="15" loading="eager" />
+              <NuxtImg src="/img/logotipo.svg" width="185px" :placeholder="15" loading="lazy" />
             </NuxtLink>
 
             <!-- Botão de Toggle com Boxicons -->

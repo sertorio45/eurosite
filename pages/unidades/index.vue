@@ -17,6 +17,8 @@
                     :placeholder="15"
                     fit="cover"
                     width="500px"
+                    densities="x1 x2"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -74,11 +76,16 @@
             <div id="carouselRibeirao" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div v-for="(image, index) in rpImages" :key="index" :class="['carousel-item', { active: index === 0 }]">
-                  <img
+                  <NuxtImg
                     :src="`/unidades/ribeirao-preto/${image}`"
                     class="d-block w-100"
                     :alt="`Imagem ${index + 1}`"
                     @click="openLightbox(index, 'ribeirao-preto')"
+                    densities="x1 x2"
+                    :placeholder="15"
+                    width="500px"
+                    fit="cover"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -138,11 +145,16 @@
             <div id="carouselSJC" class="carousel slide mt-5" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div v-for="(image, index) in sjcImages" :key="index" :class="['carousel-item', { active: index === 0 }]">
-                  <img
+                  <NuxtImg
                     :src="`/unidades/saojosedoscampos/${image}`"
                     class="d-block w-100"
                     :alt="`Imagem ${index + 1}`"
                     @click="openLightbox(index, 'saojosedoscampos')"
+                    densities="x1 x2"
+                    :placeholder="15"
+                    width="500px"
+                    fit="cover"
+                    loading="lazy"
                   />
                 </div>
               </div>

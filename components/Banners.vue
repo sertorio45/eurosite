@@ -14,7 +14,7 @@
                   densities="x1 x2" 
                   :placeholder="15" 
                   width="1920"  
-                  loading="eager"
+                  loading="lazy"
                   fit="cover" 
                 />
               </div>

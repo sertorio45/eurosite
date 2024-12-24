@@ -125,8 +125,8 @@ if (process.client) {
             <b v-if="currentCourse">+ de {{ randomStudentNumber }}</b>
             <span v-else class="placeholder col-3"></span>
             <br />
-            <span v-if="currentCourse" class="p">Alunos formados nesse curso</span>
-            <span v-else class="placeholder col-5"></span>
+            <p v-if="currentCourse" class="p">Alunos formados nesse curso</p>
+            <p v-else class="placeholder col-5"></p>
           </span>
         </div>
       </div>
@@ -148,7 +148,8 @@ if (process.client) {
             loading="lazy"
             :placeholder="15" 
             width="700"
-            height="400" 
+            height="400"
+            sizes="700px sm:100 md:100px lg:900"
           />
           <div v-else class="placeholder-glow">
             <div class="placeholder col-12" style="height: 100%;"></div>
@@ -163,7 +164,7 @@ if (process.client) {
         <div>
           <div class="clearfix pt-0">
             <h2>INFORMAÇÕES SOBRE O CURSO</h2>
-            <p v-if="currentCourse">{{ currentCourse.subtitulo }}</p>
+            <p v-if="currentCourse" class="">{{ currentCourse.subtitulo }}</p>
             <p v-else class="placeholder-glow">
               <span class="placeholder col-8"></span>
             </p>

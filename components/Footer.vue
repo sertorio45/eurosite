@@ -49,7 +49,7 @@
       <div class="col-md-3 col-lg-3 social-links">
         <h6 class="fw-bold">Redes sociais</h6>
           <div class=" ">
-            <NuxtLink to="htpps"><Icon icon="bxl-facebook" fontSize="1.7em" color="#fff" class="mx-auto" /></NuxtLink>
+            <NuxtLink to="#"><Icon icon="bxl-facebook" fontSize="1.7em" color="#fff" class="mx-auto" /></NuxtLink>
             <NuxtLink to="#"><Icon icon="bxl-linkedin" fontSize="1.7em" color="#fff" /></NuxtLink>
             <NuxtLink to="#"><Icon icon="bxl-instagram" fontSize="1.7em" color="#fff" /></NuxtLink>
           </div>

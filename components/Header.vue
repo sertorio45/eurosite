@@ -68,7 +68,7 @@
               </ul>
               <!-- Botão WhatsApp -->
               <div class="align-content-end">
-                <a href="https://wa.me/5516992842170?text=Ol%C3%A1,%20vim%20pelo%20site,%20gostaria%20de%20ser%20atendido(a)." class="btn btn-primary" target="_blank">Atendimento rápido</a>
+                <AtendimentoRapido />
               </div>
             </div>
           </div>
@@ -82,6 +82,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useRouter } from 'vue-router';
+import AtendimentoRapido from './button/AtendimentoRapido.vue';
 
 const goToCursos = () => {
   router.push('/cursos');

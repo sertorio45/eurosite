@@ -18,7 +18,7 @@
                   class="img-fluid"
                   densities="x1 x2"
                   :placeholder="15"
-                  width="400"
+                  sizes="300px sm:100px md:300px lg:400px"
                   loading="lazy"
                   fit="cover"
                   @click="openLightbox(AlunosContratados.image)"

@@ -18,7 +18,7 @@
                   densities="x1 x2"
                   :placeholder="[500, 500, 75, 5]"
                   class="rounded d-block w-100"
-                  sizes="sm:100vw md:300px lg:400px"
+                  sizes="300px sm:100vw md:300px lg:400px"
                   loading="lazy"
                   fit="cover"
                   @click="openLightbox(AlunosContratados.image)"

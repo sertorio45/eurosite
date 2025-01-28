@@ -11,19 +11,18 @@
           >
             <div class="hall-image event-box d-flex">
               <!-- Imagem do Aluno -->
-              <div class="thumb w-100">
+              <div class="w-100">
                 <NuxtImg
-                  :src="AlunosContratados.image"
-                  :alt="AlunosContratados.slug"
-                  densities="x1 x2"
-                  :placeholder="[500, 500, 75, 5]"
-                  class="rounded d-block w-100"
-                  sizes="300px sm:100vw md:300px lg:400px"
-                  loading="lazy"
-                  fit="cover"
-                  @click="openLightbox(AlunosContratados.image)"
-                  style="cursor: pointer"
-                />
+                :src="AlunosContratados.image"
+                :alt="AlunosContratados.slug"
+                densities="x1 x2"
+                class="rounded d-block w-100"
+                sizes="100vw sm:100vw md:500vw lg:50vw"
+                loading="lazy"
+                fit="cover"
+                @click="openLightbox(AlunosContratados.image)"
+                style="cursor: pointer"
+              />
               </div>
 
               <!-- Conteúdo -->

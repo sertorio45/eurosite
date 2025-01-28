@@ -16,7 +16,7 @@
                   :src="AlunosContratados.image"
                   :alt="AlunosContratados.slug"
                   class="img-fluid"
-                  densities="x1 x2"
+                  densities="x1 x2 x3"
                   :placeholder="15"
                   width="500"
                   loading="lazy"

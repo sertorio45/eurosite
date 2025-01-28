@@ -43,7 +43,7 @@
                     <p><strong>Telefone:</strong> (12) 99792-8277</p>
                   </li>
                   <li>
-                    <p><strong>Email:</strong> <a href="mailto:saojosedoscampos@euroanglocursos.com.br">saojosedoscampos@euroanglocursos.com.br</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:diretoria@euroanglocursos.com.br">diretoria@euroanglocursos.com.br</a></p>
                   </li>
                   <li>
                     <p><strong>Local:</strong> R. Vilaça, 51 - Centro, São José dos Campos - SP, 12210-000</p>

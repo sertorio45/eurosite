@@ -43,7 +43,7 @@
                     <p><strong>Telefone:</strong> (16) 3625-3925</p>
                   </li>
                   <li>
-                    <p><strong>Email:</strong> <a href="mailto:escolas@euroanglocursos.com.br">escolas@euroanglocursos.com.br</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:diretoria@euroanglocursos.com.br">diretoria@euroanglocursos.com.br</a></p>
                   </li>
                   <li>
                     <p><strong>Local:</strong> Rua: Duque de Caxias, 349 - Centro</p>

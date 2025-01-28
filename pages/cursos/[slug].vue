@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useAsyncData } from '#app';
 
@@ -43,13 +43,7 @@ const activeTab = ref<string>('');
 
 // Gerar um número aleatório entre 2.000 e 8.000 e armazenar localmente
 const generateRandomNumber = () => {
-  const storedNumber = sessionStorage.getItem('randomStudentNumber');
-  if (storedNumber) {
-    randomStudentNumber.value = parseInt(storedNumber, 10);
-  } else {
-    randomStudentNumber.value = Math.floor(Math.random() * (8000 - 2000 + 1)) + 2000;
-    sessionStorage.setItem('randomStudentNumber', randomStudentNumber.value.toString());
-  }
+  randomStudentNumber.value = Math.floor(Math.random() * (8000 - 2000 + 1)) + 2000;
 };
 
 // Pegando o slug da rota
@@ -88,6 +82,14 @@ if (coursesData.value) {
   }
 }
 
+// Observa mudanças na rota para gerar um novo número aleatório
+watch(
+  () => route.params.slug,
+  () => {
+    generateRandomNumber();
+  }
+);
+
 // Gera o número aleatório no lado do cliente
 if (process.client) {
   generateRandomNumber();
@@ -107,26 +109,25 @@ if (process.client) {
       <!-- Título do curso -->
       <div class="col-sm-6 text-center">
         <div class="pt-30">
-          <h2 v-if="currentCourse" class="mb-5" style="color: #b92027; font-size: 36px;">{{ currentCourse.title }}</h2>
-          <h2 v-else class="placeholder-glow">
+          <h2 v-if="currentCourse" style="color: #b92027!important; font-size: 36px!important; margin-bottom: 3vh;">{{ currentCourse.title }}</h2>
+          <h2 v-else class="placeholder-glow" style="color: #b92027!important; font-size: 36px!important; margin-bottom: 3vh;">
             <span class="placeholder col-6"></span>
           </h2>
         </div>
         <div>
-          <h2 v-if="currentCourse" class="mb-5">A MELHOR QUALIDADE COM A MELHOR ESTRUTURA</h2>
+          <h2 v-if="currentCourse" class="mb-5">A MELHOR ESTRUTURA PARA VOCÊ</h2>
           <h2 v-else class="placeholder-glow">
             <span class="placeholder col-8"></span>
           </h2>
           <p v-if="currentCourse" class="h5">Estude na melhor escola do interior paulista.</p>
-          <p v-else class="placeholder-glow">
+          <p v-else class="placeholder-glow h5">
             <span class="placeholder col-4"></span>
           </p>
           <span id="numbers">
             <b v-if="currentCourse">+ de {{ randomStudentNumber }}</b>
             <span v-else class="placeholder col-3"></span>
             <br />
-            <p v-if="currentCourse" class="p">Alunos formados nesse curso</p>
-            <p v-else class="placeholder col-5"></p>
+            <p>Alunos formados nesse curso</p>
           </span>
         </div>
       </div>

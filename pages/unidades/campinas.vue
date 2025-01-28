@@ -42,7 +42,7 @@
                     <p><strong>Telefone:</strong> (19) 3305-2525</p>
                   </li>
                   <li>
-                    <p><strong>Email:</strong> <a href="mailto:campinas@euroanglocursos.com.br">campinas@euroanglocursos.com.br</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:diretoria@euroanglocursos.com.br">diretoria@euroanglocursos.com.br</a></p>
                   </li>
                   <li>
                     <p><strong>Local:</strong> Rua: Barão do Jaguara, 888 - Centro</p>

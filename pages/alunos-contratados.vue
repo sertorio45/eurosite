@@ -18,6 +18,7 @@
                   densities="x1 x2"
                   :placeholder="[500, 500, 75, 5]"
                   class="rounded"
+                  height="350"
                   sizes="sm:100vw md:300px lg:400px"
                   loading="lazy"
                   fit="cover"

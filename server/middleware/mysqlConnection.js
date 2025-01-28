@@ -8,5 +8,14 @@ export default defineEventHandler(async (event) => {
     user: 'euroanglo_admin',
     password: 'Agenciagsstudio1993#@!',
     database: 'euroanglo_site',
+    connectTimeout: 10000 // 10 segundos
+  });
+  
+
+  // Garante o fechamento da conexão ao final do ciclo
+  event.res.on('finish', async () => {
+    if (event.context.connection) {
+      await event.context.connection.end();
+    }
   });
 });

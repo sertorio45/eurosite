@@ -1,5 +1,5 @@
 <template>
-  <div class="trabalhe-conosco-area section-padding d-flex justify-content-center align-items-center">
+  <div class="trabalhe-conosco-area section-padding d-flex justify-content-center align-items-center my-5">
     <div class="container d-flex justify-content-center align-items-center">
       <div class="row w-100">
         <div class="col-md-6 mb-3 mx-auto">
@@ -52,13 +52,7 @@ definePageMeta({
 </script>
 
 <style scoped>
-.trabalhe-conosco-area {
-  padding: 50px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+
 
 .img-fluid {
   max-width: 100%;

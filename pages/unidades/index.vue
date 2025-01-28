@@ -237,7 +237,7 @@ const currentImageIndex = ref(0);
 onMounted(async () => {
   try {
     // Importa todas as imagens de todas as pastas de cidades
-    const files = await import.meta.glob('/public/unidades/*/*.{jpg,png,jpeg,gif}');
+    const files = await import.meta.glob('/public/unidades/*/*.{jpg,png,jpeg,gif,webp}');
 
     // Armazena imagens por cidade
     Object.keys(files).forEach((file) => {

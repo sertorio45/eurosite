@@ -39,6 +39,71 @@
               </div>
             </div>
           </div>
+
+          <!-- Placeholder Cards -->
+          <div class="col-12 col-sm-6 col-md-4 mb-30 my-3" v-if="isLoading">
+            <div class="hall-image event-box d-flex">
+              <div class="thumb w-100 placeholder-glow">
+                <div class="placeholder rounded img-fluid" style="height: 200px; background-color: #e9ecef;"></div>
+              </div>
+              <div class="event-content w-100 px-2">
+                <div class="align-container">
+                  <div class="align-inner py-4">
+                    <h4 class="placeholder-glow">
+                      <span class="placeholder col-6"></span>
+                    </h4>
+                    <p class="placeholder-glow">
+                      <span class="placeholder col-8"></span>
+                      <span class="placeholder col-5"></span>
+                      <span class="placeholder col-7"></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-30 my-3" v-if="isLoading">
+            <div class="hall-image event-box d-flex">
+              <div class="thumb w-100 placeholder-glow">
+                <div class="placeholder rounded img-fluid" style="height: 200px; background-color: #e9ecef;"></div>
+              </div>
+              <div class="event-content w-100 px-2">
+                <div class="align-container">
+                  <div class="align-inner py-4">
+                    <h4 class="placeholder-glow">
+                      <span class="placeholder col-6"></span>
+                    </h4>
+                    <p class="placeholder-glow">
+                      <span class="placeholder col-8"></span>
+                      <span class="placeholder col-5"></span>
+                      <span class="placeholder col-7"></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-30 my-3" v-if="isLoading">
+            <div class="hall-image event-box d-flex">
+              <div class="thumb w-100 placeholder-glow">
+                <div class="placeholder rounded img-fluid" style="height: 200px; background-color: #e9ecef;"></div>
+              </div>
+              <div class="event-content w-100 px-2">
+                <div class="align-container">
+                  <div class="align-inner py-4">
+                    <h4 class="placeholder-glow">
+                      <span class="placeholder col-6"></span>
+                    </h4>
+                    <p class="placeholder-glow">
+                      <span class="placeholder col-8"></span>
+                      <span class="placeholder col-5"></span>
+                      <span class="placeholder col-7"></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Botão para carregar mais artigos -->

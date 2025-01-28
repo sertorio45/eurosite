@@ -43,10 +43,10 @@
           <div id="banners-mobile" class="carousel slide d-block d-md-none" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <NuxtImg src="/img/banners-rotativos/bolsas-mobile.webp" class="d-block w-100" alt="Banner Mobile" fit="cover"  loading="eager" width="100%" placeholder="25" />
+                <NuxtImg src="/img/banners-rotativos/bolsas-mobile.webp" class="d-block w-100" alt="Banner Mobile" fit="cover"  loading="lazy" width="100%" placeholder="25" />
               </div>
               <div class="carousel-item">
-                <NuxtImg src="/img/banners-rotativos/cursos-gratuitos-mobile.webp" class="d-block w-100" alt="Banner Mobile 2" fit="cover"  loading="eager" width="100%" placeholder="25" />
+                <NuxtImg src="/img/banners-rotativos/cursos-gratuitos-mobile.webp" class="d-block w-100" alt="Banner Mobile 2" fit="cover"  loading="lazy" width="100%" placeholder="25" />
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#banners-mobile" data-bs-slide="prev">

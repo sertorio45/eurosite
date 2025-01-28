@@ -9,7 +9,6 @@
       </div>
       <div class="col-10 col-lg-6 d-flex justify-content-end links-header1 p-0 align-items-center">
         <span>
-          <NuxtLink to="#" class="text-light link-menu">Seja Franquiado</NuxtLink> | 
           <NuxtLink to="/ouvidoria" class="text-light link-menu">Ouvidoria</NuxtLink> | 
           <NuxtLink to="/trabalhe-conosco" class="text-light link-menu">Trabalhe Conosco</NuxtLink>
         </span>

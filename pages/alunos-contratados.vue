@@ -2,23 +2,23 @@
   <div>
     <section class="py-5">
       <div class="container my-5">
-        <div class="row">
+        <div class="row gy-4">
           <!-- Loop pelos posts filtrados com opção de carregar mais -->
           <div
-            class="col-xs-12 col-sm-6 mb-30 my-3"
+            class="col-12 col-sm-6 col-md-4 mb-30 my-3"
             v-for="AlunosContratados in displayedPosts"
             :key="AlunosContratados.id"
           >
             <div class="hall-image event-box d-flex">
               <!-- Imagem do Aluno -->
-              <div class="thumb pull-left">
+              <div class="thumb w-100">
                 <NuxtImg
                   :src="AlunosContratados.image"
                   :alt="AlunosContratados.slug"
-                  class="img-fluid"
                   densities="x1 x2"
                   :placeholder="15"
-                  sizes="300px sm:100px md:300px lg:400px"
+                  class="rounded"
+                  sizes="sm:100vw md:300px lg:400px"
                   loading="lazy"
                   fit="cover"
                   @click="openLightbox(AlunosContratados.image)"
@@ -27,9 +27,9 @@
               </div>
 
               <!-- Conteúdo -->
-              <div class="event-content w-100 px-3 align-content-center">
+              <div class="event-content w-100 px-2">
                 <div class="align-container">
-                  <div class="align-inner">
+                  <div class="align-inner py-4">
                     <h4 class="text-capitalize">
                       {{ capitalizeTitle(AlunosContratados.title) }}
                     </h4>
@@ -142,17 +142,21 @@ onMounted(async () => {
 .hall-image {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 15px;
+  display: flex;
+  flex-direction: column; /* Adiciona suporte para stack em telas pequenas */
 }
 
 .event-box {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha os elementos no início em telas pequenas */
   padding: 10px;
 }
 
 .event-content {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .align-container {
@@ -171,5 +175,25 @@ onMounted(async () => {
 
 .mb-30 {
   margin-bottom: 30px;
+}
+
+/* Responsividade adicional */
+@media (max-width: 768px) {
+  .hall-image {
+    flex-direction: column; /* Alinha os itens em coluna para dispositivos menores */
+    text-align: center; /* Centraliza o conteúdo */
+  }
+
+  .thumb {
+    margin-bottom: 15px; /* Espaçamento entre a imagem e o conteúdo */
+  }
+
+  .event-content {
+    padding: 10px 0; /* Reduz padding no conteúdo */
+  }
+
+  .event-box {
+    padding: 15px; /* Reduz o espaçamento da caixa em telas pequenas */
+  }
 }
 </style>

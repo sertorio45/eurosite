@@ -40,7 +40,7 @@
               <div class="contact-info mt-4">
                 <ul class="list-unstyled mb-3">
                   <li>
-                    <p><strong>Telefone:</strong> (12) 99792-8277</p>
+                    <p><strong>Telefone:</strong> (16) 99121-3522</p>
                   </li>
                   <li>
                     <p><strong>Email:</strong> <a href="mailto:diretoria@euroanglocursos.com.br">diretoria@euroanglocursos.com.br</a></p>

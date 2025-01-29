@@ -11,7 +11,7 @@
           >
             <div class="hall-image event-box d-flex">
               <!-- Imagem do Aluno -->
-              <div class="w-100">
+              <div>
                 <NuxtImg
                 :src="AlunosContratados.image"
                 :alt="AlunosContratados.slug"

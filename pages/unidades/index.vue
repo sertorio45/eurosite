@@ -39,7 +39,7 @@
               <div class="contact-info mt-4">
                 <ul class="list-unstyled mb-3">
                   <li>
-                    <p><strong>Telefone:</strong> (19) 3305-2525</p>
+                    <p><strong>Telefone:</strong> (16) 99121-3522</p>
                   </li>
                   <li>
                     <p><strong>Email:</strong> <a href="mailto:diretoria@euroanglocursos.com.br">diretoria@euroanglocursos.com.br</a></p>
@@ -107,13 +107,13 @@
               <div class="contact-info mt-4">
                 <ul class="list-unstyled mb-3">
                   <li>
-                    <p><strong>Telefone:</strong> (16) 3625-3925</p>
+                    <p><strong>Telefone:</strong> (16) 99121-3522</p>
                   </li>
                   <li>
                     <p><strong>Email:</strong> <a href="mailto:diretoria@euroanglocursos.com.br">diretoria@euroanglocursos.com.br</a></p>
                   </li>
                   <li>
-                    <p><strong>Local:</strong> Rua: Duque de Caxias, 349 - Centro</p>
+                    <p><strong>Local:</strong> Rua: Amador Bueno, 774, Centro</p>
                   </li>
                   <li class="map-link">
                     <a href="https://www.google.com/maps?q=R.+Duque+de+Caxias,+349+-+Centro,+Ribeir%C3%A3o+Preto+-+SP,+14015-020" target="_blank">
@@ -176,7 +176,7 @@
               <div class="contact-info mt-4">
                 <ul class="list-unstyled mb-3">
                   <li>
-                    <p><strong>Telefone:</strong> (12) 99792-8277</p>
+                    <p><strong>Telefone:</strong> (16) 99121-3522</p>
                   </li>
                   <li>
                     <p><strong>Email:</strong> <a href="mailto:diretoria@euroanglocursos.com.br">diretoria@euroanglocursos.com.br</a></p>

@@ -28,6 +28,16 @@
                   fit="cover" 
                 />
               </div>
+              <div class="carousel-item">
+                <NuxtImg src="/img/banners-rotativos/mercado-de-trabalho.webp" 
+                  class="d-block w-100" 
+                  densities="x1 x2" 
+                  :placeholder="15" 
+                  width="1920"  
+                  loading="lazy"
+                  fit="cover" 
+                />
+              </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#banners-desktop" data-bs-slide="prev">
               <span aria-hidden="true"><Icon icon="bx bxs-left-arrow-circle" fontSize="3em"/></span>
@@ -47,6 +57,9 @@
               </div>
               <div class="carousel-item">
                 <NuxtImg src="/img/banners-rotativos/cursos-gratuitos-mobile.webp" class="d-block w-100" alt="Banner Mobile 2" fit="cover"  loading="lazy" width="100%" placeholder="25" />
+              </div>
+              <div class="carousel-item">
+                <NuxtImg src="/img/banners-rotativos/mercado-de-trabalho-mobile.webp" class="d-block w-100" alt="Banner Mobile 2" fit="cover"  loading="lazy" width="100%" placeholder="25" />
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#banners-mobile" data-bs-slide="prev">

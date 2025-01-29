@@ -71,10 +71,7 @@ const submitForm = async () => {
       subject: `Inscrição para curso - Euro Anglo Cursos`,
       html: `
         <html>
-          <body style='font-family: "Montserrat", sans-serif;'>
-            <div style='background-color: #000; text-align: center; padding: 20px 0;'>
-              <img src='https://s3.gsstudio.com.br/images-email-marketing/logotipogssstudio.png' alt='Logo da Empresa' style='max-width: 200px;'>
-            </div>
+          <body style='font-family: "Arial", sans-serif;'>
             <div style='background-color: #fff; padding: 40px;'>
               <p><strong>Nome:</strong> ${form.value.nome}</p>
               <p><strong>Email:</strong> ${form.value.email}</p>

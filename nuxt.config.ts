@@ -51,7 +51,7 @@ export default defineNuxtConfig({
   mail: {
     message: {
       from: 'Lead Site <naoresponda@euroanglocursos.com.br>',
-      to: 'giovannistr@gmail.com',
+      to: 'diretoria@euroanglocursos.com.br',
     },
     smtp: {
       host: 'mail.euroanglocursos.com.br',

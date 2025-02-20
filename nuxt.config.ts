@@ -21,14 +21,11 @@ export default defineNuxtConfig({
       NUXT_DB_PASSWORD: process.env.NUXT_DB_PASSWORD,
       NUXT_DB_DATABASE: process.env.NUXT_DB_DATABASE,
 
-      apiSecret: '123',
-  
       // Variáveis públicas (disponíveis no cliente)
       public: {
         apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api/' // Use uma variável de ambiente, se aplicável
       }
     },
-  
 
   app: {
     baseURL: '/',
@@ -72,8 +69,6 @@ export default defineNuxtConfig({
     overwriting: true,
     base64: true,
     fontsPath: 'assets/fonts'
-
-
   },
 
   css: [

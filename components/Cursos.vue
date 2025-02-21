@@ -13,7 +13,7 @@
         <div v-for="(course, index) in lastThreeCourses" :key="course.id" class="col-lg-4 col-md-6 col-sm-12 mb-4">
           <div class="card cursos-card">
             <div class="img-container">
-              <NuxtImg 
+              <!-- <NuxtImg 
                 :src="course.image" 
                 class="card-img-top img-fluid" 
                 :alt="course.title || 'Imagem do course'" 
@@ -23,6 +23,12 @@
                 height="500" 
                 loading="lazy"  
                 fit="cover"
+              /> -->
+              <img 
+                :src="course.image" 
+                class="card-img-top img-fluid" 
+                :alt="course.title || 'Imagem do course'" 
+                loading="lazy"  
               />
             </div>
             <div class="card-body py-4">

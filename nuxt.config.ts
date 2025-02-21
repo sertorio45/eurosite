@@ -82,7 +82,7 @@ export default defineNuxtConfig({
       's3.gsstudio.com.br', 
       'placeholder.com', 
       'gsstudio.com.br',
-      'euroanglocursos.com.br'
+      'painel.euroanglocursos.com.br'
     ],
     quality: 75,
     format: ['webp', 'png', 'jpg', 'jpeg', 'svg'], // Melhorando a compatibilidade de imagens

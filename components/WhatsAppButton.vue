@@ -1,7 +1,7 @@
 <template>
   <div class="whatsapp-button">
     <a
-      href="https://api.whatsapp.com/send?phone=15991712882&text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20minhas%20d%C3%BAvidas."
+      href="https://api.whatsapp.com/send?phone=16991213522&text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20minhas%20d%C3%BAvidas."
       target="_blank"
       rel="noopener noreferrer"
       class="btn btn-success d-flex align-items-center justify-content-center"

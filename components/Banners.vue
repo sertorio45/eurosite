@@ -12,7 +12,7 @@
                   class="d-block w-100"
                   src="/img/banners-rotativos/bolsas-desktop.webp" 
                   densities="x1 x2" 
-                  :placeholder="15" 
+                  placeholder 
                   width="1920"  
                   loading="lazy"
                   fit="cover" 
@@ -22,7 +22,7 @@
                 <NuxtImg src="/img/banners-rotativos/cursos-gratuitos-desktop.webp" 
                   class="d-block w-100" 
                   densities="x1 x2" 
-                  :placeholder="15" 
+                  placeholder 
                   width="1920"  
                   loading="lazy"
                   fit="cover" 
@@ -32,7 +32,7 @@
                 <NuxtImg src="/img/banners-rotativos/mercado-de-trabalho.webp" 
                   class="d-block w-100" 
                   densities="x1 x2" 
-                  :placeholder="15" 
+                  placeholder 
                   width="1920"  
                   loading="lazy"
                   fit="cover" 

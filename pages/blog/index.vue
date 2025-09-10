@@ -10,11 +10,11 @@
                 class="card-img-top img-fluid" alt="Imagem do post" 
                 :alt="post.title || 'Imagem do post'" 
                 densities="x1 x2" 
-                :placeholder="15" 
+                placeholder 
                 width="500" 
                 height="500" 
                 loading="lazy" 
-                quality="80" 
+                quality="50" 
                 fit="cover"
             />
             <div class="card-body">

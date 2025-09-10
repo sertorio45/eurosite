@@ -15,7 +15,7 @@
                     :alt="`Imagem ${index + 1}`"
                     @click="openLightbox(index, 'ribeirao-preto')"
                     densities="x1 x2"
-                    :placeholder="15"
+                    placeholder
                     width="500px"
                     fit="cover"
                     loading="lazy"

@@ -15,8 +15,9 @@
                     :alt="`Imagem ${index + 1}`"
                     @click="openLightbox(index, 'saojosedoscampos')"
                     densities="x1 x2"
-                    :placeholder="15"
+                    placeholder
                     width="500px"
+                    height="600px"
                     fit="cover"
                     loading="lazy"
                   />

@@ -14,7 +14,7 @@
                     class="d-block w-100"
                     :alt="`Imagem ${index + 1}`"
                     @click="openLightbox(index, 'campinas')"
-                    :placeholder="15"
+                    placeholder
                     fit="cover"
                     width="500px"
                     densities="x1 x2"

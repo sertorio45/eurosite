@@ -91,7 +91,8 @@ const errorMessage = computed(() => {
                   :src="aluno.image"
                   :alt="aluno.title || 'Foto do aluno contratado'"
                   densities="x1 x2"
-                  class="rounded d-block w-100 img-fluid"
+                  class="rounded d-block w-100"
+                  sizes="100vw sm:100vw md:500vw lg:50vw"
                   loading="lazy"
                   fit="cover"
                   placeholder

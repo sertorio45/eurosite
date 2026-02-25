@@ -1,5 +1,5 @@
 import { version, unref, inject, defineComponent, h, computed, ref, provide, shallowReactive, watch, Suspense, nextTick, Fragment, Transition, hasInjectionContext, getCurrentInstance, mergeProps, useSSRContext, createApp, effectScope, reactive, getCurrentScope, onErrorCaptured, onServerPrefetch, createVNode, resolveDynamicComponent, toRef, defineAsyncComponent, shallowRef, isReadonly, withCtx, isRef, isShallow, isReactive, toRaw } from 'vue';
-import { $ as $fetch$1, m as hasProtocol, n as isScriptProtocol, o as joinURL, w as withQuery, p as defu, q as sanitizeStatusCode, r as createHooks, c as createError$1, t as toRouteMatcher, v as createRouter$1 } from '../runtime.mjs';
+import { $ as $fetch$1, m as hasProtocol, n as isScriptProtocol, o as joinURL, w as withQuery, c as createError$1, p as defu, q as sanitizeStatusCode, r as createHooks, t as toRouteMatcher, v as createRouter$1 } from '../runtime.mjs';
 import { b as baseURL } from '../routes/renderer.mjs';
 import { getActiveHead, CapoPlugin } from 'unhead';
 import { defineHeadPlugin } from '@unhead/shared';
@@ -124,6 +124,7 @@ const appLayoutTransition = false;
 const appPageTransition = false;
 const appKeepalive = false;
 const nuxtLinkDefaults = { "componentName": "NuxtLink", "prefetch": true, "prefetchOn": { "visibility": true } };
+const asyncDataDefaults = { "value": null, "errorValue": null, "deep": true };
 const appId = "nuxt-app";
 function getNuxtAppCtx(id = appId) {
   return getContext(id, {
@@ -669,6 +670,17 @@ async function getRouteRules(url) {
     return defu({}, ..._routeRulesMatcher.matchAll(url).reverse());
   }
 }
+const __nuxt_page_meta$a = {
+  layout: "default-breadcrumb"
+};
+const __nuxt_page_meta$9 = {
+  layout: "default-breadcrumb"
+  // Usa o layout sem breadcrumbs
+};
+const __nuxt_page_meta$8 = {
+  layout: "default-breadcrumb"
+  // Usa o layout sem breadcrumbs
+};
 const __nuxt_page_meta$7 = {
   layout: "default-breadcrumb"
 };
@@ -678,21 +690,19 @@ const __nuxt_page_meta$6 = {
 };
 const __nuxt_page_meta$5 = {
   layout: "default-breadcrumb"
-  // Usa o layout sem breadcrumbs
 };
 const __nuxt_page_meta$4 = {
   layout: "default-breadcrumb"
+  // Usa o layout sem breadcrumbs
 };
 const __nuxt_page_meta$3 = {
   layout: "default-breadcrumb"
-  // Usa o layout sem breadcrumbs
 };
 const __nuxt_page_meta$2 = {
   layout: "default-breadcrumb"
 };
 const __nuxt_page_meta$1 = {
   layout: "default-breadcrumb"
-  // Usa o layout sem breadcrumbs
 };
 const __nuxt_page_meta = {
   layout: "default-breadcrumb"
@@ -701,47 +711,47 @@ const _routes = [
   {
     name: "alunos-contratados",
     path: "/alunos-contratados",
-    meta: __nuxt_page_meta$7 || {},
-    component: () => import('./alunos-contratados-DPJ0euC7.mjs').then((m) => m.default || m)
+    meta: __nuxt_page_meta$a || {},
+    component: () => import('./alunos-contratados-BJS835_b.mjs').then((m) => m.default || m)
   },
   {
     name: "blog-slug",
     path: "/blog/:slug()",
-    component: () => import('./_slug_-BUHHLlNK.mjs').then((m) => m.default || m)
+    component: () => import('./_slug_-BQQSrX_v.mjs').then((m) => m.default || m)
   },
   {
     name: "blog",
     path: "/blog",
-    meta: __nuxt_page_meta$6 || {},
-    component: () => import('./index-CeuDNsuY.mjs').then((m) => m.default || m)
+    meta: __nuxt_page_meta$9 || {},
+    component: () => import('./index-C_fqlCmV.mjs').then((m) => m.default || m)
   },
   {
     name: "contato",
     path: "/contato",
-    meta: __nuxt_page_meta$5 || {},
-    component: () => import('./contato-Bm9F-HzB.mjs').then((m) => m.default || m)
+    meta: __nuxt_page_meta$8 || {},
+    component: () => import('./contato-DK9eOFOr.mjs').then((m) => m.default || m)
   },
   {
     name: "cursos-slug",
     path: "/cursos/:slug()",
-    component: () => import('./_slug_-BEFvdksh.mjs').then((m) => m.default || m)
+    component: () => import('./_slug_-WhcrmUKO.mjs').then((m) => m.default || m)
   },
   {
     name: "cursos",
     path: "/cursos",
-    meta: __nuxt_page_meta$4 || {},
-    component: () => import('./index-CG3xnIa-.mjs').then((m) => m.default || m)
+    meta: __nuxt_page_meta$7 || {},
+    component: () => import('./index-C7ZNO8rE.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-BXkEaAWK.mjs').then((m) => m.default || m)
+    component: () => import('./index-qsUMIRJI.mjs').then((m) => m.default || m)
   },
   {
     name: "ouvidoria",
     path: "/ouvidoria",
-    meta: __nuxt_page_meta$3 || {},
-    component: () => import('./ouvidoria-a2BqWS1h.mjs').then((m) => m.default || m)
+    meta: __nuxt_page_meta$6 || {},
+    component: () => import('./ouvidoria-DThkFqky.mjs').then((m) => m.default || m)
   },
   {
     name: "politica-de-privacidade",
@@ -751,14 +761,14 @@ const _routes = [
   {
     name: "sobre",
     path: "/sobre",
-    meta: __nuxt_page_meta$2 || {},
-    component: () => import('./sobre-D2sgCodg.mjs').then((m) => m.default || m)
+    meta: __nuxt_page_meta$5 || {},
+    component: () => import('./sobre-8f6xPJfT.mjs').then((m) => m.default || m)
   },
   {
     name: "trabalhe-conosco",
     path: "/trabalhe-conosco",
-    meta: __nuxt_page_meta$1 || {},
-    component: () => import('./trabalhe-conosco-6--vFs0S.mjs').then((m) => m.default || m)
+    meta: __nuxt_page_meta$4 || {},
+    component: () => import('./trabalhe-conosco-D5wJHvoM.mjs').then((m) => m.default || m)
   },
   {
     name: "ui-kit",
@@ -766,10 +776,28 @@ const _routes = [
     component: () => import('./ui-kit-CCsZqBcs.mjs').then((m) => m.default || m)
   },
   {
+    name: "unidades-campinas",
+    path: "/unidades/campinas",
+    meta: __nuxt_page_meta$3 || {},
+    component: () => import('./campinas-nZoRGjwU.mjs').then((m) => m.default || m)
+  },
+  {
     name: "unidades",
     path: "/unidades",
+    meta: __nuxt_page_meta$2 || {},
+    component: () => import('./index-BJjF8xwM.mjs').then((m) => m.default || m)
+  },
+  {
+    name: "unidades-ribeirao-preto",
+    path: "/unidades/ribeirao-preto",
+    meta: __nuxt_page_meta$1 || {},
+    component: () => import('./ribeirao-preto-BpWIdo6p.mjs').then((m) => m.default || m)
+  },
+  {
+    name: "unidades-sao-jose-dos-campos",
+    path: "/unidades/sao-jose-dos-campos",
     meta: __nuxt_page_meta || {},
-    component: () => import('./unidades-B7NdI1hP.mjs').then((m) => m.default || m)
+    component: () => import('./sao-jose-dos-campos-DpLu638m.mjs').then((m) => m.default || m)
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -1130,133 +1158,9 @@ const plugins = [
   plugin_nuxt3_gGdllsjxuZ,
   bxicons_4CU2AJ34xL
 ];
-function defaultEstimatedProgress(duration, elapsed) {
-  const completionPercentage = elapsed / duration * 100;
-  return 2 / Math.PI * 100 * Math.atan(completionPercentage / 50);
-}
-function createLoadingIndicator(opts = {}) {
-  const { duration = 2e3, throttle = 200, hideDelay = 500, resetDelay = 400 } = opts;
-  opts.estimatedProgress || defaultEstimatedProgress;
-  const nuxtApp = useNuxtApp();
-  const progress = ref(0);
-  const isLoading = ref(false);
-  const error = ref(false);
-  const start = () => {
-    error.value = false;
-    set(0);
-  };
-  function set(at = 0) {
-    if (nuxtApp.isHydrating) {
-      return;
-    }
-    if (at >= 100) {
-      return finish();
-    }
-    progress.value = at < 0 ? 0 : at;
-    if (throttle && false) {
-      setTimeout(() => {
-        isLoading.value = true;
-      }, throttle);
-    } else {
-      isLoading.value = true;
-    }
-  }
-  function finish(opts2 = {}) {
-    progress.value = 100;
-    if (opts2.error) {
-      error.value = true;
-    }
-    if (opts2.force) {
-      progress.value = 0;
-      isLoading.value = false;
-    }
-  }
-  function clear() {
-  }
-  let _cleanup = () => {
-  };
-  return {
-    _cleanup,
-    progress: computed(() => progress.value),
-    isLoading: computed(() => isLoading.value),
-    error: computed(() => error.value),
-    start,
-    set,
-    finish,
-    clear
-  };
-}
-function useLoadingIndicator(opts = {}) {
-  const nuxtApp = useNuxtApp();
-  const indicator = nuxtApp._loadingIndicator = nuxtApp._loadingIndicator || createLoadingIndicator(opts);
-  return indicator;
-}
-const __nuxt_component_0 = defineComponent({
-  name: "NuxtLoadingIndicator",
-  props: {
-    throttle: {
-      type: Number,
-      default: 200
-    },
-    duration: {
-      type: Number,
-      default: 2e3
-    },
-    height: {
-      type: Number,
-      default: 3
-    },
-    color: {
-      type: [String, Boolean],
-      default: "repeating-linear-gradient(to right,#00dc82 0%,#34cdfe 50%,#0047e1 100%)"
-    },
-    errorColor: {
-      type: String,
-      default: "repeating-linear-gradient(to right,#f87171 0%,#ef4444 100%)"
-    },
-    estimatedProgress: {
-      type: Function,
-      required: false
-    }
-  },
-  setup(props, { slots, expose }) {
-    const { progress, isLoading, error, start, finish, clear } = useLoadingIndicator({
-      duration: props.duration,
-      throttle: props.throttle,
-      estimatedProgress: props.estimatedProgress
-    });
-    expose({
-      progress,
-      isLoading,
-      error,
-      start,
-      finish,
-      clear
-    });
-    return () => h("div", {
-      class: "nuxt-loading-indicator",
-      style: {
-        position: "fixed",
-        top: 0,
-        right: 0,
-        left: 0,
-        pointerEvents: "none",
-        width: "auto",
-        height: `${props.height}px`,
-        opacity: isLoading.value ? 1 : 0,
-        background: error.value ? props.errorColor : props.color || void 0,
-        backgroundSize: `${100 / progress.value * 100}% auto`,
-        transform: `scaleX(${progress.value}%)`,
-        transformOrigin: "left",
-        transition: "transform 0.1s, height 0.4s, opacity 0.4s",
-        zIndex: 999999
-      }
-    }, slots);
-  }
-});
 const layouts = {
-  "default-breadcrumb": () => import('./default-breadcrumb-D3RAIFhO.mjs').then((m) => m.default || m),
-  default: () => import('./default-Cfn7mNai.mjs').then((m) => m.default || m)
+  "default-breadcrumb": () => import('./default-breadcrumb-DifAtBDY.mjs').then((m) => m.default || m),
+  default: () => import('./default-BQaNb6e1.mjs').then((m) => m.default || m)
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -1270,7 +1174,7 @@ const LayoutLoader = defineComponent({
     return () => h(LayoutComponent, props.layoutProps, context.slots);
   }
 });
-const __nuxt_component_1 = defineComponent({
+const __nuxt_component_0 = defineComponent({
   name: "NuxtLayout",
   inheritAttrs: false,
   props: {
@@ -1388,7 +1292,7 @@ const RouteProvider = defineComponent({
     };
   }
 });
-const __nuxt_component_2 = defineComponent({
+const __nuxt_component_1 = defineComponent({
   name: "NuxtPage",
   inheritAttrs: false,
   props: {
@@ -1505,26 +1409,36 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
+const _sfc_main$3 = {};
+function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(mergeProps({ class: "whatsapp-button" }, _attrs))} data-v-9af48299><a href="https://api.whatsapp.com/send?phone=16991213522&amp;text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20minhas%20d%C3%BAvidas." target="_blank" rel="noopener noreferrer" class="btn btn-success d-flex align-items-center justify-content-center" data-v-9af48299><i class="bx bxl-whatsapp bx-tada" data-v-9af48299></i></a></div>`);
+}
+const _sfc_setup$3 = _sfc_main$3.setup;
+_sfc_main$3.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/WhatsAppButton.vue");
+  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
+};
+const __nuxt_component_2 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-9af48299"]]);
 const _sfc_main$2 = {};
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
-  const _component_NuxtLoadingIndicator = __nuxt_component_0;
-  const _component_NuxtLayout = __nuxt_component_1;
-  const _component_NuxtPage = __nuxt_component_2;
-  _push(`<div${ssrRenderAttrs(_attrs)}>`);
-  _push(ssrRenderComponent(_component_NuxtLoadingIndicator, null, null, _parent));
-  _push(ssrRenderComponent(_component_NuxtLayout, null, {
+  const _component_NuxtLayout = __nuxt_component_0;
+  const _component_NuxtPage = __nuxt_component_1;
+  const _component_WhatsAppButton = __nuxt_component_2;
+  _push(ssrRenderComponent(_component_NuxtLayout, _attrs, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
         _push2(ssrRenderComponent(_component_NuxtPage, null, null, _parent2, _scopeId));
+        _push2(ssrRenderComponent(_component_WhatsAppButton, null, null, _parent2, _scopeId));
       } else {
         return [
-          createVNode(_component_NuxtPage)
+          createVNode(_component_NuxtPage),
+          createVNode(_component_WhatsAppButton)
         ];
       }
     }),
     _: 1
   }, _parent));
-  _push(`</div>`);
 }
 const _sfc_setup$2 = _sfc_main$2.setup;
 _sfc_main$2.setup = (props, ctx) => {
@@ -1636,5 +1550,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { _export_sfc as _, navigateTo as a, useNuxtApp as b, useRuntimeConfig as c, resolveUnrefHeadInput as d, entry$1 as default, injectHead as i, nuxtLinkDefaults as n, resolveRouteObject as r, useRouter as u };
+export { _export_sfc as _, navigateTo as a, useNuxtApp as b, useRuntimeConfig as c, resolveUnrefHeadInput as d, entry$1 as default, asyncDataDefaults as e, createError as f, injectHead as i, nuxtLinkDefaults as n, resolveRouteObject as r, useRouter as u };
 //# sourceMappingURL=server.mjs.map

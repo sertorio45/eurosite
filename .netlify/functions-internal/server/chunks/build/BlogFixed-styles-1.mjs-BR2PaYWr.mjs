@@ -1,0 +1,4 @@
+const BlogFixed_vue_vue_type_style_index_0_scoped_3aee775a_lang = ".card-body[data-v-3aee775a]{border-radius:0 0 10px 10px}.blog-card[data-v-3aee775a]{border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,.1);overflow:hidden;transition:transform .3s}.blog-card[data-v-3aee775a]:hover{transform:translateY(-10px)}.card-title[data-v-3aee775a]{font-weight:700;-webkit-line-clamp:2;-webkit-box-orient:vertical;display:-webkit-box;font-size:17px;overflow:hidden;text-overflow:ellipsis}.card-body small[data-v-3aee775a]{color:#6c757d;display:block;margin-bottom:.5rem}.card-body[data-v-3aee775a]{border:1px solid transparent;padding:10px;transition:.2s ease-in-out}@media (max-width:576px){.container[data-v-3aee775a]{padding-left:1em;padding-right:1em}}";
+
+export { BlogFixed_vue_vue_type_style_index_0_scoped_3aee775a_lang as B };
+//# sourceMappingURL=BlogFixed-styles-1.mjs-BR2PaYWr.mjs.map

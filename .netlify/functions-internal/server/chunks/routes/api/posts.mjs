@@ -1,9 +1,9 @@
 import { d as defineEventHandler, u as useRuntimeConfig } from '../../runtime.mjs';
-import mysql from 'mysql2/promise';
 import 'node:http';
 import 'node:https';
 import 'node:fs';
 import 'node:path';
+import 'mysql2/promise';
 import 'nodemailer';
 import '@dword-design/functions';
 import 'node:url';
@@ -11,12 +11,7 @@ import 'ipx';
 
 const posts = defineEventHandler(async (event) => {
   useRuntimeConfig();
-  const connection = await mysql.createConnection({
-    host: "162.214.100.2",
-    user: "euroanglo_admin",
-    password: "Agenciagsstudio1993#@!",
-    database: "euroanglo_site"
-  });
+  const connection = event.context.connection;
   const [rows] = await connection.execute(`
     SELECT 
       id, 

@@ -1,4 +1,0 @@
-const unidades_vue_vue_type_style_index_0_scoped_4a77e30c_lang = ".social-icon[data-v-4a77e30c]{background-color:var(--bs-primary);border-radius:100%;color:#fff!important;margin-right:5px;padding:5px}.profile-info[data-v-4a77e30c]{padding-top:1rem}.contact-info ul[data-v-4a77e30c]{list-style-type:none;padding:0}.map-link a[data-v-4a77e30c]{color:var(--bs-primary);text-decoration:none}.map-link a[data-v-4a77e30c]:hover{text-decoration:underline}.social-icons a[data-v-4a77e30c]{color:#333;font-size:1.5rem;transition:color .3s ease}.social-icons a[data-v-4a77e30c]:hover{color:#007bff}.carousel-inner img[data-v-4a77e30c]{border-radius:10px;height:400px;-o-object-fit:cover;object-fit:cover}";
-
-export { unidades_vue_vue_type_style_index_0_scoped_4a77e30c_lang as u };
-//# sourceMappingURL=unidades-styles-1.mjs-Cg1bNOtu.mjs.map

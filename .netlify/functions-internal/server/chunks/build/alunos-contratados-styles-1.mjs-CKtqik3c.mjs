@@ -1,0 +1,4 @@
+const alunosContratados_vue_vue_type_style_index_0_scoped_2918a597_lang = ".hall-image[data-v-2918a597]{box-shadow:0 4px 8px rgba(0,0,0,.1);display:flex;flex-direction:column;padding:15px}.event-box[data-v-2918a597]{padding:10px}.event-box[data-v-2918a597],.event-content[data-v-2918a597]{align-items:flex-start;display:flex;flex-direction:column}.align-container[data-v-2918a597]{display:flex;height:100%;justify-content:center}.align-inner[data-v-2918a597]{text-align:left}.text-capitalize[data-v-2918a597]{text-transform:capitalize}.mb-30[data-v-2918a597]{margin-bottom:30px}@media (max-width:768px){.hall-image[data-v-2918a597]{flex-direction:column;text-align:center}.thumb[data-v-2918a597]{margin-bottom:15px}.event-content[data-v-2918a597]{padding:10px 0}.event-box[data-v-2918a597]{padding:15px}}";
+
+export { alunosContratados_vue_vue_type_style_index_0_scoped_2918a597_lang as a };
+//# sourceMappingURL=alunos-contratados-styles-1.mjs-CKtqik3c.mjs.map

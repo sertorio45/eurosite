@@ -1,0 +1,4 @@
+const saoJoseDosCampos_vue_vue_type_style_index_0_scoped_b71deaac_lang = ".social-icon[data-v-b71deaac]{background-color:var(--bs-primary);border-radius:100%;color:#fff!important;margin-right:5px;padding:5px}.profile-info[data-v-b71deaac]{padding-top:1rem}.contact-info ul[data-v-b71deaac]{list-style-type:none;padding:0}.map-link a[data-v-b71deaac]{color:var(--bs-primary);text-decoration:none}.map-link a[data-v-b71deaac]:hover{text-decoration:underline}.social-icons a[data-v-b71deaac]{color:#333;font-size:1.5rem;transition:color .3s ease}.social-icons a[data-v-b71deaac]:hover{color:#007bff}.carousel-inner img[data-v-b71deaac]{border-radius:10px;height:400px;-o-object-fit:cover;object-fit:cover}";
+
+export { saoJoseDosCampos_vue_vue_type_style_index_0_scoped_b71deaac_lang as s };
+//# sourceMappingURL=sao-jose-dos-campos-styles-1.mjs-C29TYAw8.mjs.map

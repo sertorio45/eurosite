@@ -36,6 +36,9 @@ const postsCursos = defineEventHandler(async (event) => {
     `);
     const coursesMap = {};
     coursesWithDetails.forEach((row) => {
+      if (row.ativo !== 1) {
+        return;
+      }
       if (!coursesMap[row.courseId]) {
         coursesMap[row.courseId] = {
           id: row.courseId,

@@ -3348,7 +3348,7 @@ const appConfig = defuFn(inlineAppConfig);
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "a93f1672-2f02-41b2-8603-570e71f6bb0e",
+    "buildId": "6e34a393-910b-4068-809b-0325353f9490",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -3379,11 +3379,10 @@ const _inlineRuntimeConfig = {
   "public": {
     "apiBase": "123"
   },
-  "NUXT_DB_SERVERNAME": "162.214.100.2",
+  "NUXT_DB_SERVERNAME": "162.214.100.0",
   "NUXT_DB_USERNAME": "euroanglo_admin",
   "NUXT_DB_PASSWORD": "Agenciagsstudio1993",
   "NUXT_DB_DATABASE": "euroanglo_site",
-  "apiSecret": "123",
   "ipx": {
     "baseURL": "/_ipx",
     "alias": {},
@@ -3395,7 +3394,7 @@ const _inlineRuntimeConfig = {
         "s3.gsstudio.com.br",
         "placeholder.com",
         "gsstudio.com.br",
-        "euroanglocursos.com.br"
+        "painel.euroanglocursos.com.br"
       ]
     }
   }
@@ -5251,9 +5250,8 @@ const errorHandler = (async function errorhandler(error, event) {
 });
 
 const _6kAy6U = defineEventHandler$1(async (event) => {
-  useRuntimeConfig();
   event.context.connection = await mysql.createConnection({
-    host: "162.214.100.2",
+    host: "162.215.175.118",
     user: "euroanglo_admin",
     password: "Agenciagsstudio1993#@!",
     database: "euroanglo_site",
@@ -5563,7 +5561,7 @@ const options = {
   "message": [
     {
       "from": "Lead Site <naoresponda@euroanglocursos.com.br>",
-      "to": "giovannistr@gmail.com"
+      "to": "diretoria@euroanglocursos.com.br"
     }
   ],
   "smtp": {

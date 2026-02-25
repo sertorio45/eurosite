@@ -1,0 +1,4 @@
+const ribeiraoPreto_vue_vue_type_style_index_0_scoped_1f3ccbb8_lang = ".social-icon[data-v-1f3ccbb8]{background-color:var(--bs-primary);border-radius:100%;color:#fff!important;margin-right:5px;padding:5px}.profile-info[data-v-1f3ccbb8]{padding-top:1rem}.contact-info ul[data-v-1f3ccbb8]{list-style-type:none;padding:0}.map-link a[data-v-1f3ccbb8]{color:var(--bs-primary);text-decoration:none}.map-link a[data-v-1f3ccbb8]:hover{text-decoration:underline}.social-icons a[data-v-1f3ccbb8]{color:#333;font-size:1.5rem;transition:color .3s ease}.social-icons a[data-v-1f3ccbb8]:hover{color:#007bff}.carousel-inner img[data-v-1f3ccbb8]{border-radius:10px;height:400px;-o-object-fit:cover;object-fit:cover}";
+
+export { ribeiraoPreto_vue_vue_type_style_index_0_scoped_1f3ccbb8_lang as r };
+//# sourceMappingURL=ribeirao-preto-styles-1.mjs-CNoVjCY7.mjs.map

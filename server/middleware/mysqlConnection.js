@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
 
   // Adiciona conexão ao banco no contexto do evento
   event.context.connection = await mysql.createConnection({
-    host: '162.215.175.118',
+    host: '69.6.222.149',
     user: 'euroanglo_admin',
     password: 'Agenciagsstudio1993#@!',
     database: 'euroanglo_site',
